@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Date</title>
+    <!-- script -->
+    <script>
+        window.onload = function tiempo(){
+            // crea fecha y hora actual
+            var ahora = new Date() ; 
+            
+            //selecciona el primer div que encuentre
+            var div = document.querySelector("div"); 
+
+            //escribelo en el div
+            div.innerHTML = ahora.getHours() + ":" + ahora.getMinutes() + ":" + ahora.getSeconds() + "<br/>" ;
+
+            // escribo hora en formato local
+            div.innerHTML += ahora.toLocaleTimeString() + "<br/>"  ;
+
+            // escribo  fecha en formato local
+            div.innerHTML += ahora.toLocaleDateString() + "<br/>" ;
+
+            // escribo  fecha en formato inglés
+            div.innerHTML += ahora.toDateString() + "<br/>" ;
+
+            // actualiza el tiempo cada segundo
+            setTimeout(tiempo,1000) ;
+        }
+    </script>
+</head>
+<body>
+    <div></div>
+</body>
+</html>
