@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prueba con objetos</title>
+
+    <script>
+        // la variable window apunta a un objeto que tiene el método open, que nos devuelve un objeto que es una ventana nueva,
+        // y almacenamos en la variable "miVentana" la referencia a ese objeto creado. A través de esta referencia
+        // podremos hacer cosas a esa ventana.
+        //
+        // la nueva ventana se llama "ventana 1", y al tener nombre asignado, si volvemos a darle al botón no se crean 
+        // más vntanas, porque ya está abierta.
+        var miVentana;
+        function abrir(){
+           miVentana = window.open("http://www.google.es","ventana 1");
+        }
+
+        // Los objetos de tipo window tienen el método ".close()" que nos permiten cerrar la ventana.
+        function cerrar(){
+            miVentana.close();
+        }
+        // cambia el destino ventana nueva con el método location
+        function navegar(){
+            miVentana.location = "https://www.cia.gov/es" ;
+        }
+
+
+    </script>
+
+
+</head>
+<body>
+    <p>
+        <!-- abrir una nueva ventana -->
+        <button onclick="abrir();">Abrir ventana</button>
+        <!-- Con este botón cambiamos el destino de la ventana -->
+        <button onclick="navegar();">Navegar</button>
+        <!-- con este botón cerramos la ventana -->
+        <button onclick="cerrar();">Cerrar</button>
+    </p>
+</body>
+</html>

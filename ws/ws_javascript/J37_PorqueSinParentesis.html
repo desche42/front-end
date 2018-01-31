@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Eventos On Propagación</title>
+
+    <!-- ESTILOS -->
+    <style>
+    /***********  DIVs  **********/
+        div{
+            border: 1px solid black ;
+            padding: 30px ; 
+            background-color: yellow ;
+        }
+
+        body>div>div{
+            background-color: aquamarine ;
+        }
+        body>div>div>div{
+            background-color: cadetblue ; 
+        }
+
+    </style>
+
+    <!-- ---------------------------- SCRIPTS ---------------------------------- -->
+
+    <script>
+   
+        function inicializar(){
+            alert("Inicializado") ; 
+        }
+        
+        // La función inicializar se ejecuta aquí, y el valor que devuelva (que no devuelve nada en este caso) lo asigna
+        // a onload. Al ver la página en el navegador primero vemos la alerta sin que salga el h1 del body 
+        window.onload = inicializar();
+        
+        // Cuando esto se ejecuta, ya vemos el h1 del body
+        window.onload = inicializar;
+
+    </script>
+
+</head>
+<body>
+        <h1>Página cargada</h1>
+</body>
+</html>

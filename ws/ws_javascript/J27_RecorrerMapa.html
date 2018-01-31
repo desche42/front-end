@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Recorrer un mapa</title>
+    <!-- declarando un mapa / diccionario -->
+    <script>
+        var m = {
+            "Lunes" : "Soleado", 
+            "Martes" : "Nublado" , 
+            "Miércoles" : "Lluvia" , 
+            "Jueves" : "Tormenta" , 
+            "Viernes" : "Granizo" , 
+            "Sábado" : "Huracán" , 
+            "Domingo" : "Terremoto" ,
+        };
+
+        // función que imprime la previsión meteorológica y sísmica
+        function imprimir(){
+            // se imprimirá en la dl 
+            var lista = document.querySelector("dl");
+            for (clave in m){
+                lista.innerHTML += "<dt>" + clave + "</dt><dd>" + m[clave] + "</dd>";
+            }
+        }
+    </script>
+
+</head>
+<body onload="imprimir()">
+
+    <!-- diccionario donde se imprime -->
+    <dl></dl>
+</body>
+</html>

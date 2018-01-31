@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tipos variables</title>
+</head>
+<body>
+   <!-- Vemos los distintos tipos de variables que hay en JS y también concatenate -->
+
+   
+<h3>Redefine variable</h3>    
+    <div id="number">Mensaje no recibido.</div>
+    <div id="string">Mensaje no recibido.</div>
+    <div id="boolean">Mensaje no recibido</div>
+    <div id="objeto">Mensaje no recibido</div>
+    <div id="undef">Mensaje no recibido</div>
+    <div id="null">Mensaje no recibido</div>
+
+    <script>
+        // typeof X nos devuelve el tipo de variable que es X
+        var texto = "" ;
+        //variable donde vamos a ir metiendo los distintos tipos de datos
+        var a = 12 ;
+
+
+        texto = a + " es un " + typeof a; 
+        document.getElementById("number").innerHTML = texto ;
+
+        //variable tipo string
+        var a  = "Hola" ;
+        texto = a + " es un " + typeof a; 
+        document.getElementById("string").innerHTML = texto ;
+
+        //variable tipo boolean
+        var a  = true ;
+        texto = a + " es un " + typeof a; 
+        document.getElementById("boolean").innerHTML = texto ;
+
+        //variable tipo objeto
+        var a  = new Date() ;
+        texto = a + " es un " + typeof a; 
+        document.getElementById("objeto").innerHTML = texto ;
+
+        //variable tipo indefinida
+        var a  = undefined ; // var a ; tiene el mismo efecto
+        texto = a + " es un " + typeof a; 
+        document.getElementById("undef").innerHTML = texto ;
+
+        //variable tipo null
+        var a  = null ;
+        texto = a + " es un " + typeof a; 
+        document.getElementById("null").innerHTML = texto ;
+          
+    </script>
+
+ <h3>Concatenate strings</h3>
+
+<div id="concate">Mensaje no recibido</div>
+
+<script>
+    // typeof X nos devuelve el tipo de variable que es X
+    var texto = "" ;
+    //variable donde vamos a ir metiendo los distintos tipos de datos
+    var a = 12 ;
+    texto += a + " es un " + typeof a + "<br/>"; 
+
+    //variable tipo string
+    var b  = "Hola" ;
+    texto += b + " es un " + typeof b + "<br/>"; 
+
+    //variable tipo boolean
+    var c  = true ;
+    texto += c + " es un " + typeof c + "<br/>"; 
+
+    //variable tipo objeto
+    var d  = new Date() ;
+    texto += d + " es un " + typeof d + "<br/>"; 
+
+    //variable tipo indefinida
+    var e  = undefined ; // var a ; tiene el mismo efecto
+    texto += e + " es un " + typeof e + "<br/>"; 
+
+    //variable tipo null
+    var f  = null ;
+    texto += f + " es un " + typeof f + "<br/>"; 
+    document.getElementById("concate").innerHTML = texto ;
+      
+</script>
+
+
+
+
+
+</body>
+</html>

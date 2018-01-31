@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" >
+<title>Dibujar en el canvas</title>
+<style type="text/css">
+	div#contenedor{width:80%;background-color:rgb(240,240,240);
+		margin: 10px auto;padding:25px;text-align:center; }
+	canvas{border: 1px solid black;}
+</style>
+<script type="text/javascript">
+	var ctx;
+	
+	
+	function rectangulo1(){
+		var x1=10,y1=10;//Esquina superior izquierda del rectángulo.
+		var ancho = 400, alto=180;
+		// ####### Creación de un objeto gradación (gradiente) de colores #######
+		
+		// #####Puntos clave de color dentro del gradiente #######
+		
+		// ####### Asignar el gradiente como estilo de fondo #######
+		
+		// Dibujamos un rectángulo.
+		ctx.fillRect(x1,y1,ancho,alto);
+	}
+	function rectangulo2(){
+		var x1=10,y1=210;//Esquina superior izquierda del rectángulo.
+		var ancho = 400, alto=180;
+		var xc = x1 + ancho/2;
+		var yc = y1 + alto/2;
+		var rInt = 20;
+		var rExt = alto/2;
+		// ##### Creación de un objeto gradación (gradiente) radial de colores
+		// Se define mediante dos circunferencias, la interior y la exterior #####.
+		
+		// ##### Puntos clave de color dentro del gradiente #####
+		
+		ctx.fillStyle = grad;
+		// Dibujamos un rectángulo.
+		ctx.fillRect(x1,y1,ancho,alto);
+	}
+	window.onload = function (){
+		var canvas1 = document.getElementById("canvas1");
+		ctx = canvas1.getContext("2d");
+		// Dibujo de varias figuras
+		//rectangulo1();
+		//rectangulo2();
+	};
+</script>
+</head>
+<body>
+	<h2>Dibujar en el canvas</h2>
+	<div id="contenedor">
+		<canvas id="canvas1" height="400" width="500"></canvas>
+	</div>
+	<p><a href="http://www.w3schools.com/tags/ref_canvas.asp">
+		Api Javascript de la etiqueta canvas</a>
+</body>
+</html>

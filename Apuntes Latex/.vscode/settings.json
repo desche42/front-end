@@ -1,0 +1,13 @@
+    {
+    "files.exclude": {
+        //archivos de latex
+        "**/*.aux":true,
+        "**/*.log": true,
+        "**/*.out": true,
+        "**/*.synctex.gz": true,
+        "**/*.toc": true,
+        "**/*.fdb_latexmk": true,
+        "**/*.fls": true,
+        // "**/*.bib": true,
+    }
+}

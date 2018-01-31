@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Do While</title>
+    <!-- ejemplo de while(this is not true) do {this} -->
+    <script>
+        var password = "" ;
+        var veces = 0;
+        while (password != "Alejandría") {
+            password = prompt("Inserte la contraseña.");
+            veces++ ;
+        }
+    </script>
+</head>
+<body>
+    
+    <h1>Contraseña correcta, puedes ver la página.</h1>
+    <br/>
+    <div></div>
+    <div id="veces"></div>
+    <div class="cola"></div>
+    
+    <script>
+        // query selector hace una selección por el tipo de elemento css
+        // esto se mete en el primer div que encuentre
+        document.querySelector("div").innerHTML = "este es el primer div que he encontrado";
+        document.querySelector("#veces").innerHTML = "Te ha costado entrar " + veces + " intentos." ;
+        document.querySelector(".cola").innerHTML = "También vale para clases, y cualquier selector css" ;
+    </script>
+</body>
+</html>

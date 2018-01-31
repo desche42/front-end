@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ElseIf</title>
+
+    <!-- función que pide al usuario que inserte una nota -->
+    <script>
+        function insertarNota(){
+            //aunque el imput sea tipo number, se almacena como string
+                // var nota =  document.getElementById("txtNota").value ; 
+                // alert( typeof(nota) );
+            var nota = parseFloat( document.getElementById("txtNota").value ) ; 
+
+            // condiciones según la nota
+            if (nota < 5 ){
+                mensaje = "Suspenso :(";
+            }
+            else if (nota == 5){
+                mensaje = "Aprobado por los pelos";
+            }
+            else if (nota < 7){
+                mensaje = "Bien.";
+            }
+            else if (nota < 9){
+                mensaje = "Notable :)"
+            }
+            else if (nota < 10){
+                mensaje = "Sobresaliente! :D"
+            }
+            else{
+                mensaje = "¡¡¡¡¡¡MATRÍCULA!!!!!! :D:D:D:D:D:D"
+            }
+                document.getElementById("resultado").value = mensaje ;
+        }
+        
+    </script>
+
+
+
+</head>
+<body>
+    <!-- caja de texto -->
+    <p>
+        Nota: <input type="number" id="txtNota" min="0" max="10" />
+        <button onclick="insertarNota();">Insertar nota</button> <br/>
+        <input type="text" id="resultado" readonly="readonly"  />
+    </p>
+</body>
+</html>

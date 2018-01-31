@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Eventos On Propagación</title>
+
+    <!-- ESTILOS -->
+    <style>
+    /***********  DIVs  **********/
+        div{
+            border: 1px solid black ;
+            padding: 30px ; 
+            background-color: yellow ;
+        }
+
+        body>div>div{
+            background-color: aquamarine ;
+        }
+        body>div>div>div{
+            background-color: cadetblue ; 
+        }
+
+    </style>
+
+    <!-- ---------------------------- SCRIPTS ---------------------------------- -->
+
+    <script>
+    // Manejador de  evento
+        function manejador(event){
+            var quienTieneElManejador = event.currentTarget.id ; // devuelve quién tiene el manejador del evento
+            var aQuienSeLeHizoClick = event.target.id ; // quién es el target del evento
+            console.log(quienTieneElManejador,aQuienSeLeHizoClick)
+        }
+
+    // asignamos los eventos desde JS, no desde la propia etiqueta div
+    // le paso una referencia a la función que tiene que ejecutar, no quiero que la ejecute ya, sino en el evento
+    // alert(manejador);
+
+        function inicializar(){
+            document.getElementById("capa1").onclick = manejador ; 
+            document.getElementById("capa2").onclick = manejador ; 
+            document.getElementById("capa3").onclick = manejador ;
+        }
+        
+    // ejecutar la función inicializar como función manejadora del evento onload
+        window.onload = inicializar;
+
+    </script>
+
+</head>
+<body>
+
+
+        <div id="capa1"> 
+            <div id="capa2">
+                <div id="capa3"></div>
+            </div>
+        </div>
+</body>
+</html>

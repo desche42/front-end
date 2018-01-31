@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prueba worker</title>
+</head>
+<body>
+
+    <!-- compruebo que las alert funcionan; FUNCIONAN -->
+    <!-- <script>alert("Las alerts funcionan") ; </script> -->
+
+    <!-- este html coge un texto y lo envía en forma de alerta mediante un web worker -->
+
+    <script>
+        // crea la variable w donde se cargará en worker
+
+
+        // // cuando se cargue la página, event listener para ejecutar la función parar o enviar
+        // window.onload = function (){
+        //     // cuando se le de al botón sendTxt envía alerta
+        //     document.querySelector("#parar") .addEventListener("click",parar);
+        //     document.querySelector("#enviar") .addEventListener("click",enviar);
+
+        // función que envía el texto
+            function enviar(){
+                var mensaje = document.getElementById("alerta").value ; 
+                postMessage(mensaje);
+                alert("mensaje enviado al worker");
+                
+            }
+        // //función que para el worker
+        //     function parar(){
+        //         w.terminate() ;
+        //         w = undefined ;
+        //     }
+
+        // // inicia el worker
+        // try{
+        //     // cargo el worker en la variable w
+        //     w = new Worker("js/txtAlert.js");
+        //     } 
+        // catch(e){//Lo que haremos si lo interior al try ha fallado.
+        //         alert("Algo ha fallado ");
+        //     }
+
+    </script>
+            
+
+    <input type="text" id="alerta">
+    <button id="enviar" onclick="enviar()">Enviar</button>
+    <button id="parar" onclick="parar()">Parar worker</button>
+
+
+    
+
+
+</body>
+</html>

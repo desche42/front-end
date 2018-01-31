@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <style>
+        /* Fusionar los bordes de celdas contiguas */
+        table.tablaDatos{border-collapse:collapse;
+            font-family:Arial, Helvetica, sans-serif; }
+        /* Borde de celdas de cabecera y datos */
+        table.tablaDatos th, table.tablaDatos td {
+            border:1px solid black; padding:3px 7px;
+        }
+        table.tablaDatos th{color:blanchedalmond;
+            background-color: darkgoldenrod;}
+        table.tablaDatos th[colspan],table.tablaDatos th[rowspan]{
+            background-color: darkgreen;}    
+        table.tablaDatos tfoot th{
+            background-color: gray;}    
+        table.tablaDatos tbody tr{
+            background-color: beige;
+        }
+        table.tablaDatos{
+            margin:10px auto;
+        }
+    </style>
+</head>
+<body>
+   <table class="tablaDatos">
+        <thead>
+            <tr>
+                <th rowspan="2">&nbsp;</th>
+                <th colspan="3">dias</th>
+            </tr>
+            <tr> <th>Lunes</th><th>Martes</th><th>Miércoles</th></tr>
+        </thead>
+        <tbody>
+            <tr><th>Mañana</th><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr><th>Tarde</th><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+        </tbody>  
+   </table>
+   
+
+</body>
+</html>

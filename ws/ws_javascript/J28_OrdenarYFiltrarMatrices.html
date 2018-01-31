@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Ordenar y filtrar matrices</title>
+
+    <!-- scripts aquí -->
+    <script>
+        // matriz original que filtraremos
+        var m = ["Lunes" , "Martes" , "Miércoles" , "Jueves" , "Viernes" , "Sábado" , "Domingo"];
+        
+        // esta será la matriz ordenada
+        var m2 = m ;
+
+        // función que imprime
+        function imprimir(){
+            // lo imprimiremos en una ul
+            var lista = document.querySelector("ul");
+            lista.innerHTML = "" ;
+            for (var i = 0; i < m2.length ; i++) {
+                lista.innerHTML += "<li>" + m2[i] + "</li>" ;                
+            }
+        }
+
+
+        // función que ordena:  LIBRO WIRTH ALGORITMOS Y ESTRUCTURAS DE DATOS EN EL PEN
+        function ordenar(){
+            //ordenar alfabéticamente
+            // m2 = m.sort();
+            // ordenar por longitud
+            m2 = m.sort(ordenLongitud);
+            imprimir();
+        }
+
+        // función que ordena por longitud
+        function ordenLongitud(a,b){
+            // depuración, imprime en la consola. esto imprime "a b"
+            console.log(a,b) ;
+            return a.length - b.length ;
+        }
+
+        // función para filtrar
+        function filtrar(){
+            m2 = m.filter(filtrarLongitud);  // ver documentación de esto: https://www.w3schools.com/jsref/jsref_filter.asp
+            imprimir();
+        }
+        function filtrarLongitud(elem,pos,mat){
+            console.log(elem,pos,mat) ;
+            return elem.length > 6 ; 
+        }
+
+    </script>
+</head>
+<body>
+    <h1>Ordenar y filtrar matrices</h1>
+    <button onclick="ordenar();">Ordenar</button>
+    <button onclick="filtrar();">Filtrar</button>
+    <ul></ul>
+</body>
+</html>

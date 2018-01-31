@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+        <!-- pedimos dos números: dividendo y divisor -->
+    <script>
+        var a = parseFloat( prompt("Dividendo")) ;
+        var b = parseFloat( prompt("Divisor")  ) ;
+        var c = a / b ;
+        
+        // si a y b no son números, dar error.
+        if( isNaN(a) || isNaN(b)  ){
+            alert("El dividendo y el divisor deben ser números");
+        }
+        // si el resultado es finito, darlo
+        else if( isFinite(c) ){
+            alert("Resultado: " + c );
+        }
+        // si no es finito (o sea, infinito), dar error
+        // js considera infinito a partir de 1e308
+        else{
+            alert("El resultado es demasiado grande.") ;
+        }
+    </script>
+
+
+    <title id="titulo">Trabajando con numeros</title>
+    
+
+</head>
+<body>
+    
+    <h3>Fin</h3>
+
+</body>
+</html>

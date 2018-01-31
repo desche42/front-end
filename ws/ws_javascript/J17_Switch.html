@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Switch</title>
+
+    <!-- función que pide al usuario que inserte una nota -->
+    <script>
+        function insertarNota(){
+            //aunque el imput sea tipo number, se almacena como string
+            // var nota =  document.getElementById("txtNota").value ; 
+            // alert( typeof(nota) );
+            var nota = parseFloat( document.getElementById("txtNota").value ) ;
+
+            var mensaje = "";
+            // switch solo toma valores entero
+            nota = Math.floor(nota) ; 
+
+            switch (nota) {
+                // para vaios casos con el mismo. como no llevan break, se ejecuta el siguiente
+                case 0: 
+                case 1: 
+                case 2: 
+                case 3: 
+                case 4:
+                    mensaje = "Suspenso :(";
+                    break;
+                case 5:
+                    mensaje = "Aprobado por los pelos";
+                    break;
+                case 6: 
+                    mensaje = "Bien.";
+                    break;
+                case 7:
+                case 8:
+                    mensaje = "Notable :)";
+                    break;
+                case 9: 
+                    mensaje = "Sobresaliente! :D";
+                    break;
+                case 10:
+                    mensaje = "¡¡¡¡¡¡MATRÍCULA!!!!!! :D:D:D:D:D:D"
+                    break;
+            }
+
+                document.getElementById("resultado").innerHTML = mensaje ;
+        }
+        
+    </script>
+
+    <!-- cambiar el tamaño de input tipo number -->
+    <style>
+        input[type=number]{
+            width: 3em;
+        } 
+    
+    </style>
+
+</head>
+<body>
+    <!-- caja de texto -->
+    <p>
+        Nota: <input type="number" id="txtNota" min="0" max="10"  />
+        <button onclick="insertarNota();">Insertar nota</button> 
+        Estás: <span id="resultado"></span>  
+    </p>
+</body>
+</html>

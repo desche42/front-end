@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tablas</title>
+
+    <style>
+        /* Para juntar los bordes de las celdas contiguas*/
+        table.tablaDatos{   border-collapse: collapse ;
+                            font-family: Arial, Helvetica, sans-serif ;
+                        }
+
+        /* Borde de celdas de cabecera y datos */
+        table.tablaDatos th, table.tablaDatos td {  
+                                                    border: 1px solid black ; 
+                                                    padding: 3px 7px;
+                                                }
+        table.tablaDatos th{    
+                                color:blanchedalmond ;
+                                background-color: darkgoldenrod ; 
+                            }
+        table.tablaDatos tr{ 
+                            background-color: beige ; 
+                            }
+        table.tablaDatos tr:nth-child(2n){ background-color: gold ; 
+                            }
+        table.tablaDatos tr:hover{ background-color: turquoise ; 
+                            }
+    
+    
+    
+    </style>
+
+
+
+<!-- La tabla tiene thead, tbody y tfoot -->
+
+<!-- emmet table>thead>tr>th*2 -->
+
+<table class="tablaDatos">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Autor</th>
+        </tr>
+    </thead>
+
+    <!-- tbody>(tr>td*2)*4 -->
+    <tbody>
+        <tr>
+            <td>El Quijote</td>
+            <td>Cervantes</td>
+        </tr>
+        <tr>
+            <td>Fuenteovejuna</td>
+            <td>Lope de Vega</td>
+        </tr>
+        <tr>
+            <td>La vida es sueño</td>
+            <td>Calderón de la Barca</td>
+        </tr>
+        <tr>
+            <td>Gödel, Escher, Bach</td>
+            <td>Douglas R. Hofstadter</td>
+        </tr>
+        <tr>
+            <td>Una breve historia de casi todo</td>
+            <td>Bill Bryson</td>
+        </tr>
+    </tbody>
+</table>
+
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Transformaciones</title>
+<style type="text/css">
+	div.capa{border:1px solid black; padding:25px; text-align:center;
+		height:90px;width:90px;background-color:yellow;border-radius:25px;
+		position:relative; margin-bottom:10px;}
+	div#contenedor{width:80%;background-color:rgb(255,220,220);
+		position:relative; margin: 10px auto;padding:25px; }
+	div#capa1{
+		/* #### Aplicar una transformación de rotatación de 15 grados #### */
+		transform: rotate(15deg) ; 
+	}
+	div#capa2{
+		/* #### Aplicar una transformación de translación a la derecha de 40px #### */
+		transform: translate(40px) ;
+	}
+	div#capa3{
+		/* #### Aplicar una transformación de escalado al 80% del tamaño inicial #### */
+		transform: scale(.8) ;
+	}
+	div#capa4{
+		/* #### Aplicar una transformación de sesgo de -15 grados en el eje x #### */
+		transform: skew(-15deg) ;
+	}
+	div#capa5{
+		/* #### Aplicar una transformación de rotatación 180 grados al rededor 
+		del eje X #### */
+		transform: rotateX(180deg) ;
+	}
+</style>
+</head>
+<body>
+	<h2>Transformaciones</h2>
+	<div id="contenedor">
+		<div id="capa1" class="capa">Capa 1</div>
+		<div id="capa2" class="capa">Capa 2</div>
+		<div id="capa3" class="capa">Capa 3</div>
+		<div id="capa4" class="capa">Capa 4</div>
+		<div id="capa5" class="capa">Capa 5</div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

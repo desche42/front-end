@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fromulario</title>
+    <script>
+            // función para mostrar el valor de la estatura seleccionada en el formulario
+            function cambioEstatura() {
+                // escribe DENTRO del elemento "txtEstatura" el valor del elemento "estatura"
+                document.getElementById("txtEstatura").innerHTML = document.getElementById("estatura").value ; 
+            }
+
+            // función para cambiar el color de fondo del elemento "cuerpo" según el color elegido en el elemento "miColor",
+            // que es el input que hemos puesto en el formulario.
+            function cambioColor(){
+                document.getElementById("cuerpo").style.backgroundColor = document.getElementById("miColor").value ;
+            }
+
+            // función que calcula la letra del dni según mod 23 asigna la letra del array
+            // no lo hemos visto en clase. Esto es por mi cuenta.
+            function CalcularLetraDni(){
+                var Dni = Number(document.getElementById('Dni').value);
+                if (isNaN(Dni))
+                    return;
+
+                aLetras = new Array();
+                aLetras[0] = "T" ;  aLetras[1] = "R" ;  aLetras[2] = "W" ;  aLetras[3] = "A" ;  aLetras[4] = "G" ;
+                aLetras[5] = "M" ;  aLetras[6] = "Y" ;  aLetras[7] = "F" ;  aLetras[8] = "P" ;  aLetras[9] = "D" ;  
+                aLetras[10] = "X" ; aLetras[11] = "B";  aLetras[12] = "N" ; aLetras[13] = "J" ; aLetras[14] = "Z" ;
+                aLetras[15] = "S" ; aLetras[16] = "Q" ;aLetras[17] = "V" ;  aLetras[18] = "H" ; aLetras[19] = "L" ;
+                aLetras[20] = "C" ; aLetras[21] = "K" ; aLetras[22] = "E" ;
+                
+                var Nif = Dni;
+                Nif = Nif + aLetras[Dni%23];
+                
+                var TxtNif = document.getElementById('Nif');
+                TxtNif.value = Nif;
+            }
+
+
+    </script>
+
+</head>
+<body id="cuerpo">
+    
+    <!-- Estas opciones son de html5, no todos los navegadores lo admiten. En algunos de estos hay validación, 
+    si no se ha escrito lo correcto, como el email (txt@txt) no deja enviar el formulario -->
+    
+    <form action="insertar" method="get">
+
+        <label>Email:</label>
+            <input type="email" name="correo"><br/>
+
+        <label>Fecha de nacimiento:</label>
+            <input type="date" name="bdate" required="required"><br/>
+
+        <!-- para mostrar el valor seleccionado hay que usar js; el selector se llama "estatura" y donde va a 
+        mostrarse el valor necesito un elemento para modificarlo, creamos un span con id "txtEstatura" que va 
+        a ser modificado por la función JS-->
+        <label>Estatura:</label>
+            <input  type="range" name="estatura" id="estatura" min="0" max="250" value="160" step="1" 
+                    onchange="cambioEstatura();"/> <span id="txtEstatura"></span> cm <br/>
+
+        
+        <!-- este input nos permite elegir un color y (js) cuando cambie el color elegido, se ejecuta la función
+        "cambioColor" , que está definida en el head y lo que hace es elegir ese color como fondo de la página -->
+        <label>Color:</label>   
+            <input type="color" name="color" id="miColor" onchange="cambioColor();"/><br/>
+
+        <!-- el input de tipo number da error al enviar si no cumple con la declaración -->
+        <label>Año de graduación:</label>
+            <input type="number" name="grad" min="1990" max="2018" /> <br/>
+
+        <!-- para verificar el dni podemos hacerlo con un pattern. esta expresión regular requiere un número de 8 cifras
+        seguido de una letra -->
+        <label>DNI:</label>
+            <input type="text" name="dni" pattern="[0-9]{8}[A-Z]"> <br/>
+
+        
+        <!-- input tipo list, te sugiere según vas escribiendo dentro de una lista predefinida -->
+        <label>Titulación:</label>
+            <input type="text" name="titulo" list="lstTitulaciones"/>
+                <datalist id="lstTitulaciones">
+                    <option value="informatica"  label="Informática" />
+                    <option value="industriales"  label="Industriales" />
+                    <option value="inorgánica"  label="Inorgánica" />   
+                </datalist>     
+ 
+
+        <!-- botón para enviar el formulario -->
+        <button type="submit">Enviar</button>
+
+    </form>
+ 
+    
+
+
+</body>
+</html>

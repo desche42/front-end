@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="css/estilos.css">
+  <script>
+
+    // Lista de la semana
+    var m = ["Lunes" , "Martes" , "Miércoles" , "Jueves" , "Viernes" , "Sábado" , "Domingo"];
+
+    // función que inserta en el html los días de la semana
+    function insertar(){
+      var ul = document.querySelector("ul");
+      // recorro la lista de diás
+      m.forEach( function(dia){
+          // creamos una etiqueta <li>, pero aun está en memoria
+          var li = document.createElement("li") ;
+
+          // metemos el día dentro del li
+          li.innerHTML = dia ;
+
+          // añadimos el li a la lista ul
+          ul.appendChild(li) ;
+      });
+    }
+
+    function copiar(){
+      // obtiene la lista y el cuerpo
+      var ul = document.querySelector("ul");
+      var body = document.querySelector("body");
+
+      // copia la lista
+      var copia = ul.cloneNode(true) ;
+
+      // añado la copia de la lista al body
+      body.appendChild(copia) ; 
+    }
+
+
+    //función que inicializa la página insertando la lista y da la funcionalidad al botón
+    function inicializar(){
+      //busca al botón y le asigna la función copiar
+      document.querySelector("button").onclick = copiar ;
+
+      // inserta la lista en la página
+      insertar();
+    }
+
+
+
+    window.onload = inicializar ;
+
+  </script>
+</head>
+
+<body>
+ 
+  <ul></ul>
+
+  <button>Copiar</button>
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/estilos.css">
+    <style>
+        div{text-align: center;}
+        button#btnPlay>img {height: 24px;}
+        input#tiempo{text-align:right;display:inline-block;width:4em;}
+    </style>
+    <script>
+        var v;
+        function onOff(event) {
+            var img = event.currentTarget.querySelector("img");
+            if(v.paused || v.ended){
+                v.play();
+                img.src = "img/pause.png";
+            } else {
+                v.pause();
+                img.src = "img/play.png";
+            }
+        }
+        function fin(event) {
+            document.querySelector("button#btnPlay>img").src = "img/play.png";
+        }
+        function cambio(event){
+            var t = v.currentTime;
+            document.getElementById("tiempo").value = t.toFixed(2) + " s";
+            document.querySelector("progress").max = v.duration;
+            document.querySelector("progress").value = t;
+            document.querySelector("input[type=range]").max = v.duration;
+            document.querySelector("input[type=range]").value = t;
+        }
+        function mover(event) {
+            v.currentTime = event.currentTarget.value;
+        }
+        window.onload = function () {
+            v = document.querySelector("div#contenedor audio");
+            document.getElementById("btnPlay").onclick=onOff;
+            v.onended = fin;
+            v.ontimeupdate = cambio;
+            document.querySelector("input[type=range]").onchange=mover;
+        };
+    </script>
+</head>
+
+<body>
+    <div class="panel">
+        <button id="btnPlay">
+            <img src="img/play.png" />
+        </button>
+        <input id="tiempo" type="text" disabled="true"/>
+        <progress max="100" value="35"></progress>
+        <input type="range" max="100" value="35" step="0.1"/>
+    </div>
+    <div id="contenedor">
+        <audio controls="controls">
+            <source src="img/song.ogg" type="audio/ogg" />
+            <source src="img/song.mp3" type="audio/mp3" />
+        </audio>
+        <br/>
+        <a href="https://www.w3schools.com/tags/ref_av_dom.asp" target="_blank">Video API</a>
+    </div>
+</body>
+
+</html>

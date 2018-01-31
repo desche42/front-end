@@ -1,0 +1,9 @@
+[submodule "ws_profesor/ws_html"]
+	path = ws_profesor/ws_html
+	url = https://www.github.com/vladimirbat/ws_html
+[submodule "ws_profesor/ws_html5"]
+	path = ws_profesor/ws_html5
+	url = https://www.github.com/vladimirbat/ws_html5
+[submodule "ws_profesor/ws_javascript"]
+	path = ws_profesor/ws_javascript
+	url = https://www.github.com/vladimirbat/ws_javascript

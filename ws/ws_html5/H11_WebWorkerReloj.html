@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <script>
+        var w;
+        window.onload = function (){
+            document.querySelector("#btnParar")
+                .addEventListener("click",parar);
+            document.querySelector("#btnEnviar")
+                .addEventListener("click",enviarMensaje);
+            
+            try{
+				// ##### Arrancar el Worker "js/webworker.js" y guardarlo en "w"
+                
+                // ######  Asignar la función "cambioHora" como 
+				// un manejador de eventos para recibir los 
+                // mensajes del hilo.################
+                
+            } catch(e){//Lo que haremos si lo interior al try ha fallado.
+                alert("En Google Chrome si abres el archivo en local,"
+                    +  " da un error de seguridad, solamente funciona"
+                    + " desde un servidor (p.e.: http://localhost...) ");
+            }
+        };
+        function cambioHora(event){
+            document.getElementById("reloj").innerHTML =
+                event.data;//Dato que envía el webworker.
+        }
+        function parar(event){
+            // ######### Detener el hilo.#############
+            w.terminate();
+        }
+        function enviarMensaje(event){
+            var texto = document.getElementById("txtEnviar").value;
+			// ############ Enviar al hilo el contenido de "texto" #########
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <output id="reloj" style="font-size:25px;font-weight:bold"></output><br/>
+        <button id="btnParar">Parar</button><br/>
+        <input type="text" id="txtEnviar"/>
+        <button id="btnEnviar">Enviar</button><br/>
+        
+    </div>
+</body>
+</html>

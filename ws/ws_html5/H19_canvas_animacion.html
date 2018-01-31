@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title></title>
+<style type="text/css">
+	*{box-sizing:border-box;}
+	video{width:320px; }
+	div#contenedor{background-color:yellow;width:80%;min-height:300px;margin:10px auto;
+		padding:25px;border:1px solid black;border-radius:15px;text-align:center;
+	}
+	canvas{border:1px solid gray;background-color:green;
+	height:600px; }
+</style>
+<script type="text/javascript">
+	var ctx;
+	var canvas;
+	var x=30,y=40,vx=5,vy=3;
+	function mover(){
+		// ######### Borrar la bola anterior. #########
+		
+		// incrementamos las coordenada.
+		x+=vx;
+		y+=vy;
+		// ###### Dibujamos la nueva bola. ##########
+		
+		// Comprobamos si hay que rebotar.
+		if(x<12 || x>488){ vx=-vx;}
+		if(y<12 || y>388){ vy=-vy;}
+		// Llamamos al siguiente paso.
+		setTimeout(mover,50);
+	}
+	
+	window.onload = function (){
+		canvas = document.querySelector("canvas");
+		ctx = canvas.getContext("2d");
+		ctx.fillStyle = "yellow";
+		ctx.strokeStyle = "black";
+		ctx.lineWidth = 4;
+		mover();
+	}
+</script>
+</head>
+<body>
+	
+	<h1>Canvas</h1>
+	<div id="contenedor">
+		<canvas width="500" height="400"></canvas>
+	</div>
+</body>
+</html>
+
+
+
+
+

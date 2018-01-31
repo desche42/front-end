@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/estilos.css">
+    <style>
+       div#capa1{
+            top:10px;left:10px; 
+       }
+       div#capa2{
+            top:60px;left:60px;
+            /* #### Establecer un fondo con un color rgb(65,220,128) y un 60% de opacidad ####*/
+            background-color: rgb(65, 220, 128, .6) ;
+            }
+       div#capa3{
+            top:110px;left:110px;background-color:aqua;
+            /* #### Hacer transparente el fondo y también el contenido (la imagen) #### */
+            opacity: 0;
+       }
+       div.capa{box-shadow: 10px -10px 5px gray; position: absolute; 
+            width:150px; height:150px !important; text-align:center;}
+       img{border-radius:25px; box-shadow: 10px -10px 5px gray;
+            width:100px; height:100px}
+       div#contenedor{position:relative; }
+    </style>
+</head>
+
+<body>
+    <div id="contenedor">
+        <div id="capa1" class="panel capa">
+            Capa 1
+        </div>
+        <div id="capa2" class="panel capa">
+            <img src="img/casa.gif"/>
+        </div>
+        <div id="capa3" class="panel capa">
+            <img src="img/casa.gif"/>
+        </div>
+    </div>
+</body>
+
+</html>

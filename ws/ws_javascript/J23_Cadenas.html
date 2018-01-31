@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cadenas</title>
+    
+    <script>
+        // <!-- función que lee el texto de la caja con id "texto" y le da la vuelta, lo almacena en una variable -->
+        function invertir(){
+
+            //leemos la caja de texto
+            var txt = document.querySelector("input#texto").value;
+
+            // variable donde va dado la vuelta
+            var invertido = "" ; 
+
+            //recorremos la string al revés, desde el caracter 0 al final
+            for (let i = 0; i < txt.length; i++) {
+                // leo el primero y lo añado al principio del resultado
+                invertido = txt.charAt(i) + invertido;                
+            }
+            document.querySelector("div#txtinvert").innerHTML = invertido ;
+        }
+
+        // función que trocea el texto
+        function trocear(){
+            //cojo el texto
+            var txt = document.querySelector("div#txtinvert").innerHTML ;
+            
+            //aquí almacenamos la string final con los trozos separados por salto de linea
+            var resul = "";
+
+            // empezamos a leer por el principio del texto hasta q llegue al final
+            var n = 0 ;
+            while (n < txt.length) {
+                //almaceno en trozo 5 caracteres desde el n-esimo
+                var trozo = txt.substring(n,n+5);
+                // y lo concateno al resultado
+                resul += trozo + "<br/>" ;
+                //paso a los siguientes caracteres
+                n += 5 ;
+            }
+            document.querySelector("div#substr").innerHTML = resul ;
+        }
+
+    </script>
+
+
+</head>
+<body>
+    <p>
+        <input type="text" id="texto" size="80" /> </br>
+        <button onclick="invertir();">Invertir</button>
+        <button onclick="trocear();">Trocear</button>
+        <div id="txtinvert"></div>
+        <div id="substr"></div>
+
+
+    </p>
+</body>
+</html>

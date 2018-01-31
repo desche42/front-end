@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Eventos On Propagación</title>
+
+    <!-- ESTILOS -->
+    <style>
+    /***********  DIVs  **********/
+        div{
+            border: 1px solid black ;
+            padding: 30px ; 
+            background-color: yellow ;
+        }
+
+        body>div>div{
+            background-color: aquamarine ;
+        }
+        body>div>div>div{
+            background-color: cadetblue ; 
+        }
+
+    </style>
+
+    <!-- ---------------------------- SCRIPTS ---------------------------------- -->
+
+    <script>
+    // Manejador de  evento
+        function burbuja(event){  // de dentro a fuera
+            var quienTieneElManejador = event.currentTarget.id ; 
+            var aQuienSeLeHizoClick = event.target.id ;
+            console.log("Burbuja-salida ", quienTieneElManejador , aQuienSeLeHizoClick)
+        }
+
+        function captura(event){ // de fuera a dentro
+            var quienTieneElManejador = event.currentTarget.id ; 
+            var aQuienSeLeHizoClick = event.target.id ;
+            console.log("Captura-Entrada" , quienTieneElManejador , aQuienSeLeHizoClick)
+        }
+
+        function inicializar(){
+            document.getElementById("capa1").addEventListener("click", captura , true) ;
+            document.getElementById("capa2").addEventListener("click", captura , true) ;
+            document.getElementById("capa3").addEventListener("click", captura , true) ;
+
+            document.getElementById("capa1").addEventListener("click", burbuja , false) ;
+            document.getElementById("capa2").addEventListener("click", burbuja , false) ;
+            document.getElementById("capa3").addEventListener("click", burbuja , false) ;
+        }
+        
+        window.onload = inicializar;
+
+    </script>
+
+</head>
+<body>
+
+
+        <div id="capa1"> 
+            <div id="capa2">
+                <div id="capa3"></div>
+            </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,212 @@
+
+%%	Comenzar el proyecto primero creando un proyecto en sublime text, editando el archivo proyecto.sublime-project,
+%% 	cambiar el nombre a este archivo, con el del proyecto.
+%%  MODIFICAR PATH ROOT, abrir los archivos config estilo comandos y biblio y cambiar el paht con replace
+%% 	rellenar después config/config.tex  
+%%	rellenar después el archivo comandos
+%%
+%&	SET UP COMPLETO.
+%%	
+%% 	TIPS:
+%%  Los gráficos se guardan en - graphicspath img/ y no hace falta indicar este path en includegraphics
+%% 	Los comandos creados en config/comandos.tex
+%%  Lo relativo al estilo general del documento así como entornos creados por estilo, en config/estilo.tex
+
+
+
+
+	\input{config/config}
+
+
+
+
+	\includeonly{ files/0-DesarrolloFront/html5,
+	
+	}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% CONFIGURACIÓN DEL DOCUMENTO %%%%
+
+
+\begin{document}
+
+	%%%% ESTILO DEL DOCUMENTO %%%
+
+	\input{config/estilo}
+
+	%%%% COMANDOS USADOS HABITUALMENTE %%%
+
+	\input{config/comandos}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+						%%%%%% AQUÍ COMIENZA EL DOCUMENTO %%%%%
+
+
+\maketitle
+\tableofcontents
+
+
+\include{files/introCurso}
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% CONTENIDO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Desarrollo Front; HTML, CSS e Introducción a Javascript
+	\include{files/DesarrolloFront}
+	
+		% HTML5
+		\include{files/0-DesarrolloFront/html5}
+
+		% CSS3
+		\include{files/0-DesarrolloFront/css3}
+
+		% Jquery
+		\include{files/0-DesarrolloFront/jquery}
+
+		% Javascript
+		\include{files/0-DesarrolloFront/javascript}
+
+		% Diseño Web Responsive
+		\include{files/0-DesarrolloFront/webResponsive}
+
+		% Etiquetas Móvil
+		\include{files/0-DesarrolloFront/movil}
+
+		% Semántica
+		\include{files/0-DesarrolloFront/semantica}
+
+
+% Javascript avanzado
+	\include{files/JavaScript}
+
+		% Fundamentos teoricos
+		\include{files/1-JavaScript/fundamentos}
+
+		% ES6
+		\include{files/1-JavaScript/es6}
+
+		% Clases Decoradores
+		\include{files/1-JavaScript/decoradores}
+
+		% Programacion Funcional
+		\include{files/1-JavaScript/progFuncional}
+
+		% Generadores Promesas
+		\include{files/1-JavaScript/genPromesas}
+
+		% Streams
+		\include{files/1-JavaScript/streams}
+
+
+
+
+% Responsive design
+	\include{files/ResponsiveDesign}
+
+		% Multidispositivo
+		\include{files/2-Responsive/multidisp}
+
+		% CSS3
+		\include{files/2-Responsive/css3}
+
+		% Mejora progresiva
+		\include{files/2-Responsive/mejoraProg}
+
+		% SASS
+		\include{files/2-Responsive/sass}
+
+		% Modularidad
+		\include{files/2-Responsive/modulos}
+
+		% Fallbacks
+		\include{files/2-Responsive/fallbacks}
+
+		% Diseño Web Responsive
+		\include{files/2-Responsive/disenoResponsive}
+
+		%ptimización Mobile First
+		\include{files/2-Responsive/optMobFirst}
+
+
+
+% Angular
+	\include{files/Angular}
+
+		% Dominar Angular 4 y Angular 5
+		\include{files/3-Angular/angular}
+
+		% Dominar TypeScript dentro Angular
+		\include{files/3-Angular/typeScript}
+
+		% Desarrollar aplicaciones web SPA
+		\include{files/3-Angular/apsSPA}
+
+		% Mejorar la capacidad de adaptación a otros frameworks JavaScript
+		\include{files/3-Angular/frameworks}
+
+		% Aumentar las posibilidades laborales como desarrollador
+		\include{files/3-Angular/posLaborales}
+
+		% Crear aplicaciones web modernas con Angular 5, Angular 4 y Angular 2
+		\include{files/3-Angular/apsAngular245}
+
+		
+
+%  IONIC
+	\include{files/ionic}
+		% Introducción
+			\include{files/4-ionic/intro}
+
+		% Navigation, menu y Modal
+			\include{files/4-ionic/navigation}
+			\include{files/4-ionic/menuModal}
+
+		% Toolbar y Searchbar
+			\include{files/4-ionic/toolbar}
+			\include{files/4-ionic/searchbar}
+
+		% Interfaz gráfica I
+			\include{files/4-ionic/gi}
+
+		% Gestures
+			\include{files/4-ionic/gestures}
+
+		% Localización
+			\include{files/4-ionic/localizacion}
+
+		% Galería
+			\include{files/4-ionic/galeria}
+
+		% Social Media
+			\include{files/4-ionic/socialMedia}
+
+		% Listas y JSON
+			\include{files/4-ionic/listas}
+			\include{files/4-ionic/json}
+
+		% Apariencia de la app
+			\include{files/4-ionic/apariencia}
+
+
+
+
+
+
+\end{document}
+
+

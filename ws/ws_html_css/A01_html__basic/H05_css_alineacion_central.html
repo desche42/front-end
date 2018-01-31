@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Títulos y texto</title>
+
+    
+     
+    <!-- Para poner imágenes con texto a su alrededor, es decir, completamente rodeadas de texto, tenemos que hacerlo
+    de la siguiente forma: 
+            text-align: center -> Centra el contenido del elemento
+            margin-left: auto y margin-left: auto -> centra el elemento en su contenedor
+
+    -->
+  
+    <style>
+        p{text-align: justify; background-color: bisque }
+
+
+        p,div{padding: 20px ; border:1px solid black; width: 70% }
+    
+        p#textoCentrado{text-align:center;
+            margin-left: auto;margin-right: auto;}
+        div#imagenCentrada{text-align:center;}
+        div#capaCentrada{text-align:center;
+            margin:10px auto;}
+        div#capaDerecha{text-align:center;
+            float:right;
+            margin-right: 10px; margin-bottom: 10px} 
+        /* Elimina la flotación a partir de este elemento.*/    
+        .finFlotacion{clear:both;} 
+        
+    </style>
+
+
+    
+
+</head>
+<body>
+
+    <h1>El ingenioso Hidalgo don Quijote de la Mancha</h1>
+    <h2 class="redColor">Miguel de Cervantes Saavedra</h2>
+
+   
+
+    <h3>Capítulo 1</h3>
+        <p id="textoCentrado" > 
+            En un lugar de la Mancha, de cuyo br nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo 
+            de los de lanza en astillero adarga antigua, rocín flaco y galgo corredor. Una olla de algo más vaca que carnero,
+            salpicón las más noches, duelos y quebrantos los sábados, lantejas los viernes, algún palomino de añadidura los 
+            domingos, consumían las tres partes de su hacienda. El resto della concluían sayo de velarte, calzas de velludo
+            para las fiestas, con sus pantuflos de lo mesmo, y los días de entresemana se honraba con su vellorí de lo más
+            fino. Tenía en su casa una ama que pasaba de los cuarenta, y una sobrina que no llegaba a los veinte, y un mozo
+            de campo y plaza, que así ensillaba el rocín como tomaba la podadera. Frisaba la edad de nuestro hidalgo con los
+            cincuenta años; era de complexión recia, seco de carnes, enjuto de rostro, gran madrugador y amigo de la caza.
+            Quieren decir que tenía el sobrenombre de Quijada, o Quesada, que en esto hay alguna diferencia en los autores que
+            deste caso escriben; aunque, por conjeturas verosímiles, se deja entender que se llamaba Quejana.
+            Pero esto importa poco a nuestro cuento; basta que en la narración dél no se salga un punto de la verdad.
+        </p>
+
+        <div id="imagenCentrada"> 
+            <img src="img/quijote.jpg" alt="Quijote" />   
+        </div>
+
+        <div id="capaCentrada"> 
+                <img src="img/quijote.jpg" alt="Quijote" />   
+        </div>
+
+        <div id="capaDerecha"> 
+                <img src="img/quijote.jpg" alt="Quijote" />   
+        </div>
+
+
+</body>
+</html>

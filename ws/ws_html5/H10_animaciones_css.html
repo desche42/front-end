@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1"/>
+		<title>Animaciones CSS</title>
+		<style type="text/css">
+			/* Definición de tipos de animación. */
+				/*para mozilla v < 5*/
+				@-moz-keyframes mover{
+					0%{left:0px;}
+					100%{left:400px;}
+				}
+				@-moz-keyframes mover2{
+					from{left:0px;}
+					30%{left:700px;}
+					50%{left:250px;}
+					70%{left:500px;}
+					90%{left:350px;}
+					to{left:400px;}
+				}
+				/* sintaxis estándar */
+				@keyframes mover {
+					0%{left:0px;}
+					100%{left:400px;}
+				}
+				@keyframes mover2{
+					from{left:0px;}
+					30%{left:700px;}
+					50%{left:250px;}
+					70%{left:500px;}
+					90%{left:350px;}
+					to{left:400px;}
+				}
+		
+			div.capa{border:1px solid black;padding:25px;width:90px;height:45px;
+				background-color:yellow;text-align:center;border-radius:45px;
+				position:relative;left:400px;
+				/* Aplicación de la animación de tipo "mover" a lo largo de un 
+				periodo de 5 segundos. */
+					/* para mozilla v < 5*/
+					-moz-animation-name:mover;
+					-moz-animation-duration:5s;
+				/* sintaxis estándar */
+					animation-name: mover;
+					animation-duration: 5s;
+				/*-moz-animation-iteration-count:3;
+				-moz-animation-direction:alternate;*/
+				}
+			div#contenedor{height:700px; background:rgb(255,220,220);
+				position:relative;}
+			/* Ejemplos de diferentes tipos de propagación de la animación. */
+				/* para mozilla v < 5*/
+				div#capa1{-moz-animation-timing-function:linear;}
+				div#capa2{-moz-animation-timing-function:ease;}
+				div#capa3{-moz-animation-timing-function:ease-in;}
+				div#capa4{-moz-animation-timing-function:ease-out;}
+				div#capa5{-moz-animation-timing-function:ease-in-out;}
+				div#capa6{-moz-animation-timing-function:ease-in-out; -moz-animation-name:mover2;}
+				/* sintaxis estándar */
+				div#capa1{animation-timing-function:linear;}
+				div#capa2{animation-timing-function:ease;}
+				div#capa3{animation-timing-function:ease-in;}
+				div#capa4{animation-timing-function:ease-out;}
+				div#capa5{animation-timing-function:ease-in-out;}
+				div#capa6{animation-timing-function:ease-in-out; animation-name:mover2;}
+		</style>
+		<!-- <script type="text/javascript">
+			
+		</script> -->
+	</head>
+	<body>
+		<h2>Animaciones CSS</h2>
+		<div id="contenedor">
+			<div id="capa1" class="capa">linear</div>
+			<div id="capa2" class="capa">ease</div>
+			<div id="capa3" class="capa">ease-in</div>
+			<div id="capa4" class="capa">ease-out</div>
+			<div id="capa5" class="capa">ease-in-out</div>
+			<div id="capa6" class="capa">Capa 6</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Listas</title>
+
+        <!-- aunque la etiqueta list item "li" ademite los tipos "circle", "square" y "disc", se consideran obsoletos y es mejor
+        hacerlo con css, con la opción list-style-type
+        Podemos cambiar el icono que queramos  -->
+
+        <style>
+            ul#lstTick{
+                list-style-image: url(img/tick.png)
+            }
+            ol#lstLetras{
+                list-style-type:lower-latin
+            }   
+
+
+            dl > dt {
+                text-emphasis: bold; 
+                color: red;
+            }  
+        
+        </style>
+
+</head>
+<body>
+    <!-- emmet snippet ul>li*7 -->
+
+
+    <h3>Lista básica</h3>
+   <ul id="lstTick">
+       <li>Lunes</li>
+       <li>Martes</li>
+       <li>Miércoles</li>
+       <li>Jueves</li>
+       <li>Viernes</li>
+       <li>Sábado</li>
+       <li>Domingo</li>
+   </ul> 
+   <h3>Lista ordenada</h3>
+   <ol id="lstLetras">
+        <li>Lunes</li>
+        <li>Martes</li>
+        <li>Miércoles</li>
+        <li>Jueves</li>
+        <li>Viernes</li>
+        <li>Sábado</li>
+        <li>Domingo</li>
+   </ol> 
+   <h3>Lista descriptiva</h3>
+
+        <dl> 
+            <dt>    Lunes  </dt>
+            <dd> Este día no mola</dd>
+
+            <dt>    Martes  </dt>
+            <dd> Este día no mola</dd>
+
+            <dt>    Miércoles  </dt>
+            <dd> Este día no mola</dd>
+
+            <dt>    Jueves  </dt>
+            <dd> Este día no mola</dd>
+
+            <dt>    Viernes  </dt>
+            <dd> Este día mola a partir de las 6</dd>
+       
+            <dt>    Sábado  </dt>
+            <dd> Este día  mola</dd>
+       
+            <dt>    Domingo  </dt>
+            <dd> Este día mola</dd>
+        </dl>
+
+
+
+</body>
+</html>

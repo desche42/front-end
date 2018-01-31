@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Transiciones CSS</title>
+<style type="text/css">
+	div.capa{border:1px solid black;padding:25px;width:90px;
+		height:90px;text-align:center;background-color:yellow;
+		margin-bottom:10px;border-radius:25px;position:relative;}
+	div#contenedor{background-color:rgb(255,220,220);
+		position:relative;}
+	
+	/* #### Establecer que las transiciones del color de fondo se producen linealmente
+	a lo largo de periodo de un segundo #### */
+	div#capa1{
+		transition: background-color 1s linear;
+	}
+	div#capa1:hover{background-color:aqua;}
+		
+	/* #### Establecer que las transiciones ancho se producen en modo "ease"
+	a lo largo de periodo de un segundo y que las de el borde redondeado 
+	de forma lineal a lo largo de 2 segundos #### */
+	div#capa2{
+		 /* se separa con comas si hay varias propiedades*/
+		transition: border-radius 2s linear,  width 1s ease;
+	}
+	div#capa2:hover{width:150px;border-radius:10px;}
+	
+	/* #### Establecer que las transiciones de ancho de las capas 3 y 4 se producen 
+	a lo largo de un periodo de 2 segunodos, de modo que la capa 3 lo hace de forma
+	"ease", mientras que la capa 4 lo hace de forma lineal #### */
+	div#capa3{transition:width 2s ease;}
+	div#capa4{transition:width 2s linear;}
+	
+	/* #### Establecer que las transiciones tranformación y sombra en 3 segundos #### */
+	div#capa5{
+		transition: all 3s ;
+	}
+	div#capa5:hover{
+		transform:rotate(90deg) translate(100px,0px) scale(1.4, 1.4);
+		box-shadow:20px 20px 5px gray;
+	}
+	div.ancha{width:300px !Important}
+</style> 
+<script type="text/javascript">
+	function cambiar34(){
+		document.getElementById("capa3").className += " ancha";
+		document.getElementById("capa4").className += " ancha";
+	}
+</script>
+</head>
+<body>
+	<h2>Transiciones CSS</h2>
+	<div id="contenedor">
+		<div id="capa1" class="capa">Capa 1</div>
+		<div id="capa2" class="capa">Capa 2</div>
+		<button onclick="cambiar34()">Ease vs linear</button>
+		<div id="capa3" class="capa">Capa 3, ease</div>
+		<div id="capa4" class="capa">Capa 4, linear</div>
+		<div id="capa5" class="capa">Capa 5</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	svg{height:400px;width:500px;border:1px solid black;}
+	rect:hover{fill:yellow;}
+</style>
+<script type="text/javascript">
+	var x = 100;
+	var vx = 15;
+	function mover(){
+		// ----------- CIRCUNFERENCIA -----------------
+		var cir = document.getElementById("cir");
+		x += vx;
+		//cir.cx = x; // Esto no funciona porque es xml 
+		cir.setAttribute("cx", x);//En xml para modificar un atributo se emplea setAttribute
+		if(x<80 || x>420) vx = -vx;
+		// ----------- RECTANGULO  -----------------
+		var rec = document.getElementById("rec");
+		rec.setAttribute("transform", "rotate(" + x + " 200 175)")
+		setTimeout(mover, 100);
+	}
+	window.onload = mover;
+</script>
+</head>
+<body>
+	<h2>SVG</h2>
+	<!-- #### Indicar que empieza un bloque de svg #### -->
+	<svg>
+		<!-- #### Poner el nombre de etiqueta adecuado para que se dibuje una 
+			circunferencia ##### -->
+		<???? id="cir" cx="100" cy="100" r="80"
+			fill="blue" stroke="black" stroke-with="5"/>
+		<!-- #### Poner el nombre de etiqueta adecuado para que se dibuje un
+			rectangulo ##### -->
+		<???? id="rec" x="150" y="150" width="100" height="50"
+			fill="red" stroke="black" stroke-with="5" />
+	</svg>
+</body>
+</html>
+
+
+
+
+

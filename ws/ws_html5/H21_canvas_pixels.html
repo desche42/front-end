@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" >
+<title>Dibujar en el canvas</title>
+<style type="text/css">
+	div#contenedor{background-color:yellow;width:80%;min-height:300px;margin:10px auto;
+		padding:25px;border:1px solid black;border-radius:15px;text-align:center;}
+	canvas{border: 1px solid black;}
+</style>
+<script type="text/javascript">
+	var ctx;
+	function pixels1(){
+		var dimX=100, dimY=100;
+		// #### Creamos un cuadrado, de momento está en memoria.#### 
+		
+		//#### Obtenemos la matriz de pixels de ese cuadrado#### 
+		
+		// #### Recorremos la matriz estableciendo el color de cada pixel.#### 
+		
+		// #### Dibujar: Poner el cuadrado en el canvas #### 
+		
+	}
+	
+	
+	window.onload = function(){
+		canvas = document.querySelector("canvas");
+		ctx = canvas.getContext("2d");
+		pixels1();
+	};
+	
+	
+	// ---------------- Funciones axuiliares para accedera a matriz de pixels ---------------
+	function setPixel(data, dimX, x, y, r, g, b){
+		//dimX -> Nº de elementos por fila. Si hubiera una matriz de pixels sería: matriz_pixels[dimX][dimY].
+		var pos = (y * dimX + x ) * 4;
+		data[pos] = r;
+		data[pos+1] = g;
+		data[pos+2] = b;
+		data[pos+3] = 255;
+	}
+	function getPixel(data, dimX, x, y){
+		//dimX -> Nº de elementos por fila. Si hubiera una matriz de pixels sería: matriz_pixels[dimX][dimY].
+		var pos = (y * dimX + x ) * 4;
+		var pix = {};
+		pix.r = data[pos];
+		pix.g = data[pos+1];
+		pix.b = data[pos+2];
+		pix.a = data[pos+3];
+		return pix;
+	}
+</script>
+</head>
+<body>
+	<h2>Dibujar en el canvas</h2>
+	<div id="contenedor">
+		<canvas height="400" width="500"></canvas>
+	</div>
+	<p><a href="http://www.w3schools.com/tags/ref_canvas.asp">
+		Api Javascript de la etiqueta canvas</a>
+</body>
+</html>

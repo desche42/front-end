@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/estilos.css">
+    <style>
+        div{
+            text-align: center;
+        }
+    </style>
+    <script>
+        function pedirPosicion() {
+            if(!navigator) {alert("Este navegador no soporta navegación");}
+            // ##### Pedir posicionamiento y emplear como funciónes de 
+			// success y error las funciones posicionOk,posicionErr 
+			// respectivamente #####
+        }
+        function posicionErr(error) {
+            if(error.code==error.PERMISSION_DENIED){
+                alert("El usuario no quiere");
+            } else if(error.code==error.POSITION_UNAVAILABLE){
+                alert("Posicion no disponible");
+            } else if(error.code==error.TIMEOUT){
+                alert("Demasiado tiempo esperando");
+            } else if(error.code==error.UNKNOWN_ERROR){
+                alert("Error desconocido");
+            } else {
+                alert(error);
+            }
+        }
+        function posicionOk(ev) {
+			// #### Leer coordenadas reducir decimales con .toFixed(8)#####
+            var lat;
+            var lon;
+            document.getElementById("latitud").value=lat;
+            document.getElementById("longitud").value=lon;
+            var url = "http://maps.googleapis.com/maps/api/staticmap?center=" 
+                + lat + "," + lon + "&zoom=16&size=400x300&sensor=false";
+                + "&key=AIzaSyDge2b8-5pl6E-fO3K1eH90hVHR07h__40";
+            document.getElementById("mapa").src = url;
+        }
+        window.onload = function () {
+           document.querySelector("div.panel button").onclick = pedirPosicion;
+        };
+    </script>
+</head>
+
+<body>
+    <div class="panel">
+        <button>Ver posición</button><br/>
+        <label for="latitud">Latitud</label>
+        <input id="latitud" type="text" disabled="true"/><br/>
+        <label for="longitud">Longitud</label>
+        <input id="longitud" type="text" disabled="true"/><br/>
+    </div>
+    <div id="contenedor">
+       <img id="mapa"/>
+    </div>
+</body>
+
+</html>

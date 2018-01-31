@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/estilos.css">
+    <style>
+        div {
+            text-align: center; 
+        }
+    </style>
+    <script    
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAy9xQkHFzqYLyeyFqY8QWMOGBJdiO7iQw">
+    </script>
+
+    <script>
+        function pedirPosicion() {
+            if (!navigator) { alert("Este navegador no soporta navegación"); }
+            navigator.geolocation.getCurrentPosition(posicionOk, posicionErr);
+        }
+        function posicionErr(error) {
+            if (error.code == error.PERMISSION_DENIED) {
+                alert("El usuario no quiere");
+            } else if (error.code == error.POSITION_UNAVAILABLE) {
+                alert("Posicion no disponible");
+            } else if (error.code == error.TIMEOUT) {
+                alert("Demasiado tiempo esperando");
+            } else if (error.code == error.UNKNOWN_ERROR) {
+                alert("Error desconocido");
+            } else {
+                alert(error);
+            }
+        }
+        function posicionOk(ev) {
+            var lat = ev.coords.latitude;//.toFixed(8);
+            var lon = ev.coords.longitude;//.toFixed(8);
+            document.getElementById("latitud").value = lat;
+            document.getElementById("longitud").value = lon;
+            // -------------- API DE GOOGLE MAPS -------------
+            var pos = {};
+            pos.lat=lat;
+            pos.lng=lon;
+            // Poner el mapa
+            var miMapa = new google.maps.Map(
+                    document.getElementById('contenedor'), {
+                zoom: 4,
+                center: pos
+            });
+            // Poner un marcador en el mapa
+            var marker = new google.maps.Marker({
+                position: pos,
+                map: miMapa
+            });
+        }
+        window.onload = function () {
+            document.querySelector("div.panel button").onclick = pedirPosicion;
+        };
+    </script>
+</head>
+
+<body>
+    <div class="panel">
+        <button>Ver posición</button>
+        <br/>
+        <label for="latitud">Latitud</label>
+        <input id="latitud" type="text" disabled="true" />
+        <br/>
+        <label for="longitud">Longitud</label>
+        <input id="longitud" type="text" disabled="true" />
+        <br/>
+    </div>
+    <div id="contenedor">
+        
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Selector importante</title>
+
+    <!-- ESTILOS -->
+    <style>
+        /* estilo para div clase capa */
+        div.capa{
+            padding: 25px ; 
+            color: white ;ç
+            /* este código no funciona porque hay un id que lo modifica, el id es más específico que la clase */
+            background-color: black ;
+        }
+
+        /* color de fondo para cada día. como lo aplicamos según id, es el que predomina */
+        div#dia1{
+            background-color: red ;
+        }
+        div#dia2{
+            background-color: green ;
+        }
+        div#dia3{
+            background-color: blue ;
+        }
+
+        /* cambiar background color cuando se pase el ratón por encima. pero como lo aplicamos a la capa, no funciona: 
+        predomina el estilo aplicado a la id */
+        div.capa:hover{
+            background-color: yellow ; 
+        }
+        
+        /* sin embargo este sí que funciona porque le hemos puesto el atributo !important */
+        div.capa:hover{
+            background-color: blueviolet !important ; 
+        }
+
+        /* SEGUNDO EJEMPLO */
+        div.gato, div.perro{
+            border: 1px solid black ;
+            height: 200px ;
+            background-size: 200px ; 
+        }
+
+        /* cuando un elemento tenga las dos clases (gato y perro) aplicadas, predominará la última definida. en este caso
+        perro. Pero podemos cambiar este comportamiento si ponemos el atributo !important */
+        div.gato{
+            background-image: url("img/gato.png") !important ;
+            /* background-repeat: no-repeat ; */
+        }
+        div.perro{
+            background-image: url("img/perro.png") ;
+            /* background-repeat: no-repeat ; */
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+    
+    <div class="capa" id="dia1">Lunes</div>
+    <div class="capa" id="dia2">Martes</div>
+    <div class="capa" id="dia3">Miércoles</div>
+
+    <!-- segundo ejemplo -->
+    <div class="gato"></div>
+    <div class="perro"></div>
+
+    <!-- estos div tienen las dos clases, predomina la última definida en los estilos (no la última asignada). Estos dos div
+    son iguales. -->
+    <div class="gato perro"></div>
+    <div class="perro gato"></div>
+
+
+</body>
+</html>

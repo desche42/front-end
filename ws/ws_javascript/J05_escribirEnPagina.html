@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+    <!--    
+        Aquí vamos a ver cómo escribir en una página. Las alerts no están aconsejadas, vemos aquí otra
+        forma de escribir mensajes 
+    -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+        
+        var a = 10;
+        var b = 15;
+        var c = a + b ;
+        
+        // escribe dentro del elemento con etiqueta "mensaje", pero OJO: este código se ejecuta antes de que llegue al id,
+        // por lo que el script hay que ponerlo al final. Se puede hacer con una función, que hay que ejecutarla cuando la 
+        // página se haya cargado
+
+        function suma(){
+            document.getElementById("msjFunct").innerHTML = a + " + " + b + " = " + c ;
+        }
+
+    </script>
+
+
+
+</head>
+<body onload="suma()">
+
+    <!-- este mensaje no se escribirá porque aun no se ha cargado el id noMsj -->
+    <script>
+            document.getElementById("noMsj").innerHTML = a + " + " + b + " = " + c ;
+    </script>
+    
+    <div id="noMsj">Mensaje no recibido.</div>
+
+    <!-- div donde se publicarán los mensajes mediante JS -->
+
+    <div id="msjScript">Mensaje no recibido.</div>
+    <div id="msjFunct">Mensaje no recibido.</div>
+
+
+    <script>
+        document.getElementById("msjScript").innerHTML = a + " + " + b + " = " + c ;
+    </script>
+
+
+</body>
+</html>

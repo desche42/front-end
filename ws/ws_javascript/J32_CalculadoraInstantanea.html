@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculadora instantánea</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+    <!-- función de la calculadora -->
+    <script>
+        // esta es la función que calcula
+        function calcular(){
+
+            // lectura y conversión de los datos de entrada
+                var a = parseFloat(document.getElementById("txta").value) ;
+                var b = parseFloat(document.getElementById("txtb").value) ;
+                var result = undefined ;
+                var op = document.getElementById("operacion").value ;
+
+            // cáclulo de la operación
+                if ( isNaN(a) || isNaN(b)  ){
+                    result = "Introduce dos números" 
+                }else if(op == "+"){
+                    result = a + b;
+                }else if (op == "-"){
+                    result = a - b ;
+                }else if (op == "X"){
+                    result = a * b ;
+                }else if (op == "/"){
+                    result = a / b ;
+                }else{
+                    result = "Error fatal. Formateando..."
+                }
+            // mostrar el resultado
+                document.getElementById("resultado").innerHTML = a + " " + op + " " + b + "=" + result;
+        }
+    
+    </script>
+
+
+
+</head>
+<body>
+<!-- calculadora -->   
+    <div class="panel">
+        <!-- números con los que operar -->
+        <label for="txta">a</label> 
+            <input type="text" id="txta" oninput="calcular()"/> <br/>
+        <label for="txtb">b</label>
+            <input type="text" id="txtb" oninput="calcular()"/> <br/>
+
+        <!-- operación a realizar -->
+        <label for="operacion">Operación</label>
+            <select id="operacion" oninput="calcular()">
+                <option value="+">Sumar</option>
+                <option value="-">Restar</option>
+                <option value="X">Multiplicar</option>
+                <option value="/">Dividir</option>
+            </select>
+
+    </div> 
+    
+<!-- mostrar el resultado aquí -->    
+    <div class="panel" id="resultado"></div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Detector de tecla pulsada</title>
+    <!-- Script, función que detecta la tecla -->
+    <script>
+        function teclaPulsada(event){
+            // Lectura crossbrowser del código de la tecla. depende del navegador
+            var codigo = event.which || event.keyCode ;
+            // qué caracter le corresponde
+            var carac = String.fromCharCode(codigo) ; 
+            // escribe el resultado
+            document.getElementById("resultado").innerHTML = "Tecla: " + codigo + "<br/>" + "Letra: " + carac ;
+            //limpia el input
+            document.getElementById("tecla").value = "" ;
+        }
+    </script>
+
+</head>
+<body>
+    <div class="panel">
+        <input type="text" id="tecla" onkeypress="teclaPulsada(event);" maxlength="1">
+    </div>
+    <div id="resultado" class="panel"></div>
+</body>
+</html>

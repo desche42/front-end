@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/estilos.css">
+    <style>
+        div#arriba{position:fixed;top:0px;height:150px;width:98%;}
+        div#abajo{position:fixed;bottom:0px;height:150px;width:98%;}
+        div.movil{border:1px solid black; background-color:yellow;
+            height:100px;width:100px;display:inline-block;}
+        div.movil.sombra{box-shadow:10px 10px 5px gray;}
+    </style>
+    <script>
+        function empezarMover(event){
+            // Para mover hay que guardar algún dato en el 
+            // "dataTransfer" que permite indicar la información
+            // que transmitimos.
+            // ###### Guardar en el dataTransfer el id del objeto
+			// que está siendo arrastrado y el instante actual #####
+			
+            event.currentTarget.className += " sombra";
+        }
+        function arrastrarEncima(event) {
+            event.preventDefault();
+        }
+        function soltar(event) {
+            event.preventDefault();
+            // ######## leer el id y el inicio del dataTransfer ######
+			
+			// ##### Insertar el elemento movido en el destino ######
+			
+			// ##### Calcular el tiempo que ha durado el arrastre ####
+			
+			
+            alert("El arrastre a durado " + t + " ms");
+        }
+        window.onload = function(){
+            document.querySelectorAll("div.movil").forEach(function(div,i){
+                div.draggable = true;
+                div.ondragstart = empezarMover;
+                div.innerHTML = i+1;
+                div.id = "capa" + (i+1);
+            });
+            document.querySelectorAll("div.panel").forEach(function(div,i){
+                div.ondragover = arrastrarEncima;
+                div.ondrop = soltar;
+            });
+        };
+    </script>
+</head>
+<body>
+    <div id="arriba" class="panel">
+        <div class="movil"></div>
+        <div class="movil"></div>
+        <div class="movil"></div>
+        <div class="movil"></div>
+    </div>
+    <div id="abajo" class="panel"></div>
+</body>
+</html>

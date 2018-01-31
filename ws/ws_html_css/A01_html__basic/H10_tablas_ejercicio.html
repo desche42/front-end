@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        table.colores{
+            border-collapse: collapse;
+            width: 100px ; 
+            height: 100px ; 
+            margin: 10px auto; 
+
+        }
+        table.colores td {
+            border: 1px solid white;
+        }
+        table.colores td#azul{
+            background-color: blue ;
+        }
+        table.colores td#amarillo{
+            background-color: yellow ;
+        }
+        table.colores td#verde{
+            background-color: green ;
+        }
+        table.colores td#negro{
+            background-color: black ;
+        }
+        table.colores td#rojo{
+            background-color: red ;
+        }
+
+    </style>
+
+
+</head>
+<body>
+    <!-- table.colores>tbody>(tr>td#color[rowspan=2]+td#color[colspan=2])*3    -->
+    <table class="colores" >
+        <tbody>
+            <tr>
+                <td id="rojo" rowspan="2"></td>
+                <td id="azul" colspan="2"></td>
+            </tr>
+            <tr>
+                <td id="negro"></td>
+                <td id="amarillo" rowspan="2"></td>
+            </tr>
+            <tr>
+                <td id="verde" colspan="2"></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+</body>
+</html>

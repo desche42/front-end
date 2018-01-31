@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <style>
+        p{
+            border: 1px solid black ; 
+        }
+        p.inLine{
+            display: inline ; /* se ponen al lado del otro. ocupa el tamaño de su contenido*/
+        }
+        p.inLineBlock{
+            display: inline-block ; /*  deja que otro se ponga a su lado y le podemos poner ancho y alto*/
+        }
+        p.block{
+            display: block;  /*no se pone nadie a su lado, no le podemos asignar tamaño, ocupan lo de su contenedor*/
+        }
+
+        div{
+            width: 250px;
+            border: 1px solid black;
+            background-color: aquamarine;
+        }
+        div.block{display: block;}
+        div.inLine{display: inline;}
+        div.inLineBlock{display: inline-block ;}
+        div.none{display: none;}
+    </style>
+
+
+
+</head>
+<body>
+    
+<h1> Comportamiento block </h1>
+
+    <div class="block">1</div>
+    <div class="block">2</div>
+    <div class="block">3</div>
+    <div class="block">4</div>
+
+<h1>Comportamiento in-line</h1>
+
+    <div class="inLine">1</div>
+    <div class="inLine">2</div>
+    <div class="inLine">3</div>
+    <div class="inLine">4</div>
+
+<h1>Comportamiento inline block</h1>
+
+    <div class="inLineBlock">1</div>
+    <div class="inLineBlock">2</div>
+    <div class="inLineBlock">3</div>
+    <div class="inLineBlock">4</div>
+
+<h1>Comportamiento none</h1>
+<div class="none">1</div>
+<div class="none">2</div>
+<div class="none">3</div>
+<div class="none">4</div>
+
+
+
+
+
+
+
+
+</body>
+</html>

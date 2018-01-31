@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Tabla de multiplicar</title>
+
+    <style>
+        /* factores en color aqua  */
+        table#tablaDatos tr td:first-child,  table#tablaDatos tr:first-child, table#tablaDatos tr:first-child:hover{ 
+            background-color: aqua !important ;
+            color: black !important ;
+            font-weight: bold !important;
+        }
+
+
+        /* clases para productos pares o impares
+        .colorPar{ background-color: antiquewhite ; color:darkslategray ;  }
+        .colorImpar{ background-color: brown ; color: white ;  } */
+    </style>
+
+
+    <script>
+    // función que crea la tabla
+        function crearTabla(){
+            // bucle de 1 a 10
+            // document.getElementById("head").innerHTML += "<th>Factores</th>" ;
+            for (let factor1 = 1; factor1 <= 10; factor1++) {
+                // abro la fila e introduzco el primer factor
+                var fila = "<tr><td>" + factor1 + "</td>";
+                //para cada factor escribo su múltiplo y lo añado a la variable fila
+                var factor2 ;
+                    for (var j = 2; j <= 10; j++) {
+                        factor2 = factor1*j;
+                        
+                        // color para la celda si es impar
+                        /*
+                        clase = "colorImpar" ;
+                        // si el producto es par, asignar clase colorPar
+                        if( (factor1 + factor2)% 2 == 0 ){
+                            clase = "colorPar" ;
+                        }
+                        */
+                        fila += "<td>" + factor2 + "</td>" ;
+                    }
+                // cierro la fila
+                fila += "</tr>" ;
+
+                // escribo la fila de datos todo de golpe. 
+                document.getElementById("cuerpo").innerHTML += fila ;
+            }
+        }
+
+    </script>
+
+
+</head>
+<body>
+    
+    <p>
+        <!-- botón que crea la tabla -->
+        <button onclick="crearTabla()">Tabla de Multiplicar</button>
+    </p>
+
+    <!-- tabla donde van a ir los resutados -->
+    <table id="tablaDatos">
+        <tbody id="cuerpo"></tbody>
+    </table>
+
+</body>
+</html>

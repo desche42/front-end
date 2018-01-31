@@ -1,0 +1,19 @@
+table{width:600px;margin:10px auto;border-collapse:collapse;}
+tbody tr:nth-child(2n){background-color:#eeeeee;}
+tbody tr:nth-child(2n+1){background-color:#ccccff;}
+tbody tr:hover{background-color:#ccffcc;}
+td,th{font-family:sans-serif;padding:3px 10px;font-size:0.8em; }
+th{border-bottom:2px solid navy;border-top:2px solid navy;}
+body{background-image:url(../img/pergamino.jpg); background-color:black;
+	padding:50px;background-size: 100% 1000px;
+	background-repeat: no-repeat; }
+div#errores{border-radius:20px;padding:20px;border:1px solid red;}
+@font-face {font-family:"DonQuijote";
+	src:url("../fonts/Don_Quixote.eot?") format("eot"),
+	url("../fonts/Don_Quixote.woff") format("woff"),
+	url("../fonts/Don_Quixote.ttf") format("truetype"),
+	url("../fonts/Don_Quixote.svg#DonQuixote") format("svg");
+	font-weight:normal;
+	font-style:normal;
+	}
+h1{font-family:DonQuijote;font-size:60px; }	

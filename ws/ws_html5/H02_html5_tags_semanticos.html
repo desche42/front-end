@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Ejemplo de Tags Semanticos</title>
+<style type="text/css">
+	div{border:1px solid black;border-radius:15px;
+			padding:15px;margin:15px;}
+	div.cabecera img{float:right;margin-top:15px; }
+	ul.menu li{display:inline;}
+	ul.menu{border:1px solid black;padding:5px;
+		text-align:center;margin:15px;}
+	div#noticiaPrincipal{margin-left:300px;margin-top:30px;}
+	div#noticiaPrincipal h1{font-size:22px; }
+	div#noticiaPrincipal h2{font-size:18px;}
+	div#noticiaPrincipal p{text-align:justify;}
+	div#bloqueNoticias{width:220px;float:left;}
+	div#bloqueNoticias header h1{
+		font-size:20px;font-weight:bold;text-align:center;
+		background-color:navy;color:white;}
+	div#bloqueNoticias article h1 a{color:olive;}
+	div#bloqueNoticias article h1{margin-bottom:1px;}
+	div#bloqueNoticias article p{margin-top:1px;}
+	div#foto{font-size:12px;padding:10px;
+		float:right;text-align:center; }
+	div#foto img{width:70px;margin:0px;border:0px none;
+		padding:0px;}
+	div#foto figure{margin:0px; }
+</style>
+</head>
+<body>
+
+<!-- ##### Indicar que este bloque es la cabecera de la página ##### -->
+<header>
+	<div class="cabecera">
+		<img alt="" src="img/border.png">
+		<hgroup>
+			<h1>Pagina de noticias</h1>
+			<h2>Información al instante</h2>
+		</hgroup>
+	</div>
+</header>
+
+<!-- ##### Indicar que este bloque el menú principal del sitio ##### -->
+<nav>
+	<ul class="menu">
+		<li><a href="nac.html">Nacional</a></li>
+		<li><a href="inter.html">Internacional</a></li>
+		<li><a href="cultura.html">Cultura</a></li>
+		<li><a href="deportes.html">Deportes</a></li>
+		<li><a href="ocio.html">Ocio</a></li>
+	</ul>
+</nav>
+
+<!-- ##### Indicar que este bloque es la sección de noticias con el "title" "noticias" ##### -->
+<section title="noticias">
+	<div id="bloqueNoticias">
+		<section title="internacional">
+			<header>
+				<h1 title="Inter">Internacional</h1>
+			</header>
+			<aside title="noticia1">
+				<h1><a href="#">El Papa visita Cuba</a></h1>
+				<p>Desde el día de ayer la isla 
+					caribeía recibe la visita ...</p>
+			</aside>
+			<aside title="noticia2">
+				<h1><a href="#">La crisis mundial se alarga</a></h1>
+				<p>El último estudio del FMI modifica
+					su pronostico ...</p>
+			</aside>
+		</section>
+		<section title="deportes">
+			<header>
+				<h1>Deportes</h1>
+			</header>
+			<aside title="noticia3">
+				<h1><a href="#">Fernando Alonso imparable</a></h1>
+				<p>Aunque el vehículo no está a 
+					pleno rendimiento ...</p>
+			</aside>
+			<aside title="noticia4">
+				<h1><a href="#">Nadal le pilla el truco a Djokovic</a></h1>
+				<p>Ante todo pronostico, Nadal 
+					gana al Serbio ...</p>
+			</aside>
+		</section>
+	</div>
+</section>
+
+<!-- ##### Indicar que este bloque es la sección principal  ##### -->
+<article>
+	<div  id="noticiaPrincipal" contextmenu="mnuEditar">
+
+		<!-- ##### Delimitar la cabecera del artículo ##### -->
+		<header>
+
+			<!-- ##### Agrupar semanticamente estos títulos de la cabecera del artículo ##### -->
+			<hgroup>
+				<h1>Don Quijote</h1>
+				<h2>Capítulo 1</h2>
+			</hgroup>
+		</header>
+		<div id="foto">
+
+			<!-- ##### Delimitar el grupo semántico de la imagen con su pie de foto ##### -->
+			<figure>
+				<img alt="casa" src="img/casa.gif"/>
+				<figcaption>Casa de Cervantes</figcaption>
+			</figure>
+		</div>
+		<p>
+			En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero adarga antigua, rocín flaco y galgo corredor. Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados, lantejas los viernes, algún palomino de añadidura los domingos, consumían las tres partes de su hacienda. El resto della concluían sayo de velarte, calzas de velludo para las fiestas, con sus pantuflos de lo mesmo, y los días de entresemana se honraba con su vellorí de lo más fino. Tenía en su casa una ama que pasaba de los cuarenta, y una sobrina que no llegaba a los veinte, y un mozo de campo y plaza, que así ensillaba el rocín como tomaba la podadera. Frisaba la edad de nuestro hidalgo con los cincuenta años; era de complexión recia, seco de carnes, enjuto de rostro, gran madrugador y amigo de la caza. Quieren decir que tenía el sobrenombre de Quijada, o Quesada, que en esto hay alguna diferencia en los autores que deste caso escriben; aunque, por conjeturas verosímiles, se deja entender que se llamaba Quejana. Pero esto importa poco a nuestro cuento; basta que en la narración dél no se salga un punto de la verdad.
+		</p>
+
+	</div>
+</article>
+
+<!-- ##### Indicar que este bloque es pie de la página ##### -->
+<footer>
+	<div style="text-align:center;clear:both;">
+		&copy;Noticiario S.A. |
+		<a href="#">quienes somos</a> |
+		<a href="#">politica de privacidad</a>
+	</div>
+</footer>
+</body>
+</html>

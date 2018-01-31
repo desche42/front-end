@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sumador Funciones</title>
+
+    <!-- Hoja de estilos copiada de ws_html -->
+    <link rel="stylesheet" href="css/estilos.css">
+    
+    <!-- función que inserta en el cuerpo de la tabla una nueva fila-->
+    <script>
+        function insertarFila(titulo,autor){
+            var fila = "<tr><td>" + titulo + "</td><td>" + autor + "</td></tr>";
+            document.getElementById("cuerpoTabla").innerHTML += fila ;
+        }
+    </script>
+</head>
+<body>
+    <!--  table>(thead>tr>th*2)+(tbody#cuerpoTabla>tr>td*2)    -->
+    <!-- tabla que se le aplican los estilos css de la hoja css/estilos -->
+
+    <table id="tablaDatos">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Autor</th>
+            </tr>
+        </thead>
+        <tbody id="cuerpoTabla">
+            <tr>
+                <td>Quijote</td>
+                <td>Cervantes</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- este script ejecuta la función de head, que inserta una fila  -->
+    <script>
+        insertarFila("Fuente Ovejuna","Lope de Vega");
+    </script>
+
+    <!-- a partir de aquí es cosa mía: poner dos inputs y un botón que ejecute la función -->
+
+    <!-- dos inputs autor y título -->
+    <form name"datos usuario" id="form1">
+        Introduce el autor:<input type="text" id="autor"> <br/>
+        Introduce el título:<input type="text" id="titulo"> <br/>
+    </form>
+
+    <!-- asigna el contenido del form a dos variables -->
+    <script>
+        document.getElementById("autor").value = titulo ;
+        autor = document.getElementById("titulo").value;
+    </script>
+
+
+    <!-- insertar datos en la tabla -->
+    <button onclick= insertarFila(titulo + autor)>Añadir</button>
+
+
+</body>
+</html>

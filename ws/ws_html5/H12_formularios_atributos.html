@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/estilos.css">
+    <script>
+        function mostrarColor(evento) {
+            var c = evento.currentTarget.value;
+            document.getElementById("codigoColor").innerHTML = c;
+            document.querySelector("body").style.backgroundColor = c;
+        }
+    </script>
+
+</head>
+
+<body>
+    <form action="#" method="get">
+        <div class="panel">
+            <label for="txtApellidos">Apellidos</label>
+            <!-- #### Indicar que el siguiente campo es obligatorio e incluir
+                dentro del campo un texto recordatorio "inserte sus apellidos" #### -->
+            <input type="text" id="txtApellidos" placeholder="Inserte sus apellidos" required  />
+            <br/>
+            <label for="txtGraduacion">Año graduación</label>
+            <!-- #### Establecer que el campo siguiente es numérico con valores entre
+                1970 y 2017 incrementandose de 2 en 2. Además establecer que al 
+                cargarse la página este control reciba automáticamente el foco. #### -->
+            <input type="number" id="txtGraduacion" min="1970" max="2017" step="2" autofocus/>
+            <br/>
+            <label for="txtFNacimiento">F. Nacimiento</label>
+            <!-- #### Establecer que el siguiente campo es para insertar una fecha #### -->
+            <input type="date" id="txtFNacimiento"/>
+            <br/>
+            <label for="txtEmail">Email</label>
+            <!-- #### Establecer que el siguiente campo es para insertar un email #### -->
+            <input type="email" id="txtEmail"/>
+            <br/>
+            <label for="txtDni">DNI</label>
+            <!-- #### Establecer que el siguiente campo debe contener 8 digitos
+                y una letra mayúscula #### -->
+            <input type="text" id="txtDni" pattern="[0-9]{8}[A-Z]"  />
+            <br/>
+            <label for="txtTitulacion">Titulación</label>
+            <!-- #### Al escribir un texto en el siguiente campo sugerir valores donde
+                las posibles sugerencias son informatica (Informática), 
+                industrial (Industrial), inorganica (Inorgánica) #### -->
+            <input type="text" id="txtTitulacion" />
+                <datalist id="lstTitulaciones">
+                        <option value="inform"  label="Informática" />
+                        <option value="industr" label="Industriales" />
+                        <option value="inorg"   label="Inorgánica" />
+                </datalist>
+            <br/>
+            <label for="txtColor">Color</label>
+            <!-- #### Establecer que el siguiente sirve para seleccionar un color #### -->
+            <input type="color" id="txtColor" onchange="mostrarColor(event);"/>
+            <span id="codigoColor"></span>
+        </div>
+    
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+
+</html>

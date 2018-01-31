@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Mover con teclado</title>
+    <!-- ESTILO -->
+    <style>
+        div#contenedor{ padding: 0px !important ;  }
+        h1{ text-align: center  }
+    </style>
+
+
+    <!-- Script, función que detecta la tecla -->
+    <script>
+        var y = 0;
+        var x = 0; 
+        function teclaPulsada(event){
+            // Lectura crossbrowser del código de la tecla. depende del navegador
+            var codigo = event.which || event.keyCode ;
+
+            // referencia a lo que se va a mover
+            var movil = document.querySelector("div.capita");
+
+
+            if(codigo == 37 || codigo == 97){ //izquierda
+                x -= 10;
+            }
+            else if(codigo == 40 || codigo == 115){ //abajo
+                y += 10;
+            }
+            else if(codigo == 39 || codigo == 100){ //derecha
+                x += 10;
+            }
+            else if(codigo == 38 || codigo == 119){ //arriba
+                y -= 10;
+            }
+            // el cuadradito no se sale del contenedor de     height:500px; width:600px; 
+            if ( x > 548 ){x = 548}
+            else if (x < 0){x=0}
+
+            if ( y > 448 ){y = 448}
+            else if (y < 0){y=0}
+
+
+            // mueve el cuadradito
+            movil.style.left = x + "px";
+            movil.style.top = y + "px";
+
+            // console.log(x,y)
+ 
+        }
+    </script>
+
+</head>
+<body onkeypress="teclaPulsada(event);">
+
+    <h1>HACER JUEGO DE LA SERPIENTE</h1>
+        <div id="contenedor">
+            <div class="capita"></div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Parse</title>
+</head>
+<body>
+    
+    <script>
+    //pide dos números que se almacenan como texto
+    var txtA = prompt("Inserte un número: ");
+    var txtB = prompt("Inserte otro número: ");
+    
+    // si sumamos strings, lo que hacemos es concatenarlas o sea 1 + 1 = 11
+    var txtC = txtA + txtB;
+    alert("La concatenación es " + txtC);
+
+    // los convertimos a números
+    var a = parseFloat(txtA);
+    var b = parseFloat(txtB);
+    var c = a + b ;
+
+    // si se introduce algo que no sea un número, la función isNaN (is not  a number) devuelve true o false
+    if( isNaN(c) ){
+        alert("Introduce dos números.")
+    }
+    else{
+        // c.tostring(N) convierte de número a string la variale c en la base indicada
+        alert(
+            "La suma es " + c + "\n" + 
+            "Y en binario: " + c.toString(2) + "\n" + 
+            "La división es " + Math.floor(a/b) + "\n" + // Math.floor redondea la división hacia abajo
+            "Y el resto: " + a%b + + ".\n"
+        );
+    }
+
+
+
+    </script>
+
+
+
+</body>
+</html>

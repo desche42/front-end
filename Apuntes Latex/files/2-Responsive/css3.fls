@@ -1,0 +1,6 @@
+PWD D:/Dropbox/Activos/Desarrollo Front-End Ibertech/files/2-Responsive
+INPUT c:/texlive/2016/texmf.cnf
+INPUT c:/texlive/2016/texmf-dist/web2c/texmf.cnf
+INPUT c:/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT ./css3.tex
+OUTPUT css3.log

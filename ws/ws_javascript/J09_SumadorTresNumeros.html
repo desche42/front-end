@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sumador de tres numeros</title>
+
+</head>
+<body>
+    <!-- Da error si se mete un número con , ; se puede usar un replace pero hay que
+        verlo. La Framework de ANGULAR tiene un método para esto -->
+
+    <div id="resultado">La suma de los tres números es: </div>
+    
+    <script>
+    // pide un número y lo convierte a float
+        var a = parseFloat( prompt("Inserte un número:"));
+    // pide otros dos numeros y los suma
+        a += parseFloat( prompt("Inserte un número:") );
+        a += parseFloat( prompt("Inserte un número:"));
+    // los mete en el div#resultado
+        document.getElementById("resultado").innerHTML += a;
+ 
+    </script>
+</body>
+</html>

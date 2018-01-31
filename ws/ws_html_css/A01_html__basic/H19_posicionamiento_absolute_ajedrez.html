@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Posicionamiento</title>
+    
+    <style>
+       
+        div{
+            border: 1px solid black ; 
+        }
+
+    
+        div#tablero{
+            height: 600px ;
+            width: 600px ;
+            position: relative ;
+            margin: 10px auto ;
+        }
+
+        div#tablero div{
+            height: 100px;
+            width: 100px ;
+            /* La posición  con valor relative toma las medidas indicadas relativas a su posición normal.*/
+            position: absolute ;
+            /*  
+                La propiedad "box-sizing" define como width y height se calculan, incluyendo padding y bordes o no. 
+                Por defecto tiene el valor "contnent-box", no se incluye ni padding ni borde: 
+                La opción "border-box" incluye contenido, padding y borde, es decir, valores absolutos.
+            */
+            box-sizing: border-box ; 
+        }
+        div#tablero div:nth-child(2n){
+          background-color: burlywood ;
+        }
+        div#tablero div:nth-child(2n+1){
+          background-color: gold ;
+        }
+
+        div#tablero div:nth-child(1){left:0px ; top: 0px }
+        div#tablero div:nth-child(2){left:100px ; top: 0px }
+        div#tablero div:nth-child(3){left:200px ; top: 0px }
+        div#tablero div:nth-child(4){left:300px ; top: 0px }
+        div#tablero div:nth-child(5){left:400px ; top: 0px }
+        div#tablero div:nth-child(6){left:500px ; top: 0px }
+
+        div#tablero div:nth-child(7){ left:0px ;  top:  100px }
+        div#tablero div:nth-child(8){ left:100px ; top: 100px }
+        div#tablero div:nth-child(9){ left:200px ; top: 100px }
+        div#tablero div:nth-child(10){left:300px ; top: 100px }
+        div#tablero div:nth-child(11){left:400px ; top: 100px }
+        div#tablero div:nth-child(12){left:500px ; top: 100px }
+
+        div#tablero div:nth-child(13){left:0px ;  top: 200px }
+        div#tablero div:nth-child(14){left:100px ; top: 200px }
+        div#tablero div:nth-child(15){left:200px ; top: 200px }
+        div#tablero div:nth-child(16){left:300px ; top: 200px }
+        div#tablero div:nth-child(17){left:400px ; top: 200px }
+        div#tablero div:nth-child(18){left:500px ; top: 200px }
+
+        div#tablero div:nth-child(19){left:0px ; top: 300px }
+        div#tablero div:nth-child(20){left:100px ; top: 300px }
+        div#tablero div:nth-child(21){left:200px ; top: 300px }
+        div#tablero div:nth-child(22){left:300px ; top: 300px }
+        div#tablero div:nth-child(23){left:400px ; top: 300px }
+        div#tablero div:nth-child(24){left:500px ; top: 300px }
+
+        div#tablero div:nth-child(25){left:0px ; top: 400px }
+        div#tablero div:nth-child(26){left:100px ; top: 400px }
+        div#tablero div:nth-child(27){left:200px ; top: 400px }
+        div#tablero div:nth-child(28){left:300px ; top: 400px }
+        div#tablero div:nth-child(29){left:400px ; top: 400px }
+        div#tablero div:nth-child(30){left:500px ; top: 400px }
+
+        div#tablero div:nth-child(31){left:0px ; top: 500px }
+        div#tablero div:nth-child(32){left:100px ; top: 500px }
+        div#tablero div:nth-child(33){left:200px ; top: 500px }
+        div#tablero div:nth-child(34){left:300px ; top: 500px }
+        div#tablero div:nth-child(35){left:400px ; top: 500px }
+        div#tablero div:nth-child(36){left:500px ; top: 500px }
+
+    
+    </style>
+
+
+</head>
+<body>
+ 
+    <!-- divs que conformarán el tablero 6x6=36 divs dentro del tablero  -->
+
+    <div id="tablero">
+        <div></div>        <div></div>        <div></div>        <div></div>
+        <div></div>        <div></div>        <div></div>        <div></div>
+        <div></div>        <div></div>        <div></div>        <div></div>
+        <div></div>        <div></div>        <div></div>        <div></div>
+        <div></div>        <div></div>        <div></div>        <div></div>
+        <div></div>        <div></div>        <div></div>        <div></div>
+        <div></div>        <div></div>        <div></div>        <div></div>
+        <div></div>        <div></div>        <div></div>        <div></div>
+        <div></div>        <div></div>        <div></div>        <div></div>
+    </div>
+
+</body>
+</html>

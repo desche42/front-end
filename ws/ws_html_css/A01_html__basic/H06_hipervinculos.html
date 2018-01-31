@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hipervínculos</title>
+
+
+    <style>
+    
+        p,div{padding:20px ; border: 1px solid black ; }
+
+        img { height: 100px ;}
+        
+       
+        /* Este estilo hace que no esté subrayado y además, tenga el color de fondo rojo */
+
+        a.redlink{background-color:red ;}
+
+        /* Las pseudoclases se aplican con cierta condición*/
+        a:hover{text-decoration: none ; text-decoration-color: white ; color: white ; background-color: white ; }
+
+        a:active{font-size: 500%}
+    
+        /* Las imágenes que estén dento de un hipervínculo tendrán una altura de 50 píxeles. Esta condición entra en conflicto
+        con el estilo para img, que da una altura de 100px ; en este caso se aplica la más restrictiva. */
+        a>img{height: 50px}
+    
+    </style>
+
+
+</head>
+<body>
+
+    <!-- Los enlaces siguientes se abrirán en la misma ventana, o en distinta -->
+
+
+
+    <p>
+
+        <a href="http://www.elmundo.es/quijote/capitulo.html?cual=1" >                                  Capítulo 1 </a>  <br/>
+        <a class="redlink" href="http://www.elmundo.es/quijote/capitulo.html?cual=2" target="_blank">   Capítulo 2 </a>  <br/>
+        <a href="http://www.elmundo.es/quijote/capitulo.html?cual=3" target="_blank"> 
+            <img src="img/Quijote.jpg" alt="Capítulo 3">          </a>  <br/>
+        <a href="http://www.elmundo.es/quijote/capitulo.html?cual=4" target="_blank">                   Capítulo 4 </a>  <br/>
+        <a href="http://www.elmundo.es/quijote/capitulo.html?cual=5" target="_blank">                   Capítulo 5 </a>  <br/>
+        
+    </p>
+
+</body>
+</html>

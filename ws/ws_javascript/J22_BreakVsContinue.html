@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Break vs continue</title>
+    <script>
+        function imprimir(){
+            // imprime los números del 1 al 20
+            for (let i = 1; i <= 20 ; i++) {
+                // continue termina la interacción actual y no imprime el 12
+                if ( i == 12) continue;
+                // break termina el bucle y no imprime nada a partir del 14, porque no llega a imprimir el 15
+                if ( i == 15 ) break;
+                // imprime el número
+                document.querySelector("p").innerHTML += i + "<br/>" ;
+            }
+        }
+    </script>
+
+</head>
+<body onload="imprimir();">
+    <p></p>
+
+</body>
+</html>

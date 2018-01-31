@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tablas</title>
+
+    <style>
+        /* Para juntar los bordes de las celdas contiguas y fuente arial si no helv si no sin serifa por defecto */
+        table.tablaDatos{   border-collapse: collapse ;
+                            font-family: Arial, Helvetica, sans-serif ;
+        }
+
+
+        /* Borde de celdas de cabecera y datos */
+        table.tablaDatos th, table.tablaDatos td {  
+                                                    border: 1px solid black ; 
+                                                    padding: 3px 7px;
+        }
+
+
+        /* header de la tabla */
+        table.tablaDatos th{    
+                                color:blanchedalmond ;
+                                background-color: darkgoldenrod ; 
+        }
+
+        /* pero del header, el título de la tabla, que tiene la propiedad colspan, tendrá otro color */
+        table.tablaDatos th[colspan]{    
+                                background-color: darkgreen ; 
+        }
+
+        /* filas de la tabla de datos de color beige y las pares de color oro */
+        table.tablaDatos tbody tr{ 
+                            background-color: beige ; 
+        }
+        table.tablaDatos tbody tr:nth-child(2n){ background-color: gold ; 
+        }
+
+        /* Además, las row dentro del body de la tabla se ponen de color turquesa cuando se pase el ratón por encima    */
+        table.tablaDatos tbody tr:hover{ background-color: turquoise ; 
+        }
+
+
+        /* foot de la taabla de color gris */
+        table.tablaDatos tfoot th{     background-color: grey ;                           
+        }
+    
+    
+    
+    </style>
+
+</head>
+<body onload="calcularTotal();" >
+    
+<!-- La tabla tiene thead, tbody y tfoot -->
+
+<!-- emmet table>thead>tr>th*2 -->
+
+<table class="tablaDatos">
+        <thead>
+            <tr>
+                <th colspan="2">Libros</th>
+            </tr>
+            <tr>
+                <th>Título</th>
+                <th>Autor</th>
+            </tr>
+        </thead>
+    
+        <!-- tbody>(tr>td*2)*4 -->
+        <tbody>
+            <tr>
+                <td>El Quijote</td>
+                <td>Cervantes</td>
+            </tr>
+            <tr>
+                <td>Fuenteovejuna</td>
+                <td>Lope de Vega</td>
+            </tr>
+            <tr>
+                <td>La vida es sueño</td>
+                <td>Calderón de la Barca</td>
+            </tr>
+            <tr>
+                <td>Gödel, Escher, Bach</td>
+                <td>Douglas R. Hofstadter</td>
+            </tr>
+            <tr>
+                <td>Una breve historia de casi todo</td>
+                <td>Bill Bryson</td>
+            </tr>
+        </tbody>
+        <!-- pie de tabla tfoot>tr>th*2 -->
+        <!-- función js aplicable a esta fila para que cuente el número de datos (libros) y lo escriba como resultado -->
+        <script>
+            function calcularTotal(){ //declaro la función
+                /*  
+                    variable document: definida por defecto, que representa toda la página, y se emplea para acceder a los
+                    elementos (etiquetas) de la página, y escribe en él lo que queremos.  
+
+                    Accedemos a los elementos por su propiedad css. Queremos que la función cuente el número de libros
+                    que hay en la tabla, es decir el número de tr (rows) que hay en tbody, y lo guarda en una variable
+                    que llamamos filas.                    
+                    El selector querySelectorAll devuelve una matriz con las características de los elementos, y lo que 
+                    queremos es el número de elementos de esa matriz
+                */
+                    var filas = document.querySelectorAll("table.tablaDatos tbody tr");
+                                          
+
+                // accedemos a un elemento por su id y escribimos dentro de él
+                    document.getElementById ("total").innerHTML = filas.length + " libros";
+
+            }
+            //la función debe ejecutarse una vez se ha cargado la página. Ver inicio del body
+        </script>
+    <tfoot>
+        <tr>
+            <th>Total</th>   <th id="total"><!-- aquí escribe la función calcularTotal() el número de libros --></th>
+        </tr>
+    </tfoot>
+    </table>
+    
+</body>
+</html>

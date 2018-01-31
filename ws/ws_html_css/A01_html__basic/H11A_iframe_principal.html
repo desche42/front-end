@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Iframe interior</title>
+
+    <style>
+        iframe{
+            height: 400px ; 
+            width: 400px ;
+            border: 1px solid black ; 
+        }
+    
+    </style>
+</head>
+<body>
+    
+    <h1>Página que incluye otra página</h1>
+
+        <!-- iframe que muestra otra página dentro, el iframe se llama marco -->
+        <iframe name="marco" src="H11B_iframe_interior.html"></iframe>
+
+        <br/>
+
+        <!-- puedo cambiar lo que se muestra en el iframe "marco", poniendo un enlace con target=marco -->
+        <a href="H09_tabla_agenda_semanal.html" target="marco">H09 tabla agenda semanal</a>
+        <a href="H11B_iframe_interior.html" target="marco">H11B_iframe_interior</a>
+
+        <br>
+
+
+        <!-- también puedo poner un object -->
+        <object name="object" type="text/html" data="H11B_iframe_interior.html" width="400" height="400"> </object> 
+
+        <a href="H09_tabla_agenda_semanal.html" target="object">H09 tabla agenda semanal</a>
+        <a href="H11B_iframe_interior.html" target="object">H11B_iframe_interior</a>
+
+
+
+</body>
+</html>

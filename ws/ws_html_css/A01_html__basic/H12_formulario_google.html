@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulario google</title>
+</head>
+<body>
+    <!--    los formularios los ponemos con la etiqueta form. Este hará una búsqueda en google.
+            Form admite el atributo target, por lo q podemos hacer que la búsqueda se abra en una pestaña nueva.
+            El método de envío puede ser get (en la URL, límite 240 caracteres) o post (oculto, sin límite). Por defecto get-->
+    <form action="https://www.google.es/search" method="get">
+
+        <!-- caja de texto que se quiere buscar; como nombre ponemos q de query, porque google es lo que utiliza -->
+        <label>Pregunta:</label> 
+        
+        <input id="same" name="q" type="text" placeholder="Escribe aquí tu búsqueda"/>
+
+        <!-- también le ponemos un botón para enviar la info, así no hay que darle a intro -->
+        <button type="submit">Buscar</button>
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" >
+<title>Dibujar en el canvas</title>
+<style type="text/css">
+	div#contenedor{width:80%;background-color:rgb(240,240,240);
+		margin: 10px auto;padding:25px;text-align:center; }
+	canvas{border: 1px solid black;}
+</style>
+<script type="text/javascript">
+	var ctx;
+	var canvas1;
+	var ancho=200, alto=200;
+	
+	function dibujarImagenEnCanvas(){
+		// Para descargar la imágen del servidor, la opción más sencilla es poner 
+		// en el html un elemento img oculto con la imagen que queremos insertar luego 
+		// en el canvas.
+		var imagen = document.querySelector("img");
+		// #### insertamos la imágen en el canvas en la posición y con el tamaño indicados.####
+
+	}
+	function negativo(){
+		// Creamos un objeto de pixels flotante pero a partir de los pixels que ya hay en el canvas.
+		var pixels = ctx.getImageData(0,0,ancho,alto);
+		var data = pixels.data;
+		for(var x=0; x<ancho; x++){
+			for(var y=0; y<alto; y++){
+				// #####Invertir los pixels#####
+			}	
+		}
+		ctx.putImageData(pixels,0,200);
+	}
+	function blancoYNegro(){
+		// Creamos un objeto de pixels flotante pero a partir de los pixels que ya hay en el canvas.
+		var pixels = ctx.getImageData(200,0,ancho,alto);
+		var data = pixels.data;
+		for(var x=0; x<ancho; x++){
+			for(var y=0; y<alto; y++){
+				// ####### calcular la media de los pixels #########
+			}	
+		}
+		ctx.putImageData(pixels,200,0);
+	}
+	// ---------------- Funciones axuiliares para accedera a matriz de pixels ---------------
+	function setPixel(data, dimX, x, y, r, g, b){
+		//dimX -> Nº de elementos por fila. Si hubiera una matriz de pixels sería: matriz_pixels[dimX][dimY].
+		var pos = (y * dimX + x ) * 4;
+		data[pos] = r;
+		data[pos+1] = g;
+		data[pos+2] = b;
+		data[pos+3] = 255;
+	}
+	function getPixel(data, dimX, x, y){
+		//dimX -> Nº de elementos por fila. Si hubiera una matriz de pixels sería: matriz_pixels[dimX][dimY].
+		var pos = (y * dimX + x ) * 4;
+		var r = data[pos];
+		var g = data[pos+1];
+		var b = data[pos+2];
+		var a = data[pos+3];
+		return {r:r,g:g,b:b,a:a};
+	}
+	
+	window.onload = function (){
+		canvas1 = document.getElementById("canvas1");
+		ctx = canvas1.getContext("2d");
+		// Dibujo de varias figuras
+		dibujarImagenEnCanvas();
+		//negativo();
+		//blancoYNegro();
+	};
+	
+	function descargar(ev){
+		var data = canvas1.toDataURL("image/png");
+		ev.currentTarget.href = data;
+		ev.currentTarget.download="dibujo.png";
+	}
+</script>
+</head>
+<body>
+	<h2>Dibujar en el canvas</h2>
+	<div id="contenedor">
+		<canvas id="canvas1" height="400" width="500"></canvas>
+	</div>
+	
+	<img alt="" src="img/casa.gif" style="display:none"/>
+	<p><a href="#" onclick="descargar(event);">Descargar la imagen</a></p>
+</body>
+</html>
+
+
+
+
+
+

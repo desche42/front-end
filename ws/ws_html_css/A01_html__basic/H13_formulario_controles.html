@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fromulario</title>
+    <style>
+        /* por defecto la alineación es left */
+        input[name=apellidos]{
+            text-align: right ; 
+        }
+    
+        /* por defecto botton*/
+        textarea{
+            vertical-align: top ;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <form action="insertar" method="get">
+        <label>Nombre completo:</label>
+        <!-- inputs de máximo 20 caracteres, en una caja de 22 caracteres de largo -->
+            <input type="text" id="apellido1" maxlength="20" size="22" placeholder="Primer apellido"/>
+            <input type="text" id="apellido2" maxlength="20" size="22" placeholder="Segundo apellido"/>
+            <input type="text" id="nombre"    maxlength="20" size="22" placeholder="Nombre"/>
+        <br/>
+
+        <!-- Input de tipo checkbox -->
+        <label for="noticias">Recibir noticias?</label>    
+            <input type="checkbox" name="noticias" id="noticias" checked="checked" value="si"/><br/>
+
+        <!-- Input de tipo única opción seleccionada. deben tener el mismo name para ser excluyentes -->
+        <label>Estudios:</label><br/>
+            <input type="radio" name="estudios" value="pri">Primaria <br/> 
+            <input type="radio" name="estudios" value="sec">Secundaria <br/> 
+            <input type="radio" name="estudios" value="uni">Universidad <br/> 
+
+        <!-- input tipo lista desplegable. muestra las provincias pero se envía el valor asignado, 28 46 u 11 -->
+        <label>Provincia</label>
+            <select name="id_provincia">
+                <!-- nombre del grupo de opciones -->
+                <optgroup label="Provincias">
+                    <option value="28">Madrid</option>
+                    <option value="01">Álava</option>
+                    <option value="02">Albacete</option>
+                    <option value="03">Alicante</option>
+                    <option value="04">Almería</option>
+                    <option value="05">Ávila</option>
+                    <option value="06">Badajoz</option>
+                    <option value="07">Baleares</option>
+                    <option value="08">Barcelona</option>
+                    <option value="09">Burgos</option>
+                    <option value="10">Cáceres</option>
+                    <option value="11">Cádiz</option>
+                    <option value="12">Castellón</option>
+                    <option value="13">Ciudad Real</option>
+                    <option value="14">Córdoba</option>
+                    <option value="15">Coruña</option>
+                    <option value="16">Cuenca</option>
+                    <option value="17">Gerona</option>
+                    <option value="18">Granada</option>
+                    <option value="19">Guadalajara</option>
+                    <option value="20">Guipúzcoa</option>
+                    <option value="21">Huelva</option>
+                    <option value="22">Huesca</option>
+                    <option value="23">Jaén</option>
+                    <option value="24">León</option>
+                    <option value="25">Lérida</option>
+                    <option value="26">La Rioja</option>
+                    <option value="27">Lugo</option>
+                    <!-- opción elegida por defecto -->
+                    <option value="28" selected>Madrid</option>
+                    <option value="29">Málaga</option>
+                    <option value="30">Murcia</option>
+                    <option value="31">Navarra </option>
+                    <option value="32">Orense 	</option>
+                    <option value="33">Asturias</option>
+                    <option value="34">Palencia</option>
+                    <option value="35">Las Palmas</option>
+                    <option value="36">Pontevedra</option>
+                    <option value="37">Salamanca</option>
+                    <option value="38">Santa Cruz de Tenerife</option>
+                    <option value="39">Cantabria</option>
+                    <option value="40">Segovia</option>
+                    <option value="41">Sevilla</option>
+                    <option value="42">Soria</option>
+                    <option value="43">Tarragona</option>
+                    <option value="44">Teruel</option>
+                    <option value="45">Toledo</option>
+                    <option value="46">Valencia</option>
+                    <option value="47">Valladolid</option>
+                    <option value="48">Vizcaya (Bilbao)</option>
+                    <option value="49">Zamora</option>
+                    <option value="50">Zaragoza</option>
+                    <option value="51">Ceuta</option>
+                    <option value="52">Melilla</option>
+                </optgroup>
+                </select><br/>
+                
+                
+                <!-- input de tipo comentario de varias líneas -->
+                <label>Comentarios:</label>
+                <textarea name="coment" cols="30" rows="10" placeholder="Aquí puedes escribir tus comentarios" ></textarea><br/>
+                
+                
+                <!-- botón para enviar el formulario -->
+                <button type="submit" >Enviar</button>
+
+        <!-- Reset formulario -->
+        <input type="reset" value="Borrar"/>
+        
+
+    </form>
+    
+
+
+</body>
+</html>

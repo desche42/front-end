@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/estilos.css">
+    <style>
+       div#capa1{
+           /* #### Agregar bordes redondeados con 25px de radio #### */
+           width:150px; height:150px; text-align:center; 
+           border-radius: 25px;
+       }
+       div{
+           /* #### Agregar sombra a todos los divs #### */
+           box-shadow: 10px -10px 4px gray;
+        }
+       img{
+           /* #### Agregar bordes redondeados con 25px de radio ys sombra #### */
+           border-radius: 25px 0px;
+           box-shadow: 10px -10px 4px gray;
+       }
+       button{
+           border-radius: 5px 0px;
+           box-shadow: 10px -10px 4px gray;
+       }
+       p{text-align:center;}
+    </style>
+</head>
+
+<body>
+    <div id="capa1" class="panel">
+        Capa 1
+    </div>
+    <p><img src="img/casa.gif"/></p>
+    <p><button>Enviar</button></p>
+</body>
+
+</html>

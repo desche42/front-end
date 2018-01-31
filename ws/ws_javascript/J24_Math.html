@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Math</title>
+    <!-- función que dibuja -->
+    <style>
+        div#contenedor{ padding: 0px !important ;  }
+    </style>
+    <script>
+        // función que genera un número al azar 
+        function generar(max){
+            return Math.floor( max*Math.random() );
+        }
+        function dibujar(){
+            // referencia a dónde se va a meter el cuadradito
+            var conte = document.getElementById("contenedor");
+            // borrar interior del contenedor
+            conte.innerHTML = "" ;
+            // dibujar los cuadraditos
+            for (let i = 0; i < 60 ; i++) {
+                // posicion del cuadradito q se va a generar
+                var top = generar(450) ;
+                var left = generar (550) ;
+                // color del cuadradito 
+                var r = generar(256);
+                var g = generar(256);
+                var b = generar(256);
+                var col = "rgb(" + r + "," + g + "," + b + ");";
+                // definión del cuadradito
+                var capita = "<div class='capita' style='top:" + top + "px; background-color:" + 
+                col +  "left:" + left + "px;'></div>" ;
+                // inserción del cuadradito en el div
+                conte.innerHTML += capita ;
+            }
+            // ejecutar la función 250ms
+            setTimeout(dibujar,100)
+        }
+    </script>
+</head>
+<body onload="dibujar();">
+    
+    <!-- div donde la función dibujar() dibuja -->
+    <div id="contenedor"></div>
+
+</body>
+</html>

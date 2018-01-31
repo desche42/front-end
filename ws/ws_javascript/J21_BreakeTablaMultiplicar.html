@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Tabla de multiplicar</title>
+
+    <style>
+        /* factores en color aqua  */
+        table#tablaDatos tr td:first-child,  table#tablaDatos tr:first-child, table#tablaDatos tr:first-child:hover{ 
+            background-color: aqua !important ;
+            color: black !important ;
+            font-weight: bold !important;
+        }
+
+    </style>
+
+
+    <script>
+    // función que crea la tabla
+        function crearTabla(){
+            document.getElementById("cuerpo").innerHTML = "" ;
+            var prodMax = parseFloat(prompt("Producto máximo?"));
+            // bucle infinito
+            for (let factor1 = 1; factor1 <= Math.sqrt(prodMax) ; factor1++) {
+                // abro la fila e introduzco el primer factor
+                var fila = "<tr><td>" + factor1 + "</td>";
+                //para cada factor escribo su múltiplo y lo añado a la variable fila
+                var producto ;
+                    for (var factor2 = 2; factor2 <= Math.sqrt(prodMax) ; factor2++) {
+                        producto = factor1*factor2;
+                        if (producto > prodMax) break ;
+                        fila += "<td>" + producto + "</td>" ;
+                    }
+                // cierro la fila
+                fila += "</tr>" ;
+
+                // escribo la fila de datos todo de golpe. 
+                document.getElementById("cuerpo").innerHTML += fila ;
+            }
+        }
+
+    </script>
+
+
+</head>
+<body>
+    
+    <p>
+        <!-- botón que crea la tabla -->
+        <button onclick="crearTabla()">Tabla de Multiplicar</button>
+    </p>
+
+    <!-- tabla donde van a ir los resutados -->
+    <table id="tablaDatos">
+        <tbody id="cuerpo"></tbody>
+    </table>
+
+</body>
+</html>

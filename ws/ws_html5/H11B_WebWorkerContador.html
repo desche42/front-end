@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- este html es una demostración de un web worker básico, lo que hace es empezar a contar los segundos cuando le damos al botón empezar a contar, y dejar de 
+    contar cuando le damos al botón parar de contar. Para ello el worker se inicia con empezar a contar y ejecuta en ciclo de 1s una función, que aumenta el valor
+    de una variable en 1 cada ciclo, dando como resultado el número de segundos que ha ido contando. -->
+
+
+
+    <!-- defino las funciones para comunicarme con el worker -->
+    <script>
+        function startWorker(){
+            //compruebo que hay soporte para el worker en el navegador: 
+                //Si lo hay, inicia el contador en el archivo js/contador.js
+                    if(typeof(Worker) !== "undefined" ) {
+                        if(typeof(w) == "undefined") {
+                            w = new Worker("js/contador.js");
+                        }
+                        //cuando el worker envía un mensaje al hilo principal (el número de veces contadas), se ejecuta el código de aquí dentro
+                        //y  lo que hace es poner en el output#numero el mensaje q envía el worker al hilo js principal.
+                        w.onmessage = function(event){
+                            document.getElementById("numero").innerHTML = event.data;
+                        };
+                    }
+                // si no lo hay, mensaje de error
+                    else{
+                        document.getElementById("numero").innerHTML = "No hay soporte para workers js en tu navegador. Actualiza.";
+                    }
+        }
+        
+        function stopWorker(){
+            // termino el worker
+            w.terminate();
+            //libero la variable w para liberar recursos
+            w = undefined ;
+        }
+    
+    </script>
+
+
+    <!-- botones para empezar a contar y parar de contar -->
+    <button onclick="startWorker()">Empezar a contar</button>
+    <button onclick="stopWorker()">Parar de contar</button>
+    <br/>
+    <!-- output del worker viene aquí -->
+    <p>Segundos contando: <output id="numero"></output></p>  
+    
+    
+
+
+
+</body>
+</html>

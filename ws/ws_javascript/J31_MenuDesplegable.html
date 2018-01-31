@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Evento Onload</title>
+
+
+        <!--- esto está incompleto, ver archivo del profesor -->
+
+    <style>
+        /* estilo del div menú */
+        div.menu{ width: 100px ; float:left }
+
+        /* estilo de la cabecera  y los items */
+        div.cabecera, div.item{
+            border: 1px solid black;
+            padding: 7px 15px;
+            font-family: sans-serif ;
+        }
+        div.cabecera{
+            background-color: gold ;
+        }
+        div.item{
+            background-color: aliceblue ;
+            border-top-width: 0px ;
+        }
+        div.item:hover{background-color: lightblue ;}
+
+        /* despliegue del menú*/
+            /*por defecto no se ve*/
+            div.menu div.submenu{display: none;}
+            div.menu:hover div.submenu{display: block;}
+
+            /*   diferencia entre display y visibility
+                 el display none lo saca del flujo. no está en el div
+                 display: none;  
+                 esto no lo saca del flujo, solo que no se muestra. al pasar el retón por encima, se muestra
+                div.menu div.submenu{visibility: hidden;}
+                div.menu:hover div.submenu{visibility: visible; } 
+            */
+
+
+        
+    </style>
+
+    <!-- scripts aquí -->
+    <script>
+
+        function cargado(que){
+           // imprime a la consola qué se ha cargado y la hora y los ms
+           console.log(que , new Date().toLocaleDateString() , new Date().getTime() );
+        }
+        cargado('script');
+    </script>
+</head>
+<body onload="cargado('body');">
+
+    <h1>Ejemplo de un menú desplegable</h1>
+    
+    <!-- menú -->
+    <div class="menu">
+        <div class="cabecera">Archivo</div>
+             <!-- el menú debe desplegarse onhover -->
+            <div class="submenu">
+                <div class="item">Abrir</div>
+                <div class="item">Guardar</div>
+                <div class="item">Cerrar</div>
+            </div>
+    </div>
+    <div class="menu">
+        <div class="cabecera">Animales</div>
+            <!-- el menú debe desplegarse onhover -->
+            <div class="submenu">
+                <div class="item">Gato</div>
+                <div class="item">Perro</div>
+                <div class="item">Vaca</div>
+            </div>
+    </div>
+    <div class="menu">
+        <div class="cabecera">Ciudades</div>
+            <!-- el menú debe desplegarse onhover -->
+            <div class="submenu">
+                <div class="item">Madrid</div>
+                <div class="item">Murcia</div>
+                <div class="item">Barcelona</div>
+            </div>
+    </div>
+
+    <div><img id="foto"></div>
+
+
+
+</body>
+</html>

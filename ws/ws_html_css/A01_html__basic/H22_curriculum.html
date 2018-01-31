@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Currículum</title>
+
+
+    <!-- CONFIGURACIÓN DE LOS ESTILOS  -->
+
+    <style>
+        
+        /* estilo del nombre */
+        div#nombre{
+            position: fixed;
+            top: 0px;
+            right: 0px ;
+            left: 0px ;
+            text-align: center;
+            text-decoration-line: underline ; 
+            background-color: white ; 
+        }
+
+        /* estilo de la foto */
+        div#img{
+            position: fixed ;
+            right: 50px ;
+            top: 100px ; 
+            height: 396px ; 
+            width: 126px ;
+            background-image: url("img/fotoCV.jpg") ;
+            background-repeat: no-repeat ;
+        }
+        /* aumentar tamaño imágen on hover buena presencia fuente : https://codepen.io/wifeo/pen/qzwkb */
+        div#img:hover{
+            /* da una sombra al objeto*/
+            box-shadow: 0px 0px 150px #000000; 
+            /* solo funciona en objetos con pos abs rel o fix; da prioridad a los objetos, mayor se pone encima */
+            z-index: 2; 
+
+            -webkit-transition: all 200ms ease-in;      
+            -webkit-transform: scale(1.5);
+            -ms-transition: all 200ms ease-in;
+            -ms-transform: scale(1.5);   
+            -moz-transition: all 200ms ease-in;
+            -moz-transform: scale(1.5);
+            transition: all 200ms ease-in; 
+            transform: scale(1.5);
+        }
+
+        /*configuración del cv*/
+        div#CV{
+            margin-top: 100px ;
+        }
+
+        /* configuración de la info general e idiomas */
+            div#general, div#idiomas{
+            width: 300px ;
+            border: 1px solid black;
+            position: relative; 
+            } 
+
+
+        div#estudios{
+            width: 500px ;
+        }
+
+        
+        /* estilo de los titulos */
+        h2{
+            text-decoration-line: underline ; 
+        }
+
+        /* estilo de las tablas */
+
+            table{
+                border-collapse: collapse ;
+                /* margin: auto ; */
+                margin-left: 5px ;
+                width: 80% ;
+            }
+
+            table th{
+                background-color: rgb(192, 190, 190) ;
+            }
+
+            /* Borde de celdas de cabecera y datos */
+             table.tablaDatos th, table.tablaDatos td {  
+                                                    border: 1px solid black ; 
+                                                    padding: 3px 7px;
+            }
+
+            /* cambio a negrita el nombre de los estudios  */
+            td.idEstudio{
+                font-weight: bold ;
+            }
+
+            /* estilo de la lista detallada para los idiomas */
+            dl#lstIdiomas dt{
+                font-weight: bold ;
+                text-indent: 1em ;
+            }
+            th.noBorder{
+                border-top: none;
+                border-right: none;
+                border-left: none;
+            }
+
+            /* estilo de la experiencia laboral */
+            li.liPuesto{
+                font-weight: bold ;
+            }
+            ul.descExp{
+                font-weight: 300 !important ;
+            }
+
+
+
+
+    </style>
+
+</head>
+<body>
+    
+        <!-- barra fija arriba con el nombre y foto -->
+
+        <div id="nombre"> <h1>Alejandro Sánchez Pineda</h1></div>
+        <!-- <div id="img"><img src="img/fotoCV.jpg" alt="foto CV" height="400px">  </div> -->
+        <div id="img"></div>
+
+
+    <!-- div general CV -->
+            
+    <div id="CV">
+                
+        <!-- INFORMACIÓN GENERAL ; idiomas -->
+
+        <table class="tablaDatos">
+            <thead>
+                <tr>
+                    <th rowspan="2">Información general</th>
+                    <th colspan="2" >Idiomas</th>
+                </tr>
+                <tr>
+                    <th class="noBorder">Idioma</th> <th class="noBorder">Nivel</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td rowspan="4">
+                        <ul>
+                            <li>Disponibilidad inmediata</li>
+                            <li>Carné de conducir</li>
+                            <li>Coche propio</li>
+                            <li>Proactividad</li>
+                            <li id="buenaPresencia">Buena presencia</li>
+                        </ul>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Castellano</td>
+                    <td>Nativo</td>
+                </tr>
+                <tr>
+                    <td>Inglés</td>
+                    <td>Avanzado, certificación IELTS C1</td>
+                </tr>
+                <tr>
+                    <td>Francés</td>
+                    <td>Básico</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+        <!-- ESTUDIOS  -->
+
+
+        <div class="estudios"> </div>
+            <h2>Estudios</h2>
+
+                <table class=tablaDatos id="tablaEstudios">
+                    <thead>
+                            <tr>
+                                <th>Estudios</th> <th>Observaciones</th> <th>Centro</th> 
+                            </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="idEstudio">Educación Secundaria Obligatoria</td>
+                            <td>Bilingue Inglés</td>
+                            <td rowspan="2">IES Cañada de las Eras, Molina de Segura, Murcia</td>
+                        </tr>
+                        <tr>
+                            <td class="idEstudio">Bachillerato</td>
+                            <td>Ciencias de la Salud: física, química y biología</td>
+                        </tr>
+                        <tr>
+                            <td class="idEstudio">Grado en Química</td>
+                            <td>Especialidad en síntesis orgánica. Síntesis de rotaxanos.</td>
+                            <td>Universidad de Murcia</td>
+                        </tr>
+                        <tr>
+                            <td class="idEstudio">Máster en Seguridad Alimentaria</td>
+                            <td>Reglamentación, certificación y auditorías</td>
+                            <td>Colegio Oficial de Químicos de Murcia</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
+        <!--   EXPERIENCIA LABORAL  -->
+
+        <div class="info" id="experiencia"> </div>
+            <h2>Experiencia laboral</h2>
+
+            <ul>
+                <li class="liPuesto"> Comercial y técnico informático
+                    <ul class="descExp">
+                        <li>Empresa: Box Room Informática; Molina de Segura, Murcia </li>
+                        <li>Fecha: Mayo - Septiembre 2008</li> 
+                    </ul>
+                </li>
+                <li class="liPuesto">Agente de ventas
+                    <ul class="descExp">
+                        <li>Empresa: Leroy Merlín; Murcia </li>
+                        <li>Fecha: Mayo a octubre 2016</li>
+                    </ul>
+                </li>
+                <li class="liPuesto"> Profesor particular; física química y matemáticas
+                    <ul class="descExp">
+                        <li>Empresa: Alejandro Sánchez </li>
+                        <li>Fecha: 2009 a 2018</li>
+                    </ul>
+                </li>
+                <li class="liPuesto"> Promotor comercial
+                    <ul class="descExp">
+                        <li>Empresa: Salesland; Madrid </li>
+                        <li>Fecha: noviembre 2017 a enero 2018</li>
+                    </ul>
+                </li>
+            </ul>
+
+    </div>
+
+
+
+    
+
+</body>
+</html>

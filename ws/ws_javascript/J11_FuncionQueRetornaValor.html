@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Función que retorna valor</title>
+
+    
+    <!-- Hoja de estilos copiada de ws_html -->
+    <link rel="stylesheet" href="css/estilos.css">
+
+    <!-- definición de la función que toma dos inputs y los devuelve sumados en el 
+    elemento con la id resultado -->
+    <script>    
+        function sumar(a,b){
+            // suma  los dos imputs
+            var c = a + b ;
+            document.getElementById("resultado").innerHTML += 
+                    a +" + " + b + " = " + c + "<br/>"; 
+            return c ;
+        }
+    </script>
+
+</head>
+<body>
+    
+    <div id="resultado"></div>
+    <script>
+        sumar(4, (sumar(  3,sumar(1,2) ) )  )    ;
+    </script>
+
+
+</body>
+</html>
