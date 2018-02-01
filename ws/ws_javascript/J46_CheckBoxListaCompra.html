@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Check box y radio button</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    
+    <!-- JAVA SCRIPT -->
+    <script>
+        window.onload = function(){
+            // obtengo todos los checks
+                cosas = document.querySelectorAll("input[type=checkbox]");
+            // establezco la función lista compra como event listener
+                cosas.forEach( function(cosa){
+                    cosa.onchange = listaCompra ;
+                }) ;                
+        }
+
+        function listaCompra(event){
+            // compruebo cuales están marcados
+        }
+
+    </script>
+    
+    
+    <!-- ESTILOS -->
+    <style>
+    
+    </style>
+
+</head>
+<body>
+    <div>
+        <input type="checkbox" value="leche" >Leche<br/>
+        <input type="checkbox" value="patatas" >Patatas<br/>
+        <input type="checkbox" value="pan" >Pan<br/>
+        <input type="checkbox" value="naranjas" >Naranjas<br/>
+    </div>  
+
+    <div id="compra"></div>
+</body>
+</html>

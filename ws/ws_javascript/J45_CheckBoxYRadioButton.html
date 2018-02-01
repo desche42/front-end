@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Check box y radio button</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    
+    <!-- JAVA SCRIPT -->
+    <script>
+        window.onload = function(){
+            mostrarFoto(false);
+            document.querySelector("input[type=checkbox]").onchange = cambioCheck ; 
+            
+            radios = document.querySelectorAll("input[name=cosa]") ; 
+            radios.forEach( function(radio){
+                radio.onchange = cambioRadio
+            })
+            cambioRadio();
+
+        }
+
+        function mostrarFoto(boolean){
+            if(boolean){
+                document.getElementById("foto").style.display = "inline" ;
+            }
+            else {
+                document.getElementById("foto").style.display = "none" ;
+            }
+        }
+
+        function cambioRadio(){
+            var radios = document.querySelectorAll("input[name=cosa]");
+            radios.forEach( function(radio){
+                if(radio.checked){
+                    document.getElementById("foto").src = "img/" + radio.value ;
+                }
+            } );
+        }
+            
+
+        function cambioCheck(event){
+            // console.log(event);
+            mostrarFoto( event.currentTarget.checked ) ;
+        }
+
+    </script>
+    
+    
+    <!-- ESTILOS -->
+    <style>
+    
+    </style>
+
+</head>
+<body>
+    <div>
+        <input type="checkbox" autocomplete="off" />Mostrar foto <br/>
+
+        <input type="radio" name="cosa" value="gato.png" checked="checked" /> Gato <br/>
+        <input type="radio" name="cosa" value="perro.png" /> Perro <br/>
+        <input type="radio" name="cosa" value="casa.gif" /> Casa <br/>
+
+        <img src="img/gato.png" id="foto" width="400px"/>
+    </div>  
+</body>
+</html>
