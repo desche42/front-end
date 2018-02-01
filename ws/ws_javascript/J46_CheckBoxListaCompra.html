@@ -9,21 +9,91 @@
     
     <!-- JAVA SCRIPT -->
     <script>
+        // lista de la compra. autocomplete = off en los inputs. como variable global
+        var lista = {} ;
+
+
         window.onload = function(){
-            // obtengo todos los checks
-                cosas = document.querySelectorAll("input[type=checkbox]");
-            // establezco la función lista compra como event listener
-                cosas.forEach( function(cosa){
-                    cosa.onchange = listaCompra ;
-                }) ;                
+        // obtengo todos los items para la lista de la compra en forma de objeto
+            items = document.querySelectorAll("input[type=checkbox]");
+
+        //recorro la lista de items posibles de la compra
+            items.forEach( function(item){
+                // establezco la función listaCompra como event listener 
+                item.onchange = listaCompra ;
+                // inicializo la lista
+                lista[ item.value ] = false ; 
+                // console.log( item.value , lista[item.value] , "Total items:", lista.length);  
+                ////////////////// ?????????? /////////////por qué no me dice lista length en matriz asociativa???
+            }) ;                
+            // console.log("window.onload lista", lista) ;
         }
 
+        
+
+        // función que comprueba los items marcados
         function listaCompra(event){
-            // compruebo cuales están marcados
+            // si un item se marca o desmarca, lo marca como true o false
+            if( event.currentTarget.checked  ){ // item marcado
+                lista[ event.currentTarget.value ] = true ;
+                console.log( "marco un item",lista );
+              } 
+            else { // item desmarcado
+                lista[ event.currentTarget.value ] = false ;
+                console.log( "desmarco un item",lista );
+            }
+            // imprimir la lista
+            imprimir() ;
+            // console.log("listacompra lista", lista) ;
+
         }
+
+        function imprimir(){
+            // console.log("listacompra imprimir:",lista);
+            // donde imprimir la lista
+            var  donde = document.getElementById("listaDeLaCompra") ;
+            donde.innerHTML = "" ;
+
+            // como los arrays asociativos no tienen lenght fácil de medir (de momento), me hago una variable local con las cosas que 
+            // están en la lista, y luego las imprimo
+            var cesta = 0;
+            for (item in lista){  if( lista[item] ){ cesta++ ;} }
+            // console.log("Hay", cesta, " items en la cesta") ;
+           
+           
+            // si hay más de un ítem imprimir en plural, si no en singular
+            if ( cesta > 1  ){
+                donde.innerHTML = "Tienes que comprar: <ul id=listaCompra></ul>" ;
+                // recorre el diccionario "lista" hasta el penúltimo item
+                for ( cosa in lista) {
+                    // si hay que imprimirlo
+                    if (lista[cosa]){ 
+                        // console.log("imprimiendo" + cosa) ;
+                        // imprime
+                        document.getElementById("listaCompra").innerHTML += "<li>" + cosa + "</li>" ; 
+                    }
+                    cesta--;
+                    // if(i==1){break;}
+                }
+            }
+            else{
+                for ( cosa in lista) {
+                    // si hay que imprimirlo
+                    if (lista[cosa]){ 
+                        // imprime
+                        donde.innerHTML = "Solo tienes que comprar " + cosa.toLowerCase() + "."; 
+                    }
+                }
+            }
+
+
+
+
+        }
+
 
     </script>
-    
+      
     
     <!-- ESTILOS -->
     <style>
@@ -33,12 +103,12 @@
 </head>
 <body>
     <div>
-        <input type="checkbox" value="leche" >Leche<br/>
-        <input type="checkbox" value="patatas" >Patatas<br/>
-        <input type="checkbox" value="pan" >Pan<br/>
-        <input type="checkbox" value="naranjas" >Naranjas<br/>
+        <input type="checkbox" value="Leche"  autocomplete="off">Leche<br/>
+        <input type="checkbox" value="Patatas"  autocomplete="off">Patatas<br/>
+        <input type="checkbox" value="Pan" autocomplete="off" >Pan<br/>
+        <input type="checkbox" value="Naranjas" autocomplete="off" >Naranjas<br/>
     </div>  
 
-    <div id="compra"></div>
+    <div id="listaDeLaCompra"></div>
 </body>
 </html>

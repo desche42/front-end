@@ -10,18 +10,27 @@
     <!-- JAVA SCRIPT -->
     <script>
         window.onload = function(){
+            // no se muestra la foto al cargar la página
             mostrarFoto(false);
+
+            // se elige la función que maneja el evento check como cambioCheck
+            // cuando se marca o desmarca, se ejecuta la función cambioCheck, pasándole el evento
             document.querySelector("input[type=checkbox]").onchange = cambioCheck ; 
             
+            // se elgie cambioRadio como función manejadora del evento "cambiar un radio" para todos los radios
             radios = document.querySelectorAll("input[name=cosa]") ; 
             radios.forEach( function(radio){
                 radio.onchange = cambioRadio
             })
-            cambioRadio();
+
+            // se comprueba qué radio está marcado al inicio de la página. 
+            //no vale para nada "al menos en chrome"; autocomplete off en mostrar imagen e imagen del gato por defecto
+            // cambioRadio();
 
         }
 
-        function mostrarFoto(boolean){
+        // coge un booleano y si true, muestra foto, si false no. cambia style del elemento <img> "foto"
+        function mostrarFoto(boolean){ 
             if(boolean){
                 document.getElementById("foto").style.display = "inline" ;
             }
@@ -39,9 +48,9 @@
             } );
         }
             
-
+        // función manejadora del evento marcar/desmarcar la caja de "mostrar foto"
         function cambioCheck(event){
-            // console.log(event);
+            //pasa a mostrar foto if true o no if false
             mostrarFoto( event.currentTarget.checked ) ;
         }
 
