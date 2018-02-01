@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Date</title>
+    <!-- script -->
+    <script>
+        // días de la semana
+        var m = [ "Domingo", "Lunes" , "Martes" , "Miércoles" , "Jueves" , "Viernes" , "Sábado" ,];
+
+        //ejecutar la función calcular días al apretar el botón "button"
+        window.onload = function tiempo(){
+            document.querySelector("button").onclick = calcularDias;
+        }
+
+        // función que calcula los días
+        function calcularDias(){
+            // obten la fecha de hoy
+            var hoy = new Date() ; 
+            
+            // lee input tipo fecha de nacimiento
+                var inpFecha = document.getElementById("tipoFecha").value;
+    
+                // coge el año metido por el usuario y lo pasa a numero
+                var año = parseInt(inpFecha.substr(0,4)); 
+                // coge el mes metido por el usuario y lo pasa a numero, pero restándole 1 por la resta de después con objeto
+                // tipo date, que cuenta los meses de 0 a 11
+                var mes = parseInt(inpFecha.substr(5,2))-1 ;
+                // coge el día metido por el usuario y lo pasa a numero
+                var dia = parseInt(inpFecha.substr(8,2)); 
+                // pasa la fecha indicada por el usuario a tipo object con el que poder hacer los cálculos
+                var fecha = new Date(año,mes,dia);
+
+
+            // calcula el número de días de vida
+                var numDias = Math.floor ( ( hoy.getTime() - fecha.getTime())/(1000*60*60*24) ) ;
+
+            // calcula el 10000 día-niversario a partir de la fecha indicada
+                var cumpledia = new Date() ;
+                cumpledia.setTime( fecha.getTime() + 10000*24*60*60*1000 ) ;
+
+            // imprime el resultado en el div
+                document.querySelector("div").innerHTML = 
+                    "Naciste un: " + m[fecha.getDay()] + ".<br/>" 
+                    + "Tienes " + numDias + " días de vida.<br/>" 
+                    + "Cumples 10000 días el: " + m[cumpledia.getDay()] + " " + cumpledia.toLocaleDateString() ;
+        }
+    </script>
+</head>
+<body>
+    <p>Fecha de tu nacimiento: <input type="date" id="tipoFecha"></p>
+
+    <button id="button">Calcular</button>
+
+    <!-- Aquí se imprimen los resultados  -->
+    <div></div>
+</body>
+</html>
