@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 50</title>
+
+    <script>
+        // cuando se cargue la página necesito asignar la función manejadora del click del botón
+        window.onload = function(){ 
+            document.getElementById("btnHolaMundo").addEventListener("click",mostrarReloj) ; 
+            document.querySelector("#reloj").style.display = "none";
+        }
+
+        //variable que almacena si se muestra u oculta. se inicia como false
+        var mostrar = false  ;
+
+        // función que manda la alerta. se le pasa el objeto event, es buena práctica así sabes que es
+        // un manejador de eventos, aunque no se vaya a usar dentro de la función
+        function mostrarReloj(event){
+            // obten dónde escribir y la fecha actual
+            var reloj = document.querySelector("#reloj");
+            var fecha = new Date() ;
+
+            // escribe dentro del div la hora 
+            reloj.innerHTML = fecha.toLocaleTimeString() ;
+
+            // mostrar el reloj
+
+                    // // se debe cambiar la propiedad mostrar:
+                    // if ( !mostrar ){
+                    //     reloj.style.display = "block" ;
+                    //     document.getElementById("btnHolaMundo").innerHTML = "Ocultar hora" ;
+                    //     actualizarHora();
+                    // }
+                    // else{
+                    //     reloj.style.display = "none" ;
+                    //     document.getElementById("btnHolaMundo").innerHTML = "Mostrar hora" ;
+                    // }
+                // el código de arriba equivale al de abajo            
+                reloj.style.display = !mostrar ? "block" : "none" ;
+                document.getElementById("btnHolaMundo").innerHTML = !mostrar ? "Ocultar hora" :  "Mostrar hora" ;
+           
+           // actualiza la hora
+           actualizarHora();
+
+           // cambia el efecto del botón
+           mostrar = !mostrar ;
+        }
+
+        // función que actualiza la hora
+        function actualizarHora(){
+            var hora = new Date() ;
+            document.querySelector("#reloj").innerHTML =  hora.toLocaleTimeString() ;
+            setTimeout(actualizarHora,300);
+        }
+
+    </script>
+    <!-- ESTILO DEL RELOJ -->
+    <style>
+        div#reloj{
+            font-size: 3em ;
+            font-weight: bold ;
+            text-align: center ;
+        }
+    </style>
+
+</head>
+<body>
+    <button id="btnHolaMundo">Mostrar hora</button>
+
+    <!-- añadir div con id "reloj" -->
+    <div id="reloj"> holaaaa </div>
+</body>
+</html>
