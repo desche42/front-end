@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 47</title>
+    <!-- PONER UN BOTÓN: al hacer click salga un hola mundo, pero asignado desde JS -->
+
+    <script>
+        // cuando se cargue la página necesito asignar la función manejadora del click del botón
+        window.onload = function(){
+            // document.getElementById("holaMundo").onclick = mandarAlerta ; 
+            document.getElementById("btnHolaMundo").addEventListener("click") = mandarAlerta ; 
+        };
+
+        // función que manda la alerta. se le pasa el objeto event, es buena práctica así sabes que es
+        // un manejador de eventos, aunque no se vaya a usar dentro de la función
+        function mandarAlerta(event){
+            alert("Hola desde JavaScript");
+        }
+
+    </script>
+
+</head>
+<body>
+    <button id="btnHolaMundo">Hola mundo</button>
+</body>
+</html>

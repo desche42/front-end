@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 47</title>
+    <!-- PONER UN BOTÓN: al hacer click salga un hola mundo escrito en el div, pero asignado desde JS -->
+
+    <script>
+        // cuando se cargue la página necesito asignar la función manejadora del click del botón
+        window.onload = function(){
+            // document.getElementById("btnHolaMundo").onclick = cambiarTexto ; 
+            
+            // se puede poner addEventListener en lugar de onclick, esta función toma tres parámetros:
+            // el evento que tiene que escuchar, la función a ejecutar y el tercero (opcional) si queremos captura o burbuja 
+            document.getElementById("btnHolaMundo").addEventListener("click",cambiarTexto) ; 
+        };
+
+        // función que manda la alerta. se le pasa el objeto event, es buena práctica así sabes que es
+        // un manejador de eventos, aunque no se vaya a usar dentro de la función
+        function cambiarTexto(event){
+            var elDiv = document.querySelector("#mensaje");
+
+            // escribe dentro del div
+            elDiv.innerHTML = "Hola mundo" ;
+
+            // cambio el estilo del div desde JS. Nomenclatura camello: se quita el guión y se pone la inicial en mayús
+            elDiv.style.padding = "25px" ;
+            elDiv.style.border = "1px solid black" ;
+            elDiv.style.backgroundColor =( "yellow") ;
+            elDiv.style.width = "50%" ;
+            elDiv.style.textAlign = "center" ;
+            elDiv.style.margin = "10px auto" ; //10 px arriba y abajo, auto dcha e izq
+
+        }
+
+    </script>
+
+    <style>
+        /* estilo inicial del div*/
+        div#mensaje{
+            width : "100%" ;
+            background-color: firebrick ;
+        }
+    </style>
+
+</head>
+<body>
+    <button id="btnHolaMundo">Hola mundo</button>
+
+    <!-- añadir div con id "mensaje" -->
+    <div id="mensaje"> &nbsp; </div>
+</body>
+</html>
