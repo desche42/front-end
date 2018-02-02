@@ -10,6 +10,12 @@
     <style>
         div#contenedor{ padding: 0px !important ;  }
         h1{ text-align: center  }
+        div.capita{
+            height: 10px ;
+            width: 10px ;
+            position: absolute ;
+            background-color: yellow ;
+}
     </style>
 
 
@@ -22,7 +28,10 @@
             var codigo = event.which || event.keyCode ;
 
             // referencia a lo que se va a mover
-            var movil = document.querySelector("div.capita");
+            var movil = document.getElementById("posicionActual");
+            // pon encima la posición actual
+            movil.style.zIndex = "1" ;
+
 
 
             if(codigo == 37 || codigo == 97){ //izquierda
@@ -44,14 +53,32 @@
             if ( y > 448 ){y = 448}
             else if (y < 0){y=0}
 
+            // antes de mover, dejar un rastro
+            rastro() ;
 
             // mueve el cuadradito
             movil.style.left = x + "px";
             movil.style.top = y + "px";
-
+            
+            // guarda el rastro seguido
             // console.log(x,y)
- 
         }
+
+        // función que guarda la posición
+        function rastro(){
+            // clona la capa y ponla de otro color
+            var cloned = document.getElementById("posicionActual").cloneNode(false);
+            // pon encima la capa pos actual
+            cloned.style.zIndex = "0";
+            cloned.style.backgroundColor = "blue" ;
+
+            // ponla en el div contenedor
+            document.getElementById("contenedor").appendChild(cloned);
+
+        }
+
+
+
     </script>
 
 </head>
@@ -59,7 +86,7 @@
 
     <h1>HACER JUEGO DE LA SERPIENTE</h1>
         <div id="contenedor">
-            <div class="capita"></div>
+            <div class="capita" id="posicionActual"></div>
         </div>
 </body>
 </html>
