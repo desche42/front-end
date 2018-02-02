@@ -23,7 +23,7 @@
     <script>
         var y = 0;
         var x = 0; 
-        function teclaPulsada(event){
+        function ultimaTeclaPulsada(event){
             // Lectura crossbrowser del código de la tecla. depende del navegador
             var codigo = event.which || event.keyCode ;
 
@@ -31,7 +31,6 @@
             var movil = document.getElementById("posicionActual");
             // pon encima la posición actual
             movil.style.zIndex = "1" ;
-
 
 
             if(codigo == 37 || codigo == 97){ //izquierda
@@ -64,7 +63,9 @@
             // console.log(x,y)
         }
 
-        // función que guarda la posición
+
+
+        // función que deja un rastro
         function rastro(){
             // clona la capa y ponla de otro color
             var cloned = document.getElementById("posicionActual").cloneNode(false);
@@ -82,7 +83,7 @@
     </script>
 
 </head>
-<body onkeypress="teclaPulsada(event);">
+<body onkeypress="ultimaTeclaPulsada(event);">
 
     <h1>HACER JUEGO DE LA SERPIENTE</h1>
         <div id="contenedor">
