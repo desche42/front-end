@@ -16,23 +16,27 @@
 
         }
         
-        function meteFila(){
+        function meteFila(event){
             // esta función crea una fila nueva en la tabla
             // meter en la tabla el nombre metido en la caja de texto
-            meter =  document.querySelector("#txtFila").value ;
-            bodyTabla = document.getElementById("bodyTabla") ;
-
+            var bodyTabla = document.getElementById("bodyTabla") ;
+            var meter =  document.querySelector("#txtFila").value ;
+            // crea la fila con la misma id
             bodyTabla.innerHTML += "<tr id='" + meter + "'>" + meter + "</tr>" ;
-
+            // mete la opción en el select
+            lista = document.getElementById("lstFilas") ;
+            lista.innerHTML += "<option value='"+ meter +  "' >" + meter + "</option>"
         }
-
 
         function meteCelda(event){
             // meter en la tabla el nombre metido en la caja de texto
-            meter =  document.querySelector("#txtFila").value ;
-            fila = document.getElementById("fila") ;
-
-            fila.innerHTML += "<td>" + meter + "</td>" ;
+            var meter =  document.querySelector("#txtCelda").value ;
+            // opción seleccionada
+            var listaOpc = document.getElementById("lstFilas");
+            var filaSelecc = listaOpc.options[listaOpc.selectedIndex].value;
+                console.log("la finla seleccionada es", filaSelecc, typeof(filaSelecc));
+            // inserta dentro de la fila
+             document.getElementById(filaSelecc).innerHTML += "<td>" + meter + "</td>" ;
         }
 
 
@@ -40,7 +44,7 @@
     
     </script>
 </head>
-<body id="bodyTabla">
+<body>
     <!-- insertar fila -->
     <p>
         <input type="text" id="txtFila" />
@@ -48,14 +52,15 @@
     </p>
     <!-- insertar celda -->
     <p>
-        <input type="text" id="" >
-        <button id="btnInsertarCelda">Insertar celda</button>
+        <input type="text" id="txtCelda" >
+        En la fila:
         <select name="" id="lstFilas"></select>
+        <button id="btnInsertarCelda">Insertar celda</button>
     </p>
-
+    <!-- tabla -->
 
     <table id="tablaDatos">
-        <tbody>
+        <tbody  id="bodyTabla">
             <tr id="fila"></tr>
         </tbody>
     </table>

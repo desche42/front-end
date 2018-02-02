@@ -20,7 +20,18 @@
             meter =  document.querySelector("#txtNombre").value ;
             fila = document.getElementById("fila") ;
 
-            fila.innerHTML += "<td>" + meter + "</td>" ;
+            // ---------- INSERCIÓN CON HTML ----------
+                // fila.innerHTML += "<td>" + meter + "</td>" ;
+
+            //  ---------- INSERCIÓN CON EL DOM ----------
+                // crear la celda
+                var td = document.createElement("td") ;
+                // insertar el texto
+                td.innerHTML = meter ;
+                // insertar la celda en la fila
+                fila.appendChild(td) ;
+
+
         }
     
     
