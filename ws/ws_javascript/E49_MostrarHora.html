@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 47</title>
+    <!-- PONER UN BOTÓN: al hacer click salga un hola mundo escrito en el div, pero asignado desde JS -->
+
+    <script>
+        // cuando se cargue la página necesito asignar la función manejadora del click del botón
+        window.onload = function(){ 
+            document.getElementById("btnHolaMundo").addEventListener("click",mostrarHora) ; 
+        }
+
+        // función que manda la alerta. se le pasa el objeto event, es buena práctica así sabes que es
+        // un manejador de eventos, aunque no se vaya a usar dentro de la función
+        function mostrarHora(event){
+            // obten dónde escribir y la fecha actual
+            var elDiv = document.querySelector("#mensaje");
+            var fecha = new Date() ;
+
+            // escribe dentro del div la hora y actualiza cada 500ms
+            elDiv.innerHTML = fecha.toLocaleTimeString() ;
+            setTimeout(mostrarHora,1000);
+
+            // cambio el estilo del div desde JS. Nomenclatura camello: se quita el guión y se pone la inicial en mayús
+            elDiv.style.padding = "25px" ;
+            elDiv.style.border = "1px solid black" ;
+            elDiv.style.backgroundColor =( "yellow") ;
+            elDiv.style.width = "50%" ;
+            elDiv.style.textAlign = "center" ;
+            elDiv.style.margin = "10px auto" ; //10 px arriba y abajo, auto dcha e izq
+            elDiv.style.fontSize = "6em"
+            // COLOR PARA EL TEXTO
+                var r = 256*Math.random();
+                var g = 256*Math.random();
+                var b = 256*Math.random();
+                elDiv.style.color = "rgb(" + r + "," + g + "," + b + ")";
+
+        }
+
+    </script>
+
+
+</head>
+<body>
+    <button id="btnHolaMundo">Mostrar hora</button>
+
+    <!-- añadir div con id "mensaje" -->
+    <div id="mensaje"></div>
+</body>
+</html>
