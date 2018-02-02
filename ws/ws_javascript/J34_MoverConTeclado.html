@@ -21,11 +21,25 @@
 
     <!-- Script, función que detecta la tecla -->
     <script>
+
+        window.onload = function(){setTimeout(mover,1000)} ;
+
         var y = 0;
         var x = 0; 
+
+        var ultimaTecla = 0 ;
+
         function ultimaTeclaPulsada(event){
             // Lectura crossbrowser del código de la tecla. depende del navegador
-            var codigo = event.which || event.keyCode ;
+            ultimaTecla = event.which || event.keyCode ;
+            // le paso a la función mover la última tecla
+            // console.log("ultima letra pulsada", ultimaTecla)
+        }
+
+
+        function mover(){
+            // // Lectura crossbrowser del código de la tecla. depende del navegador
+            // var codigo = event.which || event.keyCode ;
 
             // referencia a lo que se va a mover
             var movil = document.getElementById("posicionActual");
@@ -33,23 +47,28 @@
             movil.style.zIndex = "1" ;
 
 
-            if(codigo == 37 || codigo == 97){ //izquierda
+            if(ultimaTecla == 37 || ultimaTecla == 97){ //izquierda
                 x -= 10;
+                // console.log("mover izq");
             }
-            else if(codigo == 40 || codigo == 115){ //abajo
+            else if(ultimaTecla == 40 || ultimaTecla == 115){ //abajo
                 y += 10;
+                // console.log("mover abaj");
             }
-            else if(codigo == 39 || codigo == 100){ //derecha
+            else if(ultimaTecla == 39 || ultimaTecla == 100){ //derecha
                 x += 10;
+                // console.log("mover dcha");
             }
-            else if(codigo == 38 || codigo == 119){ //arriba
+            else if(ultimaTecla == 38 || ultimaTecla == 119){ //arriba
                 y -= 10;
+                // console.log("mover arrib");
             }
+
             // el cuadradito no se sale del contenedor de     height:500px; width:600px; 
-            if ( x > 548 ){x = 548}
+            if ( x > 588 ){x = 588}
             else if (x < 0){x=0}
 
-            if ( y > 448 ){y = 448}
+            if ( y > 488 ){y = 488}
             else if (y < 0){y=0}
 
             // antes de mover, dejar un rastro
@@ -61,6 +80,7 @@
             
             // guarda el rastro seguido
             // console.log(x,y)
+            setTimeout(mover, 10)
         }
 
 
