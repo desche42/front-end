@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Insertar celda en tabla</title>
+    <!-- link para los estilos -->
+    <link rel="stylesheet" href="css/estilos.css">
+
+    <script>
+        // hacer función mostrarAlert como la manejadora del evento 
+        window.onload = function(){
+            document.querySelector("#btnInsertarCelda").addEventListener("click",meteCelda) ; 
+            document.querySelector("#btnInsertarFila").addEventListener("click",meteFila) ; 
+
+        }
+        
+        function meteFila(){
+            // esta función crea una fila nueva en la tabla
+            // meter en la tabla el nombre metido en la caja de texto
+            meter =  document.querySelector("#txtFila").value ;
+            bodyTabla = document.getElementById("bodyTabla") ;
+
+            bodyTabla.innerHTML += "<tr id='" + meter + "'>" + meter + "</tr>" ;
+
+        }
+
+
+        function meteCelda(event){
+            // meter en la tabla el nombre metido en la caja de texto
+            meter =  document.querySelector("#txtFila").value ;
+            fila = document.getElementById("fila") ;
+
+            fila.innerHTML += "<td>" + meter + "</td>" ;
+        }
+
+
+    
+    
+    </script>
+</head>
+<body id="bodyTabla">
+    <!-- insertar fila -->
+    <p>
+        <input type="text" id="txtFila" />
+        <button id="btnInsertarFila">Insertar fila</button>
+    </p>
+    <!-- insertar celda -->
+    <p>
+        <input type="text" id="" >
+        <button id="btnInsertarCelda">Insertar celda</button>
+        <select name="" id="lstFilas"></select>
+    </p>
+
+
+    <table id="tablaDatos">
+        <tbody>
+            <tr id="fila"></tr>
+        </tbody>
+    </table>
+</body>
+</html>
