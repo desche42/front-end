@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>INTRO A JSON</title>
+    <!-- scripts -->
+    <script>
+        // matriz JSON de objetos JSON
+        var clientes = [ 
+                    {nombre:"Daniel",saldo:10} , 
+                    {nombre:"Fran",saldo:20} , 
+                    {nombre:"Eusebio",saldo:30} , 
+                    {nombre:"Mariano",saldo:40} 
+                ]; 
+
+        var suma = 0 ;
+        clientes.forEach( function(persona){
+            suma += persona.saldo ;
+            console.log("Nombre de la persona:", persona.nombre);
+            console.log(" Saldo:" , persona.saldo ) ;
+        }) ;
+
+        console.log("Saldo medio:" , suma/clientes.length) ;
+
+
+        // OBJETO JSON  que tiene en sus atributos otros objetos y matrices
+
+        var persona = {
+            nombre:"Alejandro", 
+            apellidos: "Sánchez",
+            direccion: { calle:"Goya", numero:"22" } ,
+            hijos: ["Martín" , "Alfonso"]
+        } ;
+        console.log("Apellidos:" , persona.apellidos);
+        console.log("Dirección:" , persona.direccion.calle , persona.direccion.numero);
+        console.log("Hijo mayor:", persona.hijos[0]);
+        console.log("Hijo menor:", persona.hijos[1]);
+
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

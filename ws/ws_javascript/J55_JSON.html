@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>INTRO A JSON</title>
+    <!-- scripts -->
+    <script>
+        // matriz JSON
+        var m = [5,3,8,7,6] ; 
+        var suma = 0 ;
+        m.forEach(function(num){
+            suma += num ;
+        }) ; 
+        console.log("Suma:", suma, "elementos", m.length) ;
+        console.log("Media", suma/m.length) ;
+
+        // OBJETO JSON
+
+        var persona = {dni:232, nombre:"Alejandro", apellidos: "Sánchez"} ;
+        console.log("DNI:" , persona.dni);
+        console.log("Apellidos:" , persona.apellidos);
+        console.log("Nombre:" , persona.nombre);
+        // pedimos una propiedad que no hemos definido
+        console.log("Saldo:", persona.saldo) ; 
+        console.log ("Persona es de tipo",typeof persona) ;
+        // la clase del objeto creado con JSON es distinta a otros
+        console.log("Clase de persona:", persona.constructor.name) ;
+        var fecha = new Date();
+        console.log("Tipo de fecha:" , typeof fecha);
+        console.log( "Clase de fecha" , fecha.constructor.name);
+
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>
