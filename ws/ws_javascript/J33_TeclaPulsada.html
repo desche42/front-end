@@ -11,6 +11,7 @@
         function teclaPulsada(event){
             // Lectura crossbrowser del código de la tecla. depende del navegador
             var codigo = event.which || event.keyCode ;
+            console.log("tecla pulsada:",codigo);
             // qué caracter le corresponde
             var carac = String.fromCharCode(codigo) ; 
             // escribe el resultado
