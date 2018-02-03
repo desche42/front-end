@@ -1,10 +1,21 @@
 *{box-sizing:border-box; }
-div#contenedor{background-color:bisque;padding:15px; 
-    border:1px solid black;
-    height:500px; width:600px; margin: 10px auto;}
-div.capa{border: 1px solid black; padding: 20px;margin: 10px auto; width:150px;
-    height:150px;background-color:yellow;text-align:center;padding-top:65px;
-    -moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;cursor:default; }
 
+h1{ text-align: center  }
+
+div#contenedor{
+    background-color:bisque;
+    padding:15px; 
+    border:1px solid black;
+    height:500px; width:600px; 
+    margin: 10px auto;
+    position: relative;
+}
+
+div.capita{
+    height: 10px ;
+    width: 10px ;
+    position: absolute ;
+    background-color: yellow ;
+}
 
     

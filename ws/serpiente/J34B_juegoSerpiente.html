@@ -4,39 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="estilos.css">
     <title>Mover con teclado</title>
-    <!-- ESTILO -->
-    <style>
-        div#contenedor{ padding: 0px !important ;  }
-        h1{ text-align: center  }
-        div.capita{
-            height: 10px ;
-            width: 10px ;
-            position: absolute ;
-            background-color: yellow ;
-}
-    </style>
 
 
-    <!-- Script, función que detecta la tecla -->
-    <script>
+<script>
+    
+    window.onload = function(){mover} ;
+    
+    var y = 0;
+    var x = 0; 
+    
+</script>
+<script src="detectarUltimaTecla.js"></script>
 
-        window.onload = function(){setTimeout(mover,1000)} ;
+<script>
 
-        var y = 0;
-        var x = 0; 
-
-        var ultimaTecla = 0 ;
-
-        function ultimaTeclaPulsada(event){
-            // Lectura crossbrowser del código de la tecla. depende del navegador
-            // en google no detecta flechas, probar
-            // https://es.stackoverflow.com/questions/50043/como-obtener-el-c%C3%B3digo-ascii-de-la-teclas-presionada-en-min%C3%BAsculas-o-may%C3%BAsculas
-            ultimaTecla = event.which || event.keyCode ;
-            // le paso a la función mover la última tecla
-            // console.log("ultima letra pulsada", ultimaTecla)
-        }
 
 
         function mover(){
