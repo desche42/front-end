@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Serpiente</title>
+
+    <!-- Estilos  -->
+    <link rel="stylesheet" href="estilos.css">
+
+    <script>
+    // -------------- VARIABLES NECESARIAS PARA EL JUEGO ------------------- //
+
+        // se ha inciado el juego?
+        var vivo = false ; 
+
+        // dirección de movimiento ? se inicia a la derecha
+        var direccion = 39 ;
+
+        // nivel de juego: controla la velocidad de movimiento. cuanto más alto, menor es el tiempo de actualización de la función mover y por 
+        // tanto, más rápido se mueve la serpiente. la función se ejecuta cada 1000/nivel ms.
+        var nivel = 2 ;
+
+        // posición inicial de la serpiente, declarada como una matriz de 2 elementos: x e y .
+        var posicion = [0,0] ;
+
+        // referencia a la cabeza 
+        var cabeza = null ;
+        //  cuando se haya cargado la página coger la referencia
+        window.onload = function(){ cabeza = document.getElementById("posicionActual"); }
+
+
+
+
+
+
+
+
+
+    // ------------- FUNCIONES DE JUEGO -----------------------//
+
+        // detectar la última tecla pulsada ; en google no detecta flechas, probar
+        // https://es.stackoverflow.com/questions/50043/como-obtener-el-c%C3%B3digo-ascii-de-la-teclas-presionada-en-min%C3%BAsculas-o-may%C3%BAsculas
+
+        function ultimaTeclaPulsada(event){         
+            // si la serpiente  no está viva, iniciar el juego  (da igual la tecla inicial); 
+            //                  está viva, y la tecla pulsada es una de las aceptadas, admite la dirección
+            var tecla = event.which || event.keycode ;
+
+            if (!vivo) {
+                console.log("Iniciando juego...") ;
+                vivo = true ;
+                mover() ;
+            }
+            else{
+                // si una de las teclas 
+                if ( [37,49,39,38,97,115,100,119].includes(tecla) ){
+                      direccion = tecla ;  
+                }
+                else {
+                    console.log("Tecla no válida") ;
+                }
+            }
+        }
+
+
+
+        // controla el movimiento de la serpiente. necesita de la variable velocidad, así como de la posición inicial
+        function mover(){
+            switch (direccion) {
+                // mueve a la izquierda
+                case 37:
+                case 97:
+                    posicion[0] -= 5 ;
+                    console.log("Dirección: izq");
+                    break;
+                // mueve abajo
+                case 49:
+                case 115:
+                    posicion[1] += 5 ;
+                    console.log("Dirección: abaj");
+                    break;
+                // mueve derecha
+                case 39:
+                case 100: 
+                    posicion[0] += 5 ;
+                    console.log("Dirección: dcha");
+                    break;
+                // mueve arriba
+                case 38: 
+                case 119: 
+                    posicion[1] -= 5 ;
+                    console.log("Dirección: arrib");
+                    break;
+                default:
+                    break;
+            }
+
+
+
+            // mueve el cuadradito
+            cabeza.style.left = posicion[0] + "px";
+            cabeza.style.top = posicion[1] + "px";
+
+
+            // el cuadradito no puede chocar con la pared del contenedor, de lo contrario morirá.
+            // si la posición es buena, deja el rastro y sigue jugando 
+            if ( posicion[0] > 590 || posicion[0] < 0 || posicion[1] > 490 || posicion[1] < 0){
+                vivo = false ; 
+                alert("Has muerto, tu cabeza ha estallado al chocar con la pared");
+               }
+            else{
+                // antes de mover, dejar un rastro
+                rastro() ;   
+
+                // la función se ejecuta cada 100 ms ~
+                setTimeout(mover,50/nivel) ; 
+            }
+        } 
+
+
+        /// ------------------------------------------- ESTA FUNCIÓN DEJA EL RASTRO
+        function rastro(){
+            // clona la capa y ponla de otro color
+            var cloned = document.getElementById("posicionActual").cloneNode(false);
+            // pon encima la capa pos actual
+            cloned.style.zIndex = "0";
+            cloned.style.backgroundColor = "blue" ;
+
+            // ponla en el div contenedor
+            document.getElementById("contenedor").appendChild(cloned);
+        }   
+    
+    </script>
+
+    <style>
+        div#posicionActual{
+            /*  pon encima la posición actual; se queda el color amarillo como la cabeza */
+            z-index: 1 ;
+        }
+    </style>
+
+
+
+</head>
+<body onkeypress="ultimaTeclaPulsada(event);">
+
+        <h1>JUEGO DE LA SERPIENTE</h1>
+            <div id="contenedor">
+                <div class="capita" id="posicionActual"></div>
+            </div>
+
+</body>
+</html>  

@@ -4,7 +4,7 @@ h1{ text-align: center  }
 
 div#contenedor{
     background-color:bisque;
-    padding:15px; 
+    padding:1px; 
     border:1px solid black;
     height:500px; width:600px; 
     margin: 10px auto;

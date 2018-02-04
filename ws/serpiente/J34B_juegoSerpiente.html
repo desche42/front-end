@@ -10,22 +10,43 @@
 
 <script>
     
-    window.onload = function(){mover} ;
+    // window.onload = function(){
+    //         mover();
+    //   } ;
+
+    // variable que controla si se ha iniciado el juego o no; si true, se ha iniciado. la primera pulsación de tecla cambia el valor a true y por tanto,
+    // 
+    var vivo = false ; 
+
+    // posición de la cabeza
+    var posicion = {  } ; 
+
     
-    var y = 0;
-    var x = 0; 
+
+    // Lectura crossbrowser del código de la tecla. depende del navegador.
+    var ultimaTecla = 0 ; 
     
-</script>
-<script src="detectarUltimaTecla.js"></script>
+    // velocidad de movimiento. se le pasa a la función que controla el tiempo de repetición de la función mover(); cuanta más alta la velocidad, más rápido
+    // se acrtualiza la función, y por tanto menos tiempo tarda. 
+    var velocidad = 0 ;
+    
 
-<script>
+    function ultimaTeclaPulsada(event){
+        // en google no detecta flechas, probar
+        // https://es.stackoverflow.com/questions/50043/como-obtener-el-c%C3%B3digo-ascii-de-la-teclas-presionada-en-min%C3%BAsculas-o-may%C3%BAsculas
+        ultimaTecla = event.which || event.keyCode ;
+        // console.log("ultima letra pulsada", ultimaTecla)
+    }
 
 
+    function mover(){
+        // do mover while iniciado
+        do{
 
-        function mover(){
             // referencia a lo que se va a mover
             var movil = document.getElementById("posicionActual");
-            // pon encima la posición actual
+
+            // pon encima la posición actual; se queda el color amarillo como la cabeza
             movil.style.zIndex = "1" ;
 
 
@@ -62,8 +83,9 @@
             
             // guarda el rastro seguido
             // console.log(x,y)
-            setTimeout(mover, 10)
         }
+        while (vivo) ;
+    }
 
 
 
