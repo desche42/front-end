@@ -9,10 +9,18 @@
         /* text-shadow: desplHoriz desplVert difuminado colorSombra */
         /* #### Asginar a los "h1" una sombra de color gris de 4px de difuminado desplazada
         10px hacia la derecha y 10px hacia arriba #### */
-        h1{text-align:center;font-size:40px;
-          text-shadow:10px -10px 4px gray;}
+        h1{
+            text-align:center;font-size:40px;
+            text-shadow:10px -10px 4px gray;
+        }
         h2{text-align:center;}
         p::first-letter{font-size:3em;}
+        /* texto a dos columnas dentro del div */
+        div{
+            column-count: 2;
+            column-rule: 2px dashed blue ;
+            column-gap: 3em ;
+        }
     </style>
 </head>
 

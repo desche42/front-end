@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Título</title>
+    <!--    ESTILO   -->
+    <style>
+        *{box-sizing: border-box}
+    /****************** estilo del div título *************/
+        div#titulo{
+            box-shadow: 10px -10px yellowgreen ;
+            border: 2px solid red;
+            border-radius: 10px;
+            text-align: center ;
+            width: 50% ;
+            margin: 20px auto ;
+        }
+
+    /*******************************************************/
+
+    /**************  estilo de la tabla *******************/
+        /* estilo general */ 
+            table{
+                /* border: 1px solid black; */
+                margin: auto ; /* para que esté centrada en el div#tabla */
+                border-collapse: collapse ; /* juntar las celdas */
+                padding: 10px ; /* separar celdas de su contenido */
+                width: 45% ;  /* ancho de la tabla */
+            }
+            
+            /* bordes laterales sup e inf continuos, discontínuos para las celdas*/
+            table th, table td{
+                border-top: 1px solid black;
+                border-bottom: 1px solid black;
+                border-right: 1px dashed black ;
+                border-left: 1px dashed black ;
+                padding: 15px;
+            }
+
+        /* estilo de la cabecera */
+            /* celdas de cabecera navy y texto */
+            thead th{
+                background-color: navy;
+                color: white;
+            }
+
+        /* estilo de los datos */
+            /* filas pares de color yellow e impares beige */
+            table tr:nth-child(2n){
+                background-color: yellow;
+            }
+            table tr:nth-child(2n+1){
+                background-color: beige ;
+            }
+            /* pseudo elementos */
+            tbody tr:hover{
+                background-color: orange ;
+            }
+
+    /*************************************************************************************/
+
+    </style>
+
+</head>
+<body>
+    <!-- TÍTULO -->
+    <div id="titulo">
+        <h1>Alejandro Sánchez Pineda</h1>
+    </div>
+
+    
+    <!-- TABLA  -->
+    <div id="tabla">
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">LIBROS</th>
+                </tr>
+                <tr>
+                    <th>Autor</th><th>Libro</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ken Follet</td>
+                    <td>Los pilares de la Tierra</td>
+                </tr>
+                <tr>
+                    <td>Bill Bryson</td>
+                    <td>Una breve historia de casi todo</td>
+                </tr>
+                <tr>
+                    <td>Isaac Asimov</td>
+                    <td>La fundación</td>
+                </tr>
+                <tr>
+                    <td>Stephen Hawking</td>
+                    <td>El universo en una cáscara de nuez</td>
+                </tr>
+                <tr>
+                    <td>Douglas R. Hofstadter</td>
+                    <td>Gödel, Escher, Bach: un Eterno y Grácil Bucle</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
