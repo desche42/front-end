@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Objetos DOM y jQuery</title>
+    <!-- ------------------- ESTILOS ------------- -->
+    <style>
+        *{box-sizing: border-box;} /* si ponemos ; no lo coge */
+        table{
+            border-collapse: collapse ; 
+        }
+        td{
+            height: 50px ;
+            width: 50px ;
+            border: 1px solid black ;
+        }
+
+
+    </style>
+
+    <script src="js/jquery.js"></script> <!-- no meter nada nunca aquí -->
+    <script>
+        window.onload = function(){
+            // recorremos todos los td de las filas impares y le ejecutamos una función a las celdas pares. 
+            //El método each pasa dos argumentos, el nº de elemento y una referencia a dicho elemento
+            $("tr:odd>td:even, tr:even>td:odd").each( function(i,elemento){
+                // como estamos haciendo una modificación de un elemento, no hace falta pasarle el objeto directamente
+                // podemos usar this == "elemento en un each"
+                $(this).css("background-color","black");
+            });
+            // guardo los elementos pares,pares y les cambio el color de fondo, y en lugar de usar un método
+            // each, uso un for PERO ENTONCES hay que obtener el objeto DOM asociado con  un get
+            var pares = $("tr:odd>td:odd , tr:even>td:even");
+            for (var i = 0; i < pares.length; i++) {
+                var elemento = pares.get(i);
+                $(elemento).css("background-color","yellow");
+                // $(pares[i]).css("background-color","yellow");   // qué diferencia hay en usar esta linea o la de arriba?             
+                // console.log("elemento jQuery " + pares[i]) ;
+                // console.log("elemento DOM " + elemento) ;
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <table>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
