@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Evento Onload</title>
+    <script src="js/jquery.js"></script> <!-- no meter nada nunca aquí -->
+
+    <style>
+        img{width: 30%}
+    </style>
+    <!-- scripts aquí -->
+    <script>
+        var t =  new Date().getTime() ;
+
+        window.onload = function(){
+            console.log("onload", new Date().getTime() - t, "ms" );
+        }
+
+        // con jQuery hacemos lo mismo. se carga al completarse el árbol DOM del documento, más rápido que el window onload
+        $(document).ready(function(){
+            console.log("ready", new Date().getTime() - t, "ms" );
+        }
+        );
+
+
+    </script>
+</head>
+<body>
+    <!-- carga la imágen desde link para que tarde más en cargarla y ver en la consola lo que tarda -->
+    <img src="https://static.pexels.com/photos/356977/pexels-photo-356977.jpeg">
+    
+    <script>
+        console.log("fin html",t,"ms");
+    </script>
+
+</body>
+</html>

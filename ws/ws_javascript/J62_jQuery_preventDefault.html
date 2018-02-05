@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Evento Onload</title>
+    <script src="js/jquery.js"></script> <!-- no meter nada nunca aquí -->
+
+    <style>
+        *{box-sizing: border-box ;}
+        div{
+            margin: auto;
+            text-align: center;
+        }
+        iframe{
+            width: 800px ;
+            height: 800px ;
+        }
+    </style>
+    <!-- scripts aquí -->
+    <script>
+        $(document).ready(function(event){
+            $("a").on("click", noNavegar );
+        });
+
+        function noNavegar(event){
+            // primero evitamos que se abra el hipervínculo en una nueva pestaña, para ello evitamos el comportamiento habtual con esta línea   
+            event.preventDefault();
+            // cogemos la url del hipervínculo 
+            var url = $("a").attr("href");
+            // y se lo metemos al iframe
+            $("iframe").attr("src", url ) ;
+        }
+
+    </script>
+</head>
+<body>
+    <div>
+        <iframe src="" ></iframe> <br>
+        <a href="J60_jQuery_Filter.html" target="_blank">Mostrar Google</a>
+    </div>
+</body>
+</html>
