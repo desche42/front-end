@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Eventos On Propagación</title>
+
+    <script src="js/jquery.js"></script> <!-- no meter nada nunca aquí -->
+
+
+    <!-- ESTILOS -->
+    <style>
+    /***********  DIVs  **********/
+        div{
+            border: 1px solid black ;
+            padding: 30px ; 
+            background-color: yellow ;
+        }
+
+        body>div>div{
+            background-color: aquamarine ;
+        }
+        body>div>div>div{
+            background-color: cadetblue ; 
+        }
+
+    </style>
+
+    <!-- ---------------------------- SCRIPTS ---------------------------------- -->
+
+    <script>
+
+        function inicializar(){
+            $("#capa1").on("click", burbuja) ;
+            $("#capa2").on("click", burbuja) ;
+            $("#capa3").on("click", burbuja) ;
+        }
+
+
+        function burbuja(event){  // de dentro a fuera
+            var quienTieneElManejador = event.currentTarget.id ; 
+            var aQuienSeLeHizoClick = event.target.id ;
+            console.log("Burbuja-salida ", quienTieneElManejador , aQuienSeLeHizoClick);
+            if(event.currentTarget.id=="capa2"){
+                // no dejamos que el evento siga propagándose
+                event.stopPropagation() ;
+                console.log("Propagación terminada");
+            }
+        }
+       
+        $(document).ready(inicializar);
+
+
+    </script>
+
+</head>
+<body>
+
+
+        <div id="capa1"> 
+            <div id="capa2">
+                <div id="capa3"></div>
+            </div>
+        </div>
+</body>
+</html>

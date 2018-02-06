@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Estilos con JSON</title>
+    <!-- SCRIPTS CON JQuery -->
+    <!-- ------------ API jQuery: https://api.jquery.com/ ---------------- -->
+    <script src="js/jquery.js"></script> <!-- no meter nada nunca aquí -->
+    
+    <script>
+        // cuando se cargue la página
+        window.onload = function(parametros){
+            //coger todos los divs que hay inmediatamente dentro del div#contenedor. Se puede poner de varias formas:
+            // con nomenclatura CSS
+                $("div#contenedor>div").css("background-color","yellow");
+            // como objeto JSON: atributo: valor , atributo : valor ...
+                $("div#contenedor>div").css({
+                    border: "1px solid black",
+                    padding: "20px" , 
+                    marginTop: "20px" ,
+                });
+            // todos los pares que tengan la clase par tendrán fondo naranja
+            $("div#contenedor>div.par").css("background-color","orange") ;
+            // y los div inmediatamente dentro de #contenedor que contengan en su innerHTML
+            // la letra 'r' tendrán un borde específico
+            $("div#contenedor>div:contains('r')").css("border","4px dashed green") ;
+            // el primer div hijo de #contenedor tendrá un color de fondo lime
+            $("div#contenedor>div:first-child").css("background-color","lime") ;
+            // de todos los "div.par" que hay dentro de "div#contenedor", el primero tendrá color de fondo rosa
+            $("div#contenedor>div.par:first").css("background-color","pink") ;
+            // esto no se aplica a ninguno porque el primer hijo que hay dentro de "div#contenedor", no tiene la clase par
+            $("div#contenedor>div.par:first-child").css("background-color","black") ;
+            // tanto attr como css devuelve, después de aplicarle el método, el mismo objeto seleccionado con jQuery,
+            // por lo que podemos seguir aplicándole más métodos.
+            // Esto selecciona la pirmera imágen que haya inmediatamente dentro de todos los párrafos y le mete la imagen 
+            // gato, con un tamaño de 100px
+            $("p>img:first-child").attr("src","img/gato.png").css("height","100px");
+            // las imágenes dentro de un párrafo que contengan en su atributo src la palabra perro y le cambiamos
+            // la altura. y le ponemos un evento para que al hacer click, se aumente el tamaño mediante la función
+            // manejadora de evento aumentar()
+            $("p>img[src*=perro").height(50).on("click",aumentar);   
+
+
+           
+
+        }
+
+        function aumentar(event){
+            // aplico la función $ a un elemento del DOM nos retorna el objeto jQuery que contiene dicho elemento
+            var elemento = $(event.currentTarget);
+            // ahora la altura se multiplica por un factor 2
+            elemento.height(   2*elemento.height()   ) ;
+            // además pongo la altura que tiene en el último párrafo con
+            // el método html que devuelve un string con el código html al objeto que se le aplica el método
+            $("p:last").html(elemento.height() + "px") ;
+        }
+
+    </script>
+</head>
+<body>
+    <div id="contenedor">
+        <div>Lunes</div>
+        <div class="par">Martes</div>
+        <div>Miércoles</div>
+        <div class="par">Jueves</div>
+        <div>Viernes</div>
+    </div>
+    <!-- aunque la primera imágen sea perro,  -->
+    <p><img src="img/perro.png" ><img src="img/perro.png" alt=""></p>
+    <p><img src="img/perro.png"><img src="img/perro.png" alt=""></p>
+
+    <!-- a este párrafo se le mete un texto -->
+    <p></p>
+
+
+</body>
+</html>

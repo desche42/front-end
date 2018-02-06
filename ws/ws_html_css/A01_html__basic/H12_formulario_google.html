@@ -10,7 +10,7 @@
     <!--    los formularios los ponemos con la etiqueta form. Este hará una búsqueda en google.
             Form admite el atributo target, por lo q podemos hacer que la búsqueda se abra en una pestaña nueva.
             El método de envío puede ser get (en la URL, límite 240 caracteres) o post (oculto, sin límite). Por defecto get-->
-    <form action="https://www.google.es/search" method="get">
+    <form action="https://www.google.es/search" method="get" id="formu">
 
         <!-- caja de texto que se quiere buscar; como nombre ponemos q de query, porque google es lo que utiliza -->
         <label>Pregunta:</label> 
@@ -18,8 +18,11 @@
         <input id="same" name="q" type="text" placeholder="Escribe aquí tu búsqueda"/>
 
         <!-- también le ponemos un botón para enviar la info, así no hay que darle a intro -->
-        <button type="submit">Buscar</button>
+        <button type="submit" form="formu">Buscar</button>
     </form>
-
+    <p>Este botón funciona aunque estructuralmente esté fuera del formulario, ya que en sus atributos lleva el 
+        <code>form="id del formulario asociado"</code>
+    </p>
+    <input type="submit" form="formu" value="esto va">
 </body>
 </html>

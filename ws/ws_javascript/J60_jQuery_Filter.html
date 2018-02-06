@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Objetos DOM y jQuery</title>
+    <!-- ------------------- ESTILOS ------------- -->
+    <style>
+        *{box-sizing: border-box;} /* si ponemos ; no lo coge */
+        table{
+            border-collapse: collapse ; 
+        }
+        td{
+            height: 50px ;
+            width: 50px ;
+            border: 1px solid black ;
+        }
+
+
+    </style>
+
+    <script src="js/jquery.js"></script> <!-- no meter nada nunca aquí -->
+    <script>
+        window.onload = function(event){
+            //referencia al input
+            $("input").on("input",recorrer);
+            $("div#contenedor>div").css({
+                padding: "20px" ,
+                marginTop: "10px",
+                backgroundColor: "black" ,
+                textAlign: "center",
+            }); 
+        }
+
+        function recorrer(params){
+            // obtén los divs dentro del contenedor y ponlos de color amarillo
+            var divs = $("div#contenedor>div");
+            divs.css("background-color","yellow");
+            //leemos lo que hay en el input con la propiedad val, qaue devuelve un string
+            var k =  $("input").val() ;
+            // seleccionamos con el método filter los enésimos hijos de  su padre (1-based), mientras que eq retorna
+            // el elemento enésimo (0-based) de la consulta.
+            var seleccionados = divs.filter(":nth-child(" + k + "n)");
+            // y los ponemos de color naranja
+            seleccionados.css("background-color","orange") ;
+        }
+
+    </script>
+</head>
+<body>
+    <p><input type="number" min="1" max="5"></p>
+    <div id="contenedor">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Insertar celda en tabla</title>
+    <!-- link para los estilos -->
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/jquery.js"></script>
+    <style>
+        table#tablaDatos{
+            width: 80% !important ;
+            text-align: center ;
+        }
+    </style>
+    <script>
+        // hacer función insertar como la manejadora del evento 
+        $(document).ready(function(event){
+            $("#btnInsertar").click(insertar) ; 
+        });
+        
+        // esta función mete los input en la tabla#tablaDatos
+        function insertar(params){
+            //obtenemos el título y el autor de los imput del div.panel y la ref al tbody de la tabla
+            // var titulo = $("#txtTitulo").val();
+            // var autor = $("#txtAutor").val();
+            // var tbody = $("#tablaDatos tbody");
+
+            // creamos la fila con las celdas a insertar
+            // var tr = $("<tr></tr>");
+            // var td1 = $("<td></td>");
+            // var td2 = $("<td></td>");
+
+            // insertamos el texto en las celdas
+            // td1.text(titulo) ;
+            // td2.text(autor);
+
+            // // trasversing : ------------ opción 1 con append ------------------
+            // tbody.append(tr) ;
+            // tr.append(td1) ;
+            // tr.append(td2) ;      
+            
+            // // trasversing : ------------ opción 2 con appendto ------------------
+            // td1.appendTo(tr);
+            // td2.appendTo(tr) ;
+            // tr.appendTo(tbody);
+
+            // trasversing : ------------ opción 3 lo mezclamos todo ------------------
+            var td1 = $("<td></td>").text( $("#txtTitulo").val() ) ;
+            var td2 = $("<td></td>").text( $("#txtAutor").val() );
+            $("<tr></tr>").append(td1).append(td2).appendTo( $("#tablaDatos tbody") );
+        }
+
+
+    
+    
+    </script>
+</head>
+<body>
+   <div class="panel">
+       <label for="txtTitulo">Título</label>
+       <input type="text" id="txtTitulo"><br/>
+
+       <label for="txtAutor">Autor</label>
+       <input type="text" id="txtAutor">
+
+       <button id="btnInsertar">Insertar</button>
+    </div>
+
+
+    <table id="tablaDatos">
+        <thead>
+            <tr>
+                <th>Título</th>   <th>Autor</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+</html>
