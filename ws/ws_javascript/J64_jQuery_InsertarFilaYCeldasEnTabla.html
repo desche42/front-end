@@ -23,18 +23,18 @@
         // esta función mete los input en la tabla#tablaDatos
         function insertar(params){
             //obtenemos el título y el autor de los imput del div.panel y la ref al tbody de la tabla
-            var titulo = $("#txtTitulo").val();
-            var autor = $("#txtAutor").val();
-            var tbody = $("#tablaDatos tbody");
-            console.log(tbody);
+            // var titulo = $("#txtTitulo").val();
+            // var autor = $("#txtAutor").val();
+            // var tbody = $("#tablaDatos tbody");
+
             // creamos la fila con las celdas a insertar
-            var tr = $("<tr></tr>");
-            var td1 = $("<td></td>");
-            var td2 = $("<td></td>");
+            // var tr = $("<tr></tr>");
+            // var td1 = $("<td></td>");
+            // var td2 = $("<td></td>");
 
             // insertamos el texto en las celdas
-            td1.text(titulo) ;
-            td2.text(autor);
+            // td1.text(titulo) ;
+            // td2.text(autor);
 
             // // trasversing : ------------ opción 1 con append ------------------
             // tbody.append(tr) ;
@@ -47,7 +47,9 @@
             // tr.appendTo(tbody);
 
             // trasversing : ------------ opción 3 lo mezclamos todo ------------------
-            $("<tr></tr>").append
+            var td1 = $("<td></td>").text( $("#txtTitulo").val() ) ;
+            var td2 = $("<td></td>").text( $("#txtAutor").val() );
+            $("<tr></tr>").append(td1).append(td2).appendTo( $("#tablaDatos tbody") );
         }
 
 
