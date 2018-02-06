@@ -1,3 +1,4 @@
+
 *{box-sizing:border-box; }
 table#tablaDatos{margin: 10px auto;border-collapse:collapse; }
 table#tablaDatos td, table#tablaDatos th {padding:3px 12px;border-bottom: 1px solid black;}
