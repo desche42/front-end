@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <!-- ------------ ESTILOS ------------ -->
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Ajax</title>
+    <!-- ----------------- Scripts  ------------------ -->
+    <script src="js/jquery.js"></script>
+    <script>
+ 
+    //////////////// ESTE EJEMPLO HACE LO MISMO QUE EL EJERCICIO ANTERIOR, PERO CON jQuery  //////////////
+        $(document).ready(  function(event){
+            $("div#botones button").each( function (i,boton){
+                $(boton).click(pedirCapitulo).text("Capitulo " + (i + 1) );
+                boton.numCapitulo = i + 1 ;
+            } );
+        });
+        function pedirCapitulo(event){
+            var op = {} // objeto tipo JSON a la que le metemos las opciones para la petición
+            op.url = "datos/capitulo" + event.currentTarget.numCapitulo + ".txt"  ;
+            op.success = function (texto){ $("#texto").text(texto); } ; // esta función acepta más parámetros; ver apuntes
+            op.error = function (req){  alert(req.status + ": " + req.statusText);  } ; // esta función acepta más parámetros; ver apuntes
+            $.ajax(op);  // envia la petición al servidor
+        }
+    </script>
+</head>
+
+<body>
+    <div id="botones">
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+    </div>
+
+    <div id="texto" class="panel"></div>
+
+</body>
+
+</html>

@@ -53,8 +53,8 @@
                     // lee el texto y lo metes dentro del div#texto
                     document.getElementById("texto").innerHTML =  req.responseText ;
                 }
-                else if(req.readyState == 4 && req.status == 404)
-                    alert("Error 404: NOT FOUND") ;
+                else if(req.readyState == 4 && req.status != 200)
+                    alert(req.status + ":" + req.statusText ) ;
    
             }
         }
