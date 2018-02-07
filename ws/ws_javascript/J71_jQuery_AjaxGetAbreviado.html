@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <!-- ------------ ESTILOS ------------ -->
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Ajax</title>
+    <!-- ----------------- Scripts  ------------------ -->
+    <script src="js/jquery.js"></script>
+    <script>
+        $(document).ready(  function(event){
+            $("div#botones button").each( function (i,boton){
+                $(boton).click(pedirCapitulo).text("Capitulo " + (i + 1) );
+                boton.numCapitulo = i + 1 ;
+            } );  
+        }).ajaxError(  function(event,req,op,msgError){ alert( req.status + ": " + msgError ); }  ) ;
+
+
+        function pedirCapitulo(event){
+            var url = "datos/capitulo" + event.currentTarget.numCapitulo + ".txt"  ;
+            // usando la petición get de jQuery : $.get(string url , json obj datos , function success )
+                // $.get(url, undefined, function (texto){ $("#texto").text(texto); } )
+            // usando la petición load, aplicada sobre el objeto : .load(string url , json datos a enviar , func complete)
+                $("#texto").load(url);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="botones">
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+    </div>
+
+    <div id="texto" class="panel"></div>
+
+</body>
+
+</html>
