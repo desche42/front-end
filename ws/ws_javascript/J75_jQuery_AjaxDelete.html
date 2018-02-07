@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Ajax</title>
+
+    <!-- ------------ ESTILOS ------------ -->
+    <link rel="stylesheet" href="css/estilos.css">
+    <style>
+        h1{
+            text-align: center ;
+            text-decoration-line: underline ;
+            text-decoration-color: red;
+            color: aquamarine ;
+        }
+        table#tablaDatos tr:hover{
+            background-color: yellow !important ;
+            color: chartreuse !important ;
+        }
+        td.centrado{
+            text-align: center ;
+        }
+    </style>
+
+    <!-- ----------------- Scripts  ------------------ -->
+    <script src="js/jquery.js"></script>
+    <script>
+        $(document).ready(  function(event){
+            $.get("personas",null,insertarEnTabla); 
+            $("div#panelBuscar button").click(buscar) ;
+            $("div#panelInsertar button").click(insertar) ;
+            $("div#panelBorrar button").click(borrar) ;
+        }).ajaxError(  function(event,req,op,msgError){ alert( req.status + ": " + msgError ); }  ) ;
+
+        function insertarEnTabla(personas){
+            // vacío el tbdoy
+            var tbody = $("#tablaDatos tbody");
+            tbody.empty() ;
+            personas.forEach( function(p){
+
+                // creo un tr y le meto las celdas
+                var tr = $("<tr></tr>")
+                .append( $("<td class='centrado'></td>").text(p.dni) )
+                .append( $("<td></td>").text(p.nombre) )
+                .append( $("<td></td>").text(p.apellidos) )
+                .append( $("<td></td>").text(p.saldo + " €") );
+                var boton = $("<button>&times;</button>") ;
+                // de los parámetros que tiene el boton (solo tiene 1) dame el primero 
+                boton.get(0).dni = p.dni ;
+                boton.click(borrar) ;
+                tr.append( $("<td class='centrado'></td>").append(boton) );
+                tr.appendTo( tbody ) ;
+            }
+            );
+        }
+
+    // ################### INSERTAR  ##############
+        function buscar(event){
+        // la búsqueda será como localhost:3020/personas_buscar?apellidos=ez
+                var ape = $("#txtApellidos").val() ;
+                $.get("personas_buscar",{apellidos:ape},insertarEnTabla); 
+        }
+
+    // ##################### INSERTAR #################
+        function insertar(event){
+            // leo los datos de los input y los almaceno en un JSON 
+            var p = {
+                dni : parseInt( $("#dni").val() ),
+                nombre : $("#nombre").val() ,
+                apellidos : $("#apellidos").val() ,
+                saldo : parseFloat( $("#saldo").val() )
+            }
+            // hacemos el método post, que tiene como success insertarEnTabla, y esta va a devolver solo lo que hayamos buscado en txtApellidos
+            $.post("/personas", p, insertarEnTabla ) ;
+            $("#txtApellidos").empty() ;
+        }
+
+    // ###############  BORRAR  ###########################
+        function borrar(event){
+            var url = "/personas/" + event.currentTarget.dni ;
+            var op = {
+                url: url ,
+                type: "DELETE" ,
+                success: insertarEnTabla,
+            }
+            // no existe el método .delete que está definido en app.js, le pasamos un método ajax que toma un objeto JSON con las opciones
+            $.ajax(op);
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>Mantenimiento de clientes</h1>
+
+    <!-- PANEL DE BUSCAR -->
+    <div class="panel" id="panelBuscar">
+        <label for="txtApellidos">Apellidos</label>
+        <input type="text" id="txtApellidos" placeholder="Inserte los apellidos">
+        <button id>Buscar</button> <br>
+    </div>
+    <!-- PANEL DE INSERTAR -->
+    <div class="panel" id="panelInsertar">
+        <label for="nombre">Nombre</label>
+            <input type="text" id="nombre"> <br>
+        <label for="apellidos">Apellidos</label>
+            <input type="text" id="apellidos"> <br>
+        <label for="dni">DNI</label>
+            <input type="text" id="dni"> <br>
+        <label for="saldo">Saldo</label>
+            <input type="text" id="saldo">
+        <button id="insertar">Insertar</button>
+    </div>
+
+
+    <table id="tablaDatos">
+        <thead>
+            <tr>
+                <th>DNI</th><th>Nombre</th><th>Apellidos</th><th>Saldo</th><th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+
+</html>
