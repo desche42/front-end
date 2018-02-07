@@ -15,7 +15,7 @@
             ],
             "group": {
                 "kind": "build",
-                "isDefault": true
+                "isDefault": false,
             },
             "presentation": {
                 "echo": false,
@@ -34,7 +34,10 @@
             "args": [
                 "http://localhost:3020/${fileBasename}"
             ],
-            "group":"build",
+            "group": {
+                "kind": "build",
+                "isDefault": true,
+            },
             "presentation": {
                 "echo": false,
                 "reveal": "never",

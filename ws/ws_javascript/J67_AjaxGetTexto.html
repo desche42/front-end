@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+
+    <!-- ------------ ESTILOS ------------ -->
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Ajax</title>
+    <!-- ----------------- Scripts  ------------------ -->
+    <script>
+        // asignamos la función pedirCapítulo para los botones y le pedimos 
+        window.onload = function(event){
+            document.querySelectorAll("div#botones button").forEach(
+                function (boton, i) {
+                    boton.addEventListener("click",pedirCapitulo) ;
+                    boton.innerHTML = "Capítulo " + (i+1) ;
+                    // le asignamos un atributo a cada botón; luego la podemos recuperar con   
+                    // console.log(event.currentTarget.numCapitulo) ;
+                    boton.numCapitulo = i + 1 ;
+                }
+        );
+        };
+
+
+    
+        function pedirCapitulo(event) {
+            // pedimos los capítulos para cada uno de los capítulos, tiene que estar cargado desde localhost, si no no funcionará. para abrir el
+            // servidor hacemos, desde la carpeta ws_javascript donde está "app.js", "node app"
+
+            // este es el objeto que permite conectar con un servidor
+            var req = new XMLHttpRequest() ;
+
+            // URL del capítulo que estamos pidiendo
+            var url = "datos/capitulo" + event.currentTarget.numCapitulo + ".txt" ;
+
+
+            // pedimos el archivo por método get. por defecto es asíncrono, no bloquea el JS durante la comunicación
+                // console.log("Antes de open el estado es", req.readyState ) ;
+            req.open("GET",url);
+                // console.log("Después de open el estado es", req.readyState ) ;
+
+            // no le mandamos datos al servidor, solo pedimos. la comunicación no termina aquí 
+            req.send(null) ;
+                // console.log("Después de send el estado es", req.readyState ) ;
+
+
+            req.onreadystatechange = function (event){
+                console.log("Cambio de estado:", req.readyState) ;
+
+                if (req.readyState == 4 && req.status == 200){
+                    // si la operación se ha completado (==4) y la petición es satisfactoria (200, no 404),
+                    // lee el texto y lo metes dentro del div#texto
+                    document.getElementById("texto").innerHTML =  req.responseText ;
+                }
+                else if(req.readyState == 4 && req.status == 404)
+                    alert("Error 404: NOT FOUND") ;
+   
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="botones">
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+    </div>
+
+    <div id="texto" class="panel"></div>
+
+</body>
+
+</html>
