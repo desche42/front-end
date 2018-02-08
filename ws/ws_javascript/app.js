@@ -145,6 +145,43 @@ app.get("/J20_mantenimiento_clientes_routing_no_raiz.html*", function (req, res)
 //   res.sendFile( __dirname + //__dirname es la ruta del archivo app.
 //     "/J19_mantenimiento_clientes_routing_sin_almohadilla.html");
 // });
+
+
+// ################# CALCULAR (QueryString/URL-encoded a XML) ########################
+
+app.post("/calcular", function (req, res) {
+    // body: cadena QueryString ( txta=4&txtb=5&operacion=x) con los datos recibidos
+    // siempre que el Content-Type=application/x-www-form-url-encoded  
+    // pero la siguiente línea nos lo transforma a { txta: '5', txtb: '67', operacion: 'x' }
+    var datos = req.body;
+    console.log("Calcular: ", datos);
+    res.setHeader("Content-Type", "text/xml");
+    res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    //documento xml que devolvemos
+    var xml = "<?xml version='1.0' encoding='UTF-8'?><calculadora><txta>" + datos.txta + "</txta><txtb>" 
+    + datos.txtb + "</txtb><operacion>" + datos.operacion + "</operacion>" ;
+
+    // calculamos
+        if (datos.operacion == "x"){
+            var resultado = parseFloat(datos.txta)*parseFloat(datos.txtb) ;
+        }
+        else if ( datos.operacion == "+"){
+            var resultado = parseFloat(datos.txta)+parseFloat(datos.txtb) ;
+        }
+        else if ( datos.operacion == "-"){
+            var resultado = parseFloat(datos.txta)-parseFloat(datos.txtb) ;
+        }
+        else if ( datos.operacion == "/"){
+            var resultado = parseFloat(datos.txta)/parseFloat(datos.txtb) ;
+        }
+
+
+    xml += "<resultado>" + resultado + "</resultado></calculadora>" ;
+    // devolvemos documento xml
+    res.send(xml);
+});
+
+
 // ################# INICIO DEL SERVIDOR ########################
 app.listen(3020, function () {
     console.log("Aplicación escuchando en el puerto 3020");

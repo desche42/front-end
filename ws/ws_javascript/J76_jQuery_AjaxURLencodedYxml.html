@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Ajax</title>
+
+    <!-- ------------ ESTILOS ------------ -->
+    <link rel="stylesheet" href="css/estilos.css">
+    <style>
+        h1{
+            text-align: center ;
+            text-decoration-line: underline ;
+            text-decoration-color: red;
+            color: aquamarine ;
+        }
+        table#tablaDatos tr:hover{
+            background-color: yellow !important ;
+            color: chartreuse !important ;
+        }
+        p{
+            text-align: center ;
+            font-size: 5em ;
+            animation-name: bumbum;
+            animation-duration: 0.3s ;
+            animation-iteration-count: infinite;
+        }
+        @keyframes bumbum{
+            0%{ font-size: 2em}
+            100%{   font-size: 5em;
+                    color: red;
+                    display: block;}
+        }
+    </style>
+
+    <!-- ----------------- Scripts  ------------------ -->
+    <script src="js/jquery.js"></script>
+    <script>
+        $(document).ready(  function(event){
+            // función que maneja el evento submit
+            $("form[action='calcular']").submit(calcular) ;
+        }).ajaxError(  function(event,req,op,msgError){ alert( req.status + ": " + msgError ); }  ) ;
+
+        function calcular(event){
+            // evita que se envíe el formulario por la vía normal
+            event.preventDefault() ;
+            // cojo el formulario con formato jQuery y le aplico el método serialize, que  retorna los campos del formulario en formato queryString
+            // además, este método escapa el caracter "+" como %2B que se usa en querystring para unir cadenas de texto 
+            // si buscas en google "a y b" la querystring es  a+y+b
+            // console.log(formulario.serialize());
+            $.post("calcular",$(event.currentTarget).serialize(),calcularOK);
+        }
+
+        function calcularOK(xml,msg,req){
+            // meto el resultado
+             $("p").text( $("txta",xml).text() +" " + $("operacion",xml).text() + " "
+             + $("txtb",xml).text() + " = " + $("resultado",xml).text() ) ;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Calculadora</h1>
+    <form action="calcular" method="post">
+        <div class="panel" id="panelCalc">
+            <label for="txta">a</label> 
+            <input type="text" id="txta" name="txta" placeholder="Inserte el número a"> <br>
+            <label for="txtb">b</label>
+            <input type="text" id="txta" name="txtb" placeholder="Inserte el número a"> 
+                <select name="operacion" id="operacion">
+                <option value="+">Sumar</option>
+                <option value="-">Restar</option>
+                <option value="x">Multiplicar</option>
+                <option value="/">Dividir</option>
+            </select>
+
+            <button>Calcular</button> <br>
+        </div>
+    </form>
+
+    <p id="respuesta"></p>
+
+</body>
+
+</html>
