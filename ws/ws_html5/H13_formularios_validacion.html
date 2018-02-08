@@ -7,29 +7,31 @@
     <script>
         function validarCampo(event) {
             var t = event.currentTarget;
-            //#### Asignar al control la clase "dirty"
-
+            //#### Asignar al control la clase "dirty"  // esta clase significa que ya lo hemos modificado (lo decidimos nosotros)
+            if (t.className.indexOf("dirty")<0){
+                t.className += " dirty" ;
+            }
             var msg = "";
             // #### Ejecutar el siguiente if si el campo presenta errores de validación ####
-            if(false){
-                msg = "error";
+            if(t.checkValidity() == false){
+                msg = "Error";
                 // Los controles de formulario tienen la propiedad "validity" que
                 // es un objeto con unos atributos booleanos que toman el valor
                 // true si el error es debido a la causa indicada en su nombre.
                 // #### Establecer la condición que indique que no se ha cumplido
                 // regla de validación de que el campo es obligatorio #####
-                if(false){
+                if(t.validity.valueMissing){
                     msg = "El campo es obligatorio";
                 }
                 // #### Establecer la condición que indique que no se ha cumplido
                 // regla de validación de que el campo debe ser un número #####
-                if(false){
+                if(t.validity.badImput || t.validity.typeMismatch){
                     msg = "Formato incorrecto";
                 }
                 // #### Establecer la condición que indique que no se ha cumplido
                 // regla de validación de que el campo debe estar entre el 
                 // mínimo y máximo establecidos #####
-                if(false){
+                if(t.validity.rangeUnderflow || t.validity.rangeOverflow){
                     msg = "El número debe estar entre " + t.min + " y " + t.max;
                 }
             }
@@ -37,10 +39,10 @@
 
         }
         window.onload = function () {
-            // oninput: evento html5 que se ejectua después de que el usuario
-            // haya cambiado el valor del control.
-            // #### Asignar a txtApellidos y txtGraduación en su evento "oninput"
-            // la función "validarCampo" ####
+            // oninput: evento html5 que se ejectua después de que el usuario haya cambiado el valor del control.
+            // #### Asignar a txtApellidos y txtGraduación en su evento "oninput" la función "validarCampo" ####
+            document.getElementById("txtApellidos").oninput = validarCampo ;
+            document.getElementById("txtGraduacion").oninput = validarCampo ;
         };
     </script>
 

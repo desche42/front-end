@@ -12,11 +12,11 @@
             
             try{
 				// ##### Arrancar el Worker "js/webworker.js" y guardarlo en "w"
-                
+                w = new Worker("js/webworker.js");
                 // ######  Asignar la función "cambioHora" como 
 				// un manejador de eventos para recibir los 
                 // mensajes del hilo.################
-                
+                w.onmessage = cambioHora ;
             } catch(e){//Lo que haremos si lo interior al try ha fallado.
                 alert("En Google Chrome si abres el archivo en local,"
                     +  " da un error de seguridad, solamente funciona"
@@ -33,7 +33,8 @@
         }
         function enviarMensaje(event){
             var texto = document.getElementById("txtEnviar").value;
-			// ############ Enviar al hilo el contenido de "texto" #########
+            // ############ Enviar al hilo el contenido de "texto" #########
+            w.postMessage(texto) ;
         }
     </script>
 </head>

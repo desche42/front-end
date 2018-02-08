@@ -21,13 +21,13 @@
             <label for="txtApellidos">Apellidos</label>
             <!-- #### Indicar que el siguiente campo es obligatorio e incluir
                 dentro del campo un texto recordatorio "inserte sus apellidos" #### -->
-            <input type="text" id="txtApellidos" placeholder="Inserte sus apellidos" required  />
+            <input type="text" id="txtApellidos" placeholder="Inserte sus apellidos" required="required"  />
             <br/>
             <label for="txtGraduacion">Año graduación</label>
             <!-- #### Establecer que el campo siguiente es numérico con valores entre
                 1970 y 2017 incrementandose de 2 en 2. Además establecer que al 
                 cargarse la página este control reciba automáticamente el foco. #### -->
-            <input type="number" id="txtGraduacion" min="1970" max="2017" step="2" autofocus/>
+            <input type="number" id="txtGraduacion" min="1970" max="2017" step="2" autofocus="autofocus"/>
             <br/>
             <label for="txtFNacimiento">F. Nacimiento</label>
             <!-- #### Establecer que el siguiente campo es para insertar una fecha #### -->
@@ -40,7 +40,7 @@
             <label for="txtDni">DNI</label>
             <!-- #### Establecer que el siguiente campo debe contener 8 digitos
                 y una letra mayúscula #### -->
-            <input type="text" id="txtDni" pattern="[0-9]{8}[A-Z]"  />
+            <input type="text" id="txtDni" pattern="$[0-9]{8}[A-Z]^"  />
             <br/>
             <label for="txtTitulacion">Titulación</label>
             <!-- #### Al escribir un texto en el siguiente campo sugerir valores donde

@@ -15,14 +15,15 @@
             ],
             "group": {
                 "kind": "build",
-                "isDefault": false,
+                "isDefault": true
             },
             "presentation": {
                 "echo": false,
                 "reveal": "never",
                 "focus": false,
                 "panel": "shared"
-            }
+            },
+            "problemMatcher": []
         },
         {
             "label": "Navegador_localhost",
@@ -36,7 +37,7 @@
             ],
             "group": {
                 "kind": "build",
-                "isDefault": true,
+                "isDefault": false,
             },
             "presentation": {
                 "echo": false,
