@@ -16,19 +16,24 @@
 	var ctx;
 	var canvas;
 	var x=30,y=40,vx=5,vy=3;
+
 	function mover(){
 		// ######### Borrar la bola anterior. #########
-		
+		ctx.clearRect(x-12,y-12,24,24) ;
 		// incrementamos las coordenada.
 		x+=vx;
 		y+=vy;
 		// ###### Dibujamos la nueva bola. ##########
-		
+		ctx.beginPath() ;
+			ctx.arc(x,y,10,0,2 * Math.PI) ;
+		ctx.closePath();
+		ctx.fill();
+		ctx.stroke();
 		// Comprobamos si hay que rebotar.
 		if(x<12 || x>488){ vx=-vx;}
 		if(y<12 || y>388){ vy=-vy;}
 		// Llamamos al siguiente paso.
-		setTimeout(mover,50);
+		setTimeout(mover,5);
 	}
 	
 	window.onload = function (){

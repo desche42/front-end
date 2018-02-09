@@ -18,25 +18,38 @@
         }
     </style>
     <script>
-        var context; //Contexto del canvas:Objeto sobre el cual dibujar.
+        //Contexto del canvas:Objeto sobre el cual dibujar.
+        var context = document.getElementById("canvas") ;
         function triangulo() {
             // ##### Dibujar un triangulo entre los puntos
             //      (10,10) (110,10) (110,110) #####
             // 1.- ---------- DEFINICIÓN DE LA FIGURA -----------
+                context.beginPath();
+                context.moveTo(10,10);
+                context.lineTo(110,10);
+                context.lineTo(110,110);
+                context.closePath();
             // 2.- ---------- COLORES A EMPLEAR ----------------- 
+                context.fillStyle = 'red' ;
+                context.fill() ;
+                context.strokeStyle = "orange" ;
+                context.lineWidth = 2 ;
             // 3.- ---------- DIBUJAR EN EL CANVAS --------------
-            
+                context.stroke();
         }
+
         function rectangulo() {
-            var x1 = 210, y1 = 120;// Esquina superior izquierda
+            // Esquina superior izquierda
+            var x1 = 210, y1 = 120;
             var ancho = 120, alto = 80;
             // 2.- -------- COLORES A EMPLEAR ------------------ 
-            context.fillStyle = 'rgb(200,100,200)'; // Color de relleno.
-            context.strokeStyle = 'rgb(100,0,100)';// Color del contorno
-            context.lineWidth = 4;
+                context.fillStyle = 'rgb(200,100,200)'; // Color de relleno.
+                context.strokeStyle = 'rgb(100,0,100)';// Color del contorno
+                context.lineWidth = 4;
             // 1 y 3.- ------ FUNCIÓN QUE DEFINE Y DIBUJA A LA VEZ ----------
-            // ##### Dibujar el rectángulo con los formatos y coordenadas
-            //      definidos en los pasos anteriores #############33
+            // ##### Dibujar el rectángulo con los formatos y coordenadas definidos en los pasos anteriores #############
+                context.fillRect(x1,y1,ancho,alto) ;
+                context.strokeRect(x1,y1,ancho,alto) ;
         }
         function arco() {
             var x = 200, y = 200; // Coordenadas del centro.
@@ -44,7 +57,10 @@
             var ang_ini = Math.PI; // 180º
             var ang_fin = -Math.PI/2 // -90º
             // 1.- ### DEFINICIÓN DE LA FIGURA CON FORMA DE SECTOR CIRCULAR ########
-            
+            context.beginPath();
+                context.lineTo(x,y) ;
+                context.arc(x,y,r,ang_ini,ang_fin);
+            context.closePath();
             // 2.- ------------ COLORES A EMPLEAR ------------------- 
             context.fillStyle = 'aqua'; // Color de relleno.
             context.strokeStyle = 'navy';// Color del contorno
@@ -53,6 +69,7 @@
             context.fill(); //Dibujar el relleno
             context.stroke(); //Dibujar el contorno.
         }
+
         function descargar(event) {
             var data = document.querySelector("canvas").toDataURL("image/png");
             event.currentTarget.href = data; // Asignamos los pixels de la imagen png al hipervínculo.
@@ -62,18 +79,16 @@
             document.getElementById("linkDescargar").onclick = descargar;
             context = document.querySelector("canvas").getContext("2d");
             // ######### Descomentar según sea neceario ######
-            // triangulo();
-            // rectangulo();
-            // arco();
+            triangulo();
+            rectangulo();
+            arco();
         };
     </script>
 </head>
 
 <body>
     <div>
-        <!-- A diferencia que con una imagen, 
-            que tiene un tamaño predefinido,
-            debido a los pixels que tiene de ancho y alto, 
+        <!-- A diferencia que con una imagen,  que tiene un tamaño predefinido, debido a los pixels que tiene de ancho y alto, 
             al canvas hay que especificarselo. -->
         <canvas width="500" height="400"></canvas>
     </div>

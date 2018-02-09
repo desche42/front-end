@@ -27,7 +27,7 @@
         }
         function cambio(event){
             var t = v.currentTime;
-            document.getElementById("tiempo").value = t.toFixed(2) + " s";
+            document.getElementById("tiempo").value = t.toFixed(1) + " s";
             document.querySelector("progress").max = v.duration;
             document.querySelector("progress").value = t;
             document.querySelector("input[type=range]").max = v.duration;

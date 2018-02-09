@@ -12,27 +12,7 @@
     </style>
     <script>
         var v;
-        function onOff(event) {
-            var img = event.currentTarget.querySelector("img");
-            // ##### Parar o empezar a reproducir el vídeo y 
-            // actualizar la imagen del botón. ######
-        }
-        function fin(event) {
-            // #### Poner "img/play.png" en la imagen del botón
-            // para indicar que como el vídeo ha terminado, se
-            // puede volvera iniciar ####
-        }
-        function cambio(event){
-            // #### Función que actualiza el input tiempo, 
-            // la barra de progreso (progress) y el selector
-            // de deslizamiento (range) con el instante actual del 
-            // vídeo. #####
 
-        }
-        function mover(event) {
-            // ##### Cambiar la posición de reproducción del vídeo
-            // al valor indicado por el selector de deslizamiento. ####
-        }
         window.onload = function () {
             v = document.querySelector("div#contenedor video");
             document.getElementById("btnPlay").onclick=onOff;
@@ -40,6 +20,39 @@
             v.ontimeupdate = cambio;
             document.querySelector("input[type=range]").onchange=mover;
         };
+
+        function onOff(event) {
+            var img = event.currentTarget.querySelector("img");
+            // ##### Parar o empezar a reproducir el vídeo y actualizar la imagen del botón. ######
+            if( v.paused ){
+                v.play();
+                img.src = "img/pause.png";
+            } else {
+                v.pause();
+                img.src = "img/play.png";
+            }
+        }
+        function fin(event) {
+            // #### Poner "img/play.png" en la imagen del botón para indicar que como el vídeo ha terminado, se puede volvera iniciar ####
+            img = document.querySelector("button#btnPlay img");
+            img.src = "img/play.png";
+        }
+        function cambio(event){
+            // #### Función que actualiza el input tiempo,  la barra de progreso (progress) y el selector de deslizamiento (range) 
+            // con el instante actual del  vídeo. #####
+            document.querySelector("#tiempo").value = v.currentTime.toFixed(1) + " s";
+            var prog = document.querySelector("progress") ;
+            prog.max = v.duration ;
+            prog.value = v.currentTime ;
+            var range = document.querySelector("input[type=range]");
+            range.max = v.duration ;
+            range.value = v.currentTime ; 
+        }
+        function mover(event) {
+            // ##### Cambiar la posición de reproducción del vídeo al valor indicado por el selector de deslizamiento. ####
+            v.currentTime  = event.currentTarget.value ;
+            
+        }
     </script>
 </head>
 
@@ -50,7 +63,7 @@
         </button>
         <input id="tiempo" type="text" disabled="true"/>
         <progress max="100" value="35"></progress>
-        <input type="range" max="100" value="35" step="0.1"/>
+        <input type="range" max="100" value="0" step="0.1"/>
     </div>
     <div id="contenedor">
         <video>

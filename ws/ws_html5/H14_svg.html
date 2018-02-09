@@ -4,14 +4,32 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-	svg{height:400px;width:500px;border:1px solid black;}
-	rect:hover{fill:yellow;}
+	div>svg{
+		height:400px;
+		width:500px;
+		border:1px solid black;
+	}
+	div{
+		text-align: center;
+	}
+	rect:hover{
+		fill:yellow;
+	}
+	h2{
+		text-align: center ;
+	}
 </style>
+
+<!-- SVG:   SCALABLE VECTOR GRAPHICS ; gráficos vectoriales -->
+
+
+
 <script type="text/javascript">
 	var x = 100;
 	var vx = 15;
 	function mover(){
 		// ----------- CIRCUNFERENCIA -----------------
+
 		var cir = document.getElementById("cir");
 		x += vx;
 		//cir.cx = x; // Esto no funciona porque es xml 
@@ -20,6 +38,8 @@
 		// ----------- RECTANGULO  -----------------
 		var rec = document.getElementById("rec");
 		rec.setAttribute("transform", "rotate(" + x + " 200 175)")
+		// añado esto para que a<l pasar el ratón por el rectángulo, ésta huya del ratón
+		rec.addEventListener("mouseover",function(event){ rec.setAttribute("x",x+5) }   )
 		setTimeout(mover, 100);
 	}
 	window.onload = mover;
@@ -28,16 +48,14 @@
 <body>
 	<h2>SVG</h2>
 	<!-- #### Indicar que empieza un bloque de svg #### -->
-	<svg>
-		<!-- #### Poner el nombre de etiqueta adecuado para que se dibuje una 
-			circunferencia ##### -->
-		<???? id="cir" cx="100" cy="100" r="80"
-			fill="blue" stroke="black" stroke-with="5"/>
-		<!-- #### Poner el nombre de etiqueta adecuado para que se dibuje un
-			rectangulo ##### -->
-		<???? id="rec" x="150" y="150" width="100" height="50"
-			fill="red" stroke="black" stroke-with="5" />
-	</svg>
+	<div>
+		<svg>
+			<!-- #### Poner el nombre de etiqueta adecuado para que se dibuje una circunferencia ##### -->
+			<circle id="cir" cx="100" cy="100" r="80" fill="blue" stroke="black" stroke-with="5"/>
+			<!-- #### Poner el nombre de etiqueta adecuado para que se dibuje un rectangulo ##### -->
+			<rect id="rec" x="150" y="150" width="100" height="50" fill="red" stroke="black" stroke-with="5" />
+		</svg>
+	</div>
 </body>
 </html>
 

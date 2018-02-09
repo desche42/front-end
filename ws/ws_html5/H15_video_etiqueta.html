@@ -14,13 +14,12 @@
         <!-- #### Configurar el siguiente vídeo para que muestre los controles
             proporcionados por el navegador, se inicie automáticamente y 
             al terminar empiece de nuevo #### -->
-        <video>
-            <!-- #### Indicar que los archivos de vídeo disponibles y sus correspondientes
-                formatos son los siguientes: 
-                    "img/movie.ogg" - "video/ogg"
-                    "img/movie.webm" - "video/webm"
-                    "img/movie.mp4" - "video/mp4"
-                #### -->
+        <video autoplay=true controls=true loop=true>
+            <!-- #### Indicar que los archivos de vídeo disponibles y sus correspondientes formatos son los siguientes: -->
+                   
+                <source src="img/movie.ogg" type="video/ogg" >  
+                <source src="img/movie.webm" type="video/webm">  
+                <source src="img/movie.mp4" type="video/mp4">  
             
         </video>
      </div>
