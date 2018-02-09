@@ -1,12 +1,12 @@
 [submodule "ws_profesor/ws_html"]
 	path = ws_profesor/ws_html
-	url = https://www.github.com/vladimirbat/ws_html
+	url = http://www.github.com/vladimirbat/ws_html
 [submodule "ws_profesor/ws_html5"]
 	path = ws_profesor/ws_html5
-	url = https://www.github.com/vladimirbat/ws_html5
+	url = http://www.github.com/vladimirbat/ws_html5
 [submodule "ws_profesor/ws_javascript"]
 	path = ws_profesor/ws_javascript
-	url = https://www.github.com/vladimirbat/ws_javascript
+	url = http://www.github.com/vladimirbat/ws_javascript
 [submodule "ws_profesor/ws_rwd"]
 	path = ws_profesor/ws_rwd
 	url = http://www.github.com/vladimirbat/ws_rwd.git
