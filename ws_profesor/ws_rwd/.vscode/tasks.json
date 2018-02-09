@@ -1,0 +1,48 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "taskName": "Navegador_file",
+            "type": "shell",
+            "command": "Navegador",
+            "windows": {
+                "command": "explorer.exe"
+            },
+            "args": [
+                "${file}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": false,
+                "reveal": "never",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "taskName": "Navegador_localhost",
+            "type": "shell",
+            "command": "Navegador",
+            "windows": {
+                "command": "explorer.exe"
+            },
+            "args": [
+                "http://localhost:3020/${fileBasename}"
+            ],
+            "group":"build",
+            "presentation": {
+                "echo": false,
+                "reveal": "never",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        }
+    ],
+    "problemMatchers": []
+}
