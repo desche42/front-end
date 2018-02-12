@@ -15,7 +15,7 @@
             ],
             "group": {
                 "kind": "build",
-                "isDefault": true
+                "isDefault": false,
             },
             "presentation": {
                 "echo": false,
@@ -46,7 +46,20 @@
                 "panel": "shared"
             },
             "problemMatcher": []
-        }
+        },
+        {
+            "label": "node",
+            "type": "shell",
+            "command": "node",
+            "args": [
+                "${file}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true,
+            },
+            "problemMatcher": []
+        },
     ],
     "problemMatchers": []
 }
