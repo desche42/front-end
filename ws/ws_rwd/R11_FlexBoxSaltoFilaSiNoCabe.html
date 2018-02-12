@@ -14,16 +14,11 @@
             /* --------- Contendor de tipo flex ------------ */
             display: flex;
 
-            /*----------- Dirección y sentido --------------*/
-            /* flex-direction: column-reverse; */
-
-            /*----------- Reparto de espacios entre los elementos -------*/
-            width: 900px;
-            justify-content: space-around;
-
-            /*----------- Alineación vertical ---------------*/
-            /* Con flex-end se podría hacer un gráfico de barras */
-            align-items: baseline;
+            /* --------- Salto de línea si no caben ------------ */
+            flex-wrap:wrap;
+            
+            /* --------- Espacio entre líneas ------------ */
+            align-content: space-around;
 
         }
         div.capa{
