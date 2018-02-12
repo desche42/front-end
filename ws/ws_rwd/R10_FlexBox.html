@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <style>
+        *{box-sizing:border-box}
+        html{
+            font-size:20px;
+            font-family:sans-serif;
+        }
+        div{
+            border: 1px solid black ;
+            padding: 10px ;
+        }
+       div.contenedor{
+            height: 500px ;
+            width: 500px ;
+            background-color: beige ;
+            /* contenedor de tipo flex */
+            display: flex ;
+            /*  Orientación */
+            
+       }
+       div.capa{
+            width: 150px ;
+            background-color: yellow ;
+            padding: 25px ;
+            text-align: center ;
+       }
+
+        @media (max-width:600px) and (orientation:portrait){
+            html{font-size:16px;}
+            h1{font-size:1.8rem;}
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div id="capa1" class="capa">Capa 1</div>
+        <div id="capa2" class="capa">Capa 2 <br/> Capa 2.2</div>
+        <div id="capa3" class="capa">Capa 3</div>
+        <div id="capa4" class="capa">Capa 4</div>
+        <div id="capa5" class="capa">Capa 5</div>
+    </div>
+    
+    <div class="pie">
+        <h3>&copy; Copy right SERIES</h3>
+    </div>
+</body>
+</html>

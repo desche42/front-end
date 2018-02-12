@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Alejandro Sánchez Pineda</title>
+    <!-- Enlace a la biblioteca jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- ------------------- SCRIPTS -------------->
+    <script>
+        $(document).ready( function(){
+            // botón disabled por defecto
+            $("#btnInsertar").attr("disabled",true) ;
+            // añado los manejadores de eventos
+            $("#btnInsertar").on("click",insertar) ;
+            $("#btnSend").on("click",enviar);
+        })
+
+        // opción seleccionada
+        function opSelect(){
+            // guardo opción seleccionada
+            var selected = $("#semana option:selected").val();
+
+            // si el valor es "" , desactivar botón, si no, activar
+            if (selected == ""){
+                $("#btnInsertar").attr("disabled",true) ;
+            } else{
+                $("#btnInsertar").attr("disabled",false) ;
+            }   
+            return selected ;  
+        }
+        
+        // insertar en ul
+        function insertar(){
+            // opción seleccionada
+            var txt = opSelect();
+            // creo elemento li
+            var item = $("<li></li>").text(txt) ;
+            // lo meto en la ul
+            $("#lista").append(item) ;
+        }
+
+        // enviar json
+        function enviar(){
+            // leo los días seleccionados y los meto en una matriz JSON
+            var p = [] ;
+            $("#lista li").each(function(){
+                var txt = $(this).text() ;
+                p.push(txt) ;
+            });
+            
+            // opciones de la petición, tipo POST ; hay que hacer stringify
+            var opt = {
+                type : "POST" ,
+                url : "agenda",
+                data : JSON.stringify(p) ,
+                contentType : "application/json",
+                success : exito ,
+            }
+            $.ajax(opt) ;
+        }
+
+        // función callback en caso de éxito de la peiticón POST 
+        function exito(){
+            console.log("enviado") ;
+        }
+    </script>
+    
+</head>
+<body>
+    <select name="semana" onchange="opSelect();" id="semana">
+        <option value=""  selected></option>
+        <option value="Lunes">Lunes</option>
+        <option value="Martes">Martes</option>
+        <option value="Miercoles">Miercoles</option>
+        <option value="Jueves">Jueves</option>
+        <option value="Viernes">Viernes</option>
+        <option value="Sábado">Sábado</option>
+        <option value="Domingo">Domingo</option>
+    </select>
+    <button id="btnInsertar">Insertar</button>
+    <ul id="lista"></ul>
+    <button id="btnSend">Enviar</button>
+</body>
+</html>
