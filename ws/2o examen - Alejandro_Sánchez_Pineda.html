@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Alejandro Sánchez Pineda</title>
     <!-- Enlace a la biblioteca jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="ws_javascript/js/jquery.js"></script>
 
     <!-- ------------------- SCRIPTS -------------->
     <script>
@@ -21,25 +21,35 @@
         // opción seleccionada
         function opSelect(){
             // guardo opción seleccionada
-            var selected = $("#semana option:selected").val();
+            // var selected = $("#semana option:selected").val();
+
+            // esto también valdría. el value del select es el value de la option selected
+            var selected = $("#semana").val();
 
             // si el valor es "" , desactivar botón, si no, activar
-            if (selected == ""){
-                $("#btnInsertar").attr("disabled",true) ;
-            } else{
-                $("#btnInsertar").attr("disabled",false) ;
-            }   
+                // if (selected == ""){
+                //     $("#btnInsertar").attr("disabled",true) ;
+                // } else{
+                //     $("#btnInsertar").attr("disabled",false) ;
+                // }   
+            // o lo que es lo mismo
+            $("#btnInsertar").attr("disabled", selected == "" ) ;
+
+
             return selected ;  
         }
         
         // insertar en ul
         function insertar(){
             // opción seleccionada
-            var txt = opSelect();
-            // creo elemento li
-            var item = $("<li></li>").text(txt) ;
-            // lo meto en la ul
-            $("#lista").append(item) ;
+                // var txt = opSelect();
+                // // creo elemento li
+                // var item = $("<li></li>").text(txt) ;
+                // // lo meto en la ul
+                // $("#lista").append(item) ;
+
+            // simplificado 
+            $("<li></li>").text( opSelect() ).appendTo( $("#lista") )
         }
 
         // enviar json

@@ -15,7 +15,7 @@
             ],
             "group": {
                 "kind": "build",
-                "isDefault": false,
+                "isDefault": true,
             },
             "presentation": {
                 "echo": false,
@@ -56,7 +56,7 @@
             ],
             "group": {
                 "kind": "build",
-                "isDefault": true,
+                "isDefault": false,
             },
             "problemMatcher": []
         },
