@@ -9,7 +9,7 @@
 	url = http://www.github.com/vladimirbat/ws_javascript
 [submodule "ws_profesor/ws_rwd"]
 	path = ws_profesor/ws_rwd
-	url = https://www.github.com/vladimirbat/ws_rwd.git
+	url = https://www.github.com/vladimirbat/ws_rwd
 [submodule "ws_profesor/ws_es6_ts"]
 	path = ws_profesor/ws_es6_ts
 	url = http://github.com/vladimirbat/ws_es6_ts
