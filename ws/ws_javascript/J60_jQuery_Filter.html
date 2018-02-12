@@ -3,38 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Objetos DOM y jQuery</title>
-    <!-- ------------------- ESTILOS ------------- -->
-    <style>
-        *{box-sizing: border-box;} /* si ponemos ; no lo coge */
-        table{
-            border-collapse: collapse ; 
-        }
-        td{
-            height: 50px ;
-            width: 50px ;
-            border: 1px solid black ;
-        }
-
-
-    </style>
 
     <script src="js/jquery.js"></script> <!-- no meter nada nunca aquí -->
     <script>
-        window.onload = function(event){
+        $("document").ready(function(){
+        // ----- ASIGNACIÓN DE EVENTOS ---------- //
             //referencia al input
             $("input").on("input",recorrer);
+
+        // ---------------- ESTILOS ------------- //
             $("div#contenedor>div").css({
                 padding: "20px" ,
                 marginTop: "10px",
                 backgroundColor: "black" ,
                 textAlign: "center",
             }); 
-        }
+        })
 
         function recorrer(params){
             // obtén los divs dentro del contenedor y ponlos de color amarillo
             var divs = $("div#contenedor>div");
-            divs.css("background-color","yellow");
+            divs.css("background-color","yellow");  
             //leemos lo que hay en el input con la propiedad val, qaue devuelve un string
             var k =  $("input").val() ;
             // seleccionamos con el método filter los enésimos hijos de  su padre (1-based), mientras que eq retorna

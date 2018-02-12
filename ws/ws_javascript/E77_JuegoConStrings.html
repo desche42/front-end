@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Práctica para el examen</title>
+    <style>
+        #divPrueba{
+            font-size: 5em ;
+            text-align: center ;
+            text-decoration-line: underline ;
+            text-decoration-color: aqua ;
+            text-decoration-style: dashed ;
+            font-weight: bold ;
+        }
+    </style>
+    <script>
+        
+        window.onload = function(){
+            imprimir(true);
+            document.querySelector("#btnChoni").addEventListener("click",chonizar);
+        }
+        
+
+        var frase = prompt("Introduce una frase","En un lugar de la Mancha...") ;
+        var contador =  0 ;
+        
+        // es la 1 de la mañana, no estoy para poner comentarios
+
+        function imprimir(param){
+            // quiero que escriba solo un caracter cada vez
+            for (contador; contador < frase.length; contador++) {
+                document.querySelector("#prueba").innerHTML += frase.charAt(contador) ;
+                param == true ? setTimeout(function(){imprimir(true)},100)  : setTimeout(function(){imprimir(false)},100) ; 
+
+                if(contador + 1 == frase.length){
+                    console.log("impreso el caracter",contador, frase.charAt(contador),"fin de la impresión");
+
+                    param == true ? setTimeout(borrar,1000) : null ; 
+                } 
+                else{
+                    console.log("impreso el caracter",contador, frase.charAt(contador),"sigo imprimiendo") ;
+                }
+                contador++ ;
+                break;
+            }
+        }
+        
+        
+        // me acabo de levantar, la falta de comentarios se nota 
+        function borrar(){
+            if(contador >= 0){
+                document.querySelector("#prueba").innerHTML = frase.substr(0,contador);
+                console.log("borrando....",contador);
+                contador-- ;
+                setTimeout(borrar,75);
+            } else{
+                console.log("fin del borrado",contador);
+            }
+        }
+
+        // texto a choni
+        function chonizar(){
+            // si no se ha acabado de borrar el texto anterior, esperar
+            if(contador != -1){
+                setTimeout(chonizar,300);
+                console.log("esperando...") ;
+            } else{
+                frase = document.querySelector("#txtAChoni").value ;
+                var choni ="" ; 
+                for (let i = 0; i < frase.length; i++) {
+                    ( i % 2 == 0 ) ? choni += frase[i].toLowerCase() : choni += frase[i].toUpperCase() ; 
+                }
+                // document.querySelector("#prueba").innerHTML = choni ;
+                frase = choni ;
+                imprimir(false);
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+    <div id="chonizador">
+        <label for="txtAChoni">Texto a choni:</label>  <input type="text" id="txtAChoni"> <button id="btnChoni">Chonizar</button><br>
+        <p></p>
+    </div>
+
+
+    <div id="divPrueba">
+        <p id="prueba"></p>
+    </div>
+
+</body>
+</html>

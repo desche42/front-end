@@ -7,8 +7,8 @@
     
         <!-- pedimos dos números: dividendo y divisor -->
     <script>
-        var a = parseFloat( prompt("Dividendo")) ;
-        var b = parseFloat( prompt("Divisor")  ) ;
+        var a = parseFloat( prompt("Dividendo") ) ;
+        var b = parseFloat( prompt("Divisor")   ) ;
         var c = a / b ;
         
         // si a y b no son números, dar error.
@@ -18,6 +18,10 @@
         // si el resultado es finito, darlo
         else if( isFinite(c) ){
             alert("Resultado: " + c );
+            // necesario onload porque si no no ha cargado el h3
+            window.onload = function(){
+                document.querySelector("h3") .innerHTML = a.toString() + " / " + b.toString() + " = " + c.toFixed(3) ;
+            }
         }
         // si no es finito (o sea, infinito), dar error
         // js considera infinito a partir de 1e308

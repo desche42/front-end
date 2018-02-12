@@ -12,6 +12,7 @@
             //aunque el imput sea tipo number, se almacena como string
                 // var nota =  document.getElementById("txtNota").value ; 
                 // alert( typeof(nota) );
+
             var nota = parseFloat( document.getElementById("txtNota").value ) ; 
 
             // condiciones según la nota
@@ -33,7 +34,12 @@
             else{
                 mensaje = "¡¡¡¡¡¡MATRÍCULA!!!!!! :D:D:D:D:D:D"
             }
-                document.getElementById("resultado").value = mensaje ;
+            
+            // insertamos el mensaje cambiando el atributo value porque este elemento del DOM es un input, que no 
+            // tiene innerHTML, o, mejor dicho, no se muestra
+                // document.getElementById("resultado").innerHTML = mensaje ;
+                // document.getElementById("resultado").innerText = mensaje ;
+            document.getElementById("resultado").value = mensaje ;
         }
         
     </script>

@@ -21,34 +21,35 @@
     <script>
         // typeof X nos devuelve el tipo de variable que es X
         var texto = "" ;
-        //variable donde vamos a ir metiendo los distintos tipos de datos
+
+        // variable donde vamos a ir metiendo los distintos tipos de datos
         var a = 12 ;
 
 
         texto = a + " es un " + typeof a; 
         document.getElementById("number").innerHTML = texto ;
 
-        //variable tipo string
+        // variable tipo string
         var a  = "Hola" ;
         texto = a + " es un " + typeof a; 
         document.getElementById("string").innerHTML = texto ;
 
-        //variable tipo boolean
+        // variable tipo boolean
         var a  = true ;
         texto = a + " es un " + typeof a; 
         document.getElementById("boolean").innerHTML = texto ;
 
-        //variable tipo objeto
+        // variable tipo objeto
         var a  = new Date() ;
         texto = a + " es un " + typeof a; 
         document.getElementById("objeto").innerHTML = texto ;
 
-        //variable tipo indefinida
+        // variable tipo indefinida
         var a  = undefined ; // var a ; tiene el mismo efecto
         texto = a + " es un " + typeof a; 
         document.getElementById("undef").innerHTML = texto ;
 
-        //variable tipo null
+        // variable tipo null
         var a  = null ;
         texto = a + " es un " + typeof a; 
         document.getElementById("null").innerHTML = texto ;

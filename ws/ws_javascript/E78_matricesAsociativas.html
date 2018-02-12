@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Matrices asociativas</title>
+    <script>
+        var m = {
+            "Lunes" : "Soleado", 
+            "Martes" : "Nublado" , 
+            "Miércoles" : "Lluvia" , 
+            "Jueves" : "Tormenta" , 
+            "Viernes" : "Granizo" , 
+            "Sábado" : "Huracán" , 
+            "Domingo" : "Terremoto" ,
+        };
+        var mat = [] ;
+        window.onload = function(){
+            document.querySelector("#unirMatriz").addEventListener("click",unir);
+            document.querySelector("#reverseMatriz").addEventListener("click",reverse);
+            document.querySelector("#unirAMatriz").addEventListener("click",añadir);
+            // primero convierto los valores del diccionario a una matriz
+            mat = [] ;
+                for(clave in m){
+                    mat.push( m[clave]  ) ;
+                } 
+        }
+
+        function unir(){
+            // luego lo uno con separadores y  lo meto en el párrafo
+            document.querySelector("div#join>p").innerHTML += mat.join(", ") + "<br/>" ;
+        }
+
+        function reverse(){
+            // esta función da la vuelta a la matriz y la imprime 
+            console.log("Antes de aplicar reverse()",mat);
+            var reversed = mat.reverse() ;
+            document.querySelector("div#join>p").innerHTML += reversed.join(", ") + "<br/>" ;
+            // también invierte la matriz mat
+            console.log("Después de aplicar reverse()",mat);
+        }
+
+        function añadir(){
+            // cojo el input y lo añado a la matriz
+            mat.push( document.querySelector("#inputMatriz").value ) ;
+            // console.log(document.querySelector("#inputMatriz").value) ;
+            // luego lo imprimo usando la función unir
+            unir();            
+        }
+    </script>
+</head>
+<body>
+    <div id="join">
+        <button id="unirMatriz">Unir matriz</button>   <button id="reverseMatriz">Reverse matriz</button> <br/>
+        <input type="text" id="inputMatriz">
+        <button id="unirAMatriz">Unir a la matriz</button>
+        <p></p>
+    </div>
+</body>
+</html>

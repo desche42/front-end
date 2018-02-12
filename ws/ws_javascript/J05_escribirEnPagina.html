@@ -17,8 +17,9 @@
         var c = a + b ;
         
         // escribe dentro del elemento con etiqueta "mensaje", pero OJO: este código se ejecuta antes de que llegue al id,
-        // por lo que el script hay que ponerlo al final. Se puede hacer con una función, que hay que ejecutarla cuando la 
-        // página se haya cargado
+        // por lo que el script hay que ponerlo al final. 
+        // Se puede hacer con una función, que hay que ejecutarla cuando la página se haya cargado, bien poniendo en la etiqueta body como evento
+        // onload ; o bien con window.onload = suma();
 
         function suma(){
             document.getElementById("msjFunct").innerHTML = a + " + " + b + " = " + c ;

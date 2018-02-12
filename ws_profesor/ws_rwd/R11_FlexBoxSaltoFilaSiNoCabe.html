@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <style>
+        *{box-sizing:border-box}
+        html{font-size:20px;font-family:sans-serif;}/*root*/
+        div{border:1px solid black;}
+        div.contenedor{
+            background-color: beige;
+            height: 500px; width: 500px;
+            /* --------- Contendor de tipo flex ------------ */
+            display: flex;
+
+            /* --------- Salto de línea si no caben ------------ */
+            flex-wrap:wrap;
+            
+            /* --------- Espacio entre líneas ------------ */
+            align-content: space-around;
+
+        }
+        div.capa{
+            background-color: yellow;
+            width: 150px;padding:25px;
+        }
+        div#capa3{height:150px;padding-top:80px; }
+    </style>
+</head>
+<body>
+    
+    <div class="contenedor">
+        <div id="capa1" class="capa">Capa 1</div>
+        <div id="capa2" class="capa">Capa 2 <br/> Capa 2.2 </div>
+        <div id="capa3" class="capa">Capa 3</div>
+        <div id="capa4" class="capa">Capa 4</div>
+        <div id="capa5" class="capa">Capa 5</div>
+    </div>
+    <div class="pie">
+        <h3>&copy; Copy right SERIES</h3>
+    </div>
+    <div id="capa6" class="capa">Capa 6</div>
+</body>
+</html>

@@ -41,6 +41,7 @@
 
         function cambioRadio(){
             var radios = document.querySelectorAll("input[name=cosa]");
+            // hay que comprobar qué radio es el que ha cambiado
             radios.forEach( function(radio){
                 if(radio.checked){
                     document.getElementById("foto").src = "img/" + radio.value ;

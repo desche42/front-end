@@ -17,17 +17,21 @@
         // El usuario es diestro??
         var diestro = confirm("Si es diestro pulse aceptar.");
 
-        // // mensaje a que se envía al usuario
-        // var msg = nombre + " es diestro: " + diestro;
+        // if(diestro){
+        //     alert(nombre + " es diestro." );
+        // }
+        // else{
+        //     alert(nombre + " es zurdo." );
+        // }
 
-        // alert(msg);
+        // utilizando un operador ternario
+        var msg = nombre +  " es " + ( diestro ? "diestro" : "zurdo" )  ;
 
-        if(diestro){
-            alert(nombre + " es diestro." );
-        }
-        else{
-            alert(nombre + " es zurdo." );
-        }
+
+        alert(msg) ;
+        // lo meto en el DIV
+
+        document.getElementById("mensaje").innerHTML = msg ;
 
     </script>
 

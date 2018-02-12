@@ -21,8 +21,11 @@
     <script>
     // función que crea la tabla
         function crearTabla(){
+            // vacía la tabla
             document.getElementById("cuerpo").innerHTML = "" ;
+            // pide el producto máximo que va a insertar en la tabla
             var prodMax = parseFloat(prompt("Producto máximo?"));
+
             // bucle infinito
             for (let factor1 = 1; factor1 <= Math.sqrt(prodMax) ; factor1++) {
                 // abro la fila e introduzco el primer factor
@@ -31,7 +34,9 @@
                 var producto ;
                     for (var factor2 = 2; factor2 <= Math.sqrt(prodMax) ; factor2++) {
                         producto = factor1*factor2;
-                        if (producto > prodMax) break ;
+                        // si el producto es mayor que el máximo pedido, sal del bucle y no lo inserta porque no se ejecuta las siguientes líneas del bucle
+                        if (producto >= prodMax) break ;
+                        // de lo contrario, lo inserta
                         fila += "<td>" + producto + "</td>" ;
                     }
                 // cierro la fila
