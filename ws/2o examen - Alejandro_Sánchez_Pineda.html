@@ -20,23 +20,23 @@
 
         // opción seleccionada
         function opSelect(){
+            
             // guardo opción seleccionada
             // var selected = $("#semana option:selected").val();
-
             // esto también valdría. el value del select es el value de la option selected
-            var selected = $("#semana").val();
-
+            // var selected = $("#semana").val();
             // si el valor es "" , desactivar botón, si no, activar
                 // if (selected == ""){
                 //     $("#btnInsertar").attr("disabled",true) ;
                 // } else{
                 //     $("#btnInsertar").attr("disabled",false) ;
-                // }   
+                // } 
+
             // o lo que es lo mismo
-            $("#btnInsertar").attr("disabled", selected == "" ) ;
+            $("#btnInsertar").attr("disabled", $("#semana").val() == "" ) ;
 
 
-            return selected ;  
+            return $("#semana").val() ;  
         }
         
         // insertar en ul
