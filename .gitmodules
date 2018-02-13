@@ -13,3 +13,6 @@
 [submodule "ws_profesor/ws_es6_ts"]
 	path = ws_profesor/ws_es6_ts
 	url = http://github.com/vladimirbat/ws_es6_ts
+[submodule "ws_profesor/ws_typescript"]
+	path = ws_profesor/ws_typescript
+	url = http://www.github.com/vladimirbat/ws_typescript/
