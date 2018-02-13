@@ -60,22 +60,20 @@
             },
             "problemMatcher": []
         },
-        { ////////////////////////////////////////////////////////
-            "label": "TypeScript transpiler",
+        {////////////////////////////////////////////////////
+            "label": "Transpilar TypeScript",
             "type": "shell",
-            "command": "tsc",
-            // "isShellCommand" : true, 
-            "args": [
-                "-w" , "-p" , "."
-            ],
-            // "showOutput" : "silent",
             "isBackground": true,
+            "command": "tsc",
+            "args": [
+                "-w","-p","."
+            ],
+            "problemMatcher":"$tsc-watch",
             "group": {
                 "kind": "build",
-                "isDefault": true,
-            },
-            "problemMatcher": "$tsc-watch"
-        }
+                "isDefault": true
+            }
+        },
     ],
     "problemMatchers": []
 }
