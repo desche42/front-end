@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Funciones Lambda</title>
+    <!-- SCRIPTS -->
+    <script>
+        var calculadora = {
+            a: 5,
+            b: 6,
+            sumar: function(a,b){ return this.a + this.b },
+            inicializar: function(){
+                // una solución para poder usar this(obj) dentro del evento onclick es guardarlo en una variable
+                var that = this ;
+                document.getElementById("boton").onclick = function(event){
+                    console.log(that) ; //--> devuelve el objeto, por lo que ya podemos hacer
+                    that.a++ ; // suma uno al valor de la propiedad a del objeto
+                    alert("La suma es " + that.sumar() );
+                };
+            },
+        };
+
+        // ejecuto inicializar para que el botón tenga el evento onclick
+        window.onload = function(){
+            calculadora.inicializar();
+        }
+    </script>
+</head>
+<body>
+    <button id="boton">Ver resultado</button>
+</body>
+</html>

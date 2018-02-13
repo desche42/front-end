@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Funciones Lambda</title>
+    <!-- SCRIPTS -->
+    <script>
+        // creo un objeto con los atributos
+        var calculadora = {
+            a: 5,
+            b: 6,
+            // este objeto tiene un método sumar y un método inicializar, que asigna al botón una función manejadora
+            sumar: function(a,b){ return this.a + this.b },
+            inicializar: function(){
+                document.getElementById("boton").onclick = function(event){
+                    // dentro de esta función, this devuelve [object HTMLButtonElement], aquí dentro this es el botón
+                    console.log(this) ;
+                };
+                // mientras que aquí this es el objeto --> [object Object]
+                console.log(this) ;
+            }
+        };
+
+        // ejecuto inicializar para que el botón tenga el evento onclick
+        window.onload = function(){
+            calculadora.inicializar();
+        }
+    </script>
+</head>
+<body>
+    <button id="boton">Ver resultado</button>
+</body>
+</html>

@@ -3,7 +3,7 @@
     // for the documentation about the tasks.json format
     "version": "2.0.0",
     "tasks": [
-        {
+        { //////////////////////////////
             "label": "Navegador_file",
             "type": "shell",
             "command": "Navegador",
@@ -25,7 +25,7 @@
             },
             "problemMatcher": []
         },
-        {
+        { /////////////////////////////////////
             "label": "Navegador_localhost",
             "type": "shell",
             "command": "Navegador",
@@ -47,7 +47,7 @@
             },
             "problemMatcher": []
         },
-        {
+        { ////////////////////////////////////////////////
             "label": "node",
             "type": "shell",
             "command": "node",
@@ -56,10 +56,26 @@
             ],
             "group": {
                 "kind": "build",
-                "isDefault": true,
+                "isDefault": false,
             },
             "problemMatcher": []
         },
+        { ////////////////////////////////////////////////////////
+            "label": "TypeScript transpiler",
+            "type": "shell",
+            "command": "tsc",
+            // "isShellCommand" : true, 
+            "args": [
+                "-w" , "-p" , "."
+            ],
+            // "showOutput" : "silent",
+            "isBackground": true,
+            "group": {
+                "kind": "build",
+                "isDefault": true,
+            },
+            "problemMatcher": "$tsc-watch"
+        }
     ],
     "problemMatchers": []
 }

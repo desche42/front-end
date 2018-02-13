@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Funciones Lambda</title>
+    <!-- SCRIPTS -->
+    <script>
+        // HACER SOLUCIÓN CON BIND
+        var calculadora = {
+            a: 5,
+            b: 6,
+            sumar: function(a,b){ return this.a + this.b },
+            inicializar: function(){
+                console.log("This del método inicializar",this);
+                document.getElementById("boton").onclick = function(event){
+                    console.log("This del botón asignado con bind" , this);
+                    // aquí dentro podemos usar this porque después de la función hacemos un bind, lo que cambia el
+                    // significado de this a lo que le pasemos con bind
+                    this.sumar() ;
+                    this.a++ ;
+                }.bind(this);
+
+            }
+        };
+
+        // ejecuto inicializar para que el botón tenga el evento onclick
+        window.onload = function(){
+            calculadora.inicializar();
+        }
+    </script>
+</head>
+<body>
+    <button id="boton">Ver resultado</button>
+</body>
+</html>

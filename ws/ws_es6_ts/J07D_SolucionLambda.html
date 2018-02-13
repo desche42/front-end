@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Funciones Lambda</title>
+    <!-- SCRIPTS -->
+    <script>
+        // con la expresión lambda, sí podemos usar this dentro de ella porque no cambia
+        var calculadora = {
+            a: 5,
+            b: 6,
+            sumar: function(a,b){ return this.a + this.b },
+            inicializar: function(){
+                var that = this ;
+                document.getElementById("boton").onclick = (event) =>{
+                    console.log(this);
+                    console.log(that);
+                    alert(this.sumar()) ;
+                    this.a++ ;
+                }
+
+            }
+        };
+
+        // ejecuto inicializar para que el botón tenga el evento onclick
+        window.onload = function(){
+            calculadora.inicializar();
+        }
+    </script>
+</head>
+<body>
+    <button id="boton">Ver resultado</button>
+</body>
+</html>
