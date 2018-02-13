@@ -31,4 +31,15 @@ class SubClase extends SuperClase{
 
 // ahora creo dos objetos de tipo superclase y subclase
 let sup = new SuperClase();
+console.log("");
 let sub = new SubClase();
+
+// las variables privadas dan error de compilación, en JS no hay variables privadas por lo que el código sí que 
+// se ejecutará, sin emabargo en TS dará error. poniendo en las opciones del compilador noEmitOnError: true
+console.log("");
+// console.log("la variable private es:",sup.miVariable);  // esto da error en TypeScript
+// console.log("la variable protected es:",sup.nuestraVariable);  // esto da error en TypeScript
+console.log("la variable public es:",sup.deTodosVariable);
+console.log("");
+// sup.miVariable = "hola";  // esto da error en TypeScript
+// console.log("la variable private es:",sup.miVariable);  // esto da error en TypeScript
