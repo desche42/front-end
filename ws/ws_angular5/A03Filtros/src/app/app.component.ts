@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MATRIZ_PERSONAS, MEDIA_SALDOS } from './matriz_personas';
-
 import { Persona } from './persona' ;
 
 @Component({
@@ -19,6 +18,10 @@ export class AppComponent implements OnInit {
     // no podemos acceder desde el HTML la matriz_personas, por lo que la guardamos en la variable personas
     this.personas = MATRIZ_PERSONAS ;
     this.mediaSaldos = MEDIA_SALDOS ;
+  }
+  // creamos el método ahora de clase Date, que devuelve el objeto Date
+  ahora(): Date {
+    return new Date();
   }
 }
 

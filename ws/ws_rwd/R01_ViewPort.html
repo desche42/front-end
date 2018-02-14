@@ -5,9 +5,11 @@
     <!-- esto establece el ancho y el alto del dispositivo que está viendo la web -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>View Port</title>
     <style>
-        *{box-sizing: border-box;} /* para que el tamaño sea total, más sencillo todo*/
+        /* para que el tamaño sea total, más sencillo todo*/
+        *{box-sizing: border-box;} 
         body{
             /* sin esto, habría scroll */
             margin: 0px ;
@@ -23,8 +25,10 @@
         }
         div.panel{
             border: 2px solid orange;
-            background-color: aqua ;
+            /* background-color: aqua ; */
+            /* le ponemos % porque está dentro de un contenedor */
             width: 100% ;
+            /* width: 100vw; */
             height: 20% ;
         }
     </style>

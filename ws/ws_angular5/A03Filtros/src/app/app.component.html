@@ -1,0 +1,40 @@
+<!-- vamos a meter en la lista siguiente las personas de la matriz_personas.ts -->
+
+<h1>Filtros</h1>
+
+<p>Fecha: {{ ahora() }}</p>
+
+ <!-- date formatea la hora a locale, o configurarlo  -->
+ <p>Fecha pipeline date: {{ ahora() | date: 'dd/M/yyyy' }}</p>
+ <p>Fecha pipeline date: {{ ahora() | date: 'dd/MM/yy'  }}</p>
+ <p>Fecha pipeline date: {{ ahora() | date: 'dd/MMM/yy'  }}</p>
+ <p>Fecha pipeline date: {{ ahora() | date: 'dd/MMMM/yy'  }}</p>
+ <p>Fecha pipeline date es: {{ ahora() | date: 'dd/MMMM/yy':'':'es'  }}</p>
+ <!-- le puedes poner el huso horario, son las comillas vacías -->
+ <p>Fecha pipeline date es: {{ ahora() | date: "EEEE, d 'de' MMMM 'de' yyyy":'':'es' }}</p>
+ <p>Hora pipeline date es: {{ ahora() | date: "HH:mm:ss"  }}</p>
+
+
+
+<table id="tablaDatos">
+  <thead>
+    <tr>
+      <th>DNI</th>
+      <th>Nombre</th>
+      <th>Apellidos</th>
+      <th>Saldo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of personas">
+      <td>{{p.dni}}</td>
+      <!-- le indicamos que ponga en mayúsculas el nombre -->
+      <td>{{p.nombre | uppercase}}</td>
+      <td>{{p.apellidos}}</td>
+      <!-- le indicamos que el saldo es una divisa -->
+      <td *ngIf="p.saldo < mediaSaldos" style="color:red">{{ p.saldo | currency:'EUR':'symbol':'1.2-2'}}</td>
+      <td *ngIf="p.saldo >= mediaSaldos" style="color:green">{{ p.saldo | currency:'EUR':'symbol':'1.2-2'}}</td>
+    </tr>
+  </tbody>
+</table>
+

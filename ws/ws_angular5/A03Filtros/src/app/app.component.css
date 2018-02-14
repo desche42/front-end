@@ -6,3 +6,8 @@ table#tablaDatos th{background-color:gray;color: white; }
 table#tablaDatos tr:hover{background-color:silver !important; }
 table#tablaDatos tr:nth-child(2n){background-color:gainsboro; }
 table#tablaDatos tbody tr td:last-child{ text-align: right}
+
+/* títulos centroados */
+h1{
+  text-align: center;
+}
