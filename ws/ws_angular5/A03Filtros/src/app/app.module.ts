@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 
 // núcleo de Angular
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 
 // importar para la fecha local
 import { registerLocaleData } from '@angular/common';
@@ -12,18 +12,26 @@ registerLocaleData(localeEs, 'es');
 
 // imprortar el componente app
 import { AppComponent } from './app.component';
+import { ElevadoPipe } from './elevado.pipe';
+import { FiltrarPipe } from './filtrar.pipe';
+
+
+
+
+
+
+
+
+
+
+
 
 // esto configura la clase definida más abajo (y que está vacía)
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
+  // Declaramos en este módulo dos filtros personalizados
+  declarations: [ AppComponent , ElevadoPipe , FiltrarPipe ],
+  imports: [ BrowserModule ],
+  providers: [  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-

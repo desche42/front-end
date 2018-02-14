@@ -1,0 +1,15 @@
+<!-- vamos a meter en la lista siguiente las personas de la matriz_personas.ts -->
+
+<h1>Acceso a atributos</h1>
+
+<div class="panel">
+
+  <img src="{{foto}}" class="foto" />
+  <!-- mejor ponerlo así -->
+  <img [src]="foto" class="foto" />
+
+</div>
+
+
+<p><input type="text" readonly [value]='saludo' ></p>
+<p><input type="text" disabled=true [value]='saludo' ></p>

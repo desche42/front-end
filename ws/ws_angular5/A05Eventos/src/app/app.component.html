@@ -1,0 +1,19 @@
+<!-- vamos a meter en la lista siguiente las personas de la matriz_personas.ts -->
+
+<h1>Acceso a atributos</h1>
+
+<div class="panel" style="text-align: center">
+
+  <img [src]="foto1" class="foto" />
+  <img [src]="foto2" class="foto" />
+  <img [src]="foto3" class="foto" />
+
+  <!-- Mensajes para el usuario -->
+  <p *ngIf='vecesPulsadas == 1'>Has pulsado el botón una vez</p>
+  <p *ngIf='vecesPulsadas > 1'>Has pulsado el botón {{vecesPulsadas}} veces</p>
+  <p *ngIf='vecesPulsadas == 0'>No has pulsado el botón. Juega... hay premio.</p>
+  <h2 *ngIf='vecesPulsadas > 0 && foto1 == foto2 && foto2 == foto3'>Te lo has creído JAJA No hay premio</h2>
+</div>
+
+<!-- esto no es una función. le asignamos el método "jugar" de la aplicación; click se pone entre paréntesis  -->
+<p><button id='btnJugar' (click) = 'jugar()' >Jugar</button></p>
