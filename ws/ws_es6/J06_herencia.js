@@ -39,3 +39,5 @@ console.log("La distancia de " + c1 + " a "
     + c2 + " es " + c1.distancia(c2));
 console.log(c1 + " tiene un área de " + c1.area() + " u2");
 console.log(c2 + " tiene un área de " + c2.area() + " u2");
+
+

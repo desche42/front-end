@@ -1,0 +1,11 @@
+
+
+/*  estilo de la tabla de datos */
+
+*{box-sizing:border-box; }
+table#tablaDatos{margin: 10px auto;border-collapse:collapse; text-align: center; }
+table#tablaDatos td, table#tablaDatos th {padding:3px 12px;border-bottom: 1px solid black;}
+table#tablaDatos thead th{border-top: 1px solid black; }
+table#tablaDatos th{background-color:gray;color: white; }
+table#tablaDatos tr:hover{background-color:silver !important; }
+table#tablaDatos tr:nth-child(2n){background-color:gainsboro; }

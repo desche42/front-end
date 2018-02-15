@@ -6,7 +6,7 @@ function bombilla(){
     }
     console.log("2..." + luz);
     if (true) {
-        let lof = "off" ;
+        let lof = "off" ; //esta variable está definida solo aquí
         console.log("3..." + lof) ;
     }
     // console.log("4.." + lof) // reference error not defined

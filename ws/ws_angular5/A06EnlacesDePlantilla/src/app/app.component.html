@@ -1,10 +1,13 @@
-<h1>Enlaces de plantilla</h1>
 
-<!-- podemos acceder al texto del imput creando un identificador precediéndolo de #   -->
-Texto: <input type="text" #mensaje  /> <br/>
-<!-- hacemos referencia al elemento del DOM con identificador mensaje y leemos su propiedad value -->
-<!-- Pero esto no se actualiza hasta que no se repinte la página (por ejemplo un evento) -->
-El texto introducido es: {{mensaje.value}} <br/>
+<div>
+  <video #reproductor controls="controls"  src="http://yt-dash-mse-test.commondatastorage.googleapis.com/media/car-20120827-85.mp4"></video>
+</div>
 
-<button (click)='incrementar()' >{{veces}} veces</button>
+<div>
+  <button (click)='pararVideo()' >Parar</button>
+</div>
+
+<div>
+  <progress min="0" [max]="longitud" [value]=tiempo></progress>
+</div>
 
