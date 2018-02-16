@@ -22,3 +22,7 @@
 [submodule "ws_profesor/ws_ionic"]
 	path = ws_profesor/ws_ionic
 	url = https://github.com/vladimirbat/ws_ionic.git
+
+[submodule "ws_profesor/ws_sass"]
+	path = ws_profesor/ws_sass
+	url = https://github.com/vladimirbat/ws_sass.git

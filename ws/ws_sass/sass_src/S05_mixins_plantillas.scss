@@ -1,0 +1,17 @@
+// con esto podemos aplicar propiedades a cada estilo que hagamos. 
+// ver en github autoprefixer para sass
+// https://github.com/JumpLinkNetwork/sass-prefix-mixins/tree/master/scss
+
+
+@mixin border-radius($radio){
+    -webkit-border-radius:$radio;
+    -moz-border-radius:$radio;
+    -ms-border-radius:$radio;
+    border-radius:$radio;
+}
+div#principal{
+    @include border-radius(20px);
+}
+p{
+    @include border-radius(10px);
+}
