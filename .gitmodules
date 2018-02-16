@@ -19,3 +19,6 @@
 [submodule "ws_profesor/ws_angular"]
 	path = ws_profesor/ws_angular
 	url = https://github.com/vladimirbat/ws_angular5
+[submodule "ws_profesor/ws_ionic"]
+	path = ws_profesor/ws_ionic
+	url = https://github.com/vladimirbat/ws_ionic.git
