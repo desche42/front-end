@@ -6,7 +6,7 @@ ws/ws_angular5/node_modules/*
 /ws/dist/*
 
 ## ignore pdfs
-*.pdf
+**.pdf
 ##########
 
 /build
