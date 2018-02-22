@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Petición</title>
+    <link rel="stylesheet" href="../estilos.css">
+    <script>
+        // variable de la petición
+        var req = new XMLHttpRequest();
+
+        window.onload = function() {
+            document.querySelector("div button#enviar").addEventListener("click",enviar);
+            document.querySelector("div#resul").style.display = "none" ;
+        }
+
+        function enviar(event) {
+            var dni = document.querySelector("div input#dni").value ;
+            var url = "http://192.168.2.70:8090/minsaitjs/ObtenerNombre?nif=" + dni ;
+
+            // función que se ejecuta cuando cambia el estado de la petición
+            req.onreadystatechange = crearBtn ;
+            req.open('GET', url, true) ;
+            // cuerpo del mensaje http
+            req.send(null);
+            // console.log("Petición enviada") ;
+        }
+
+        function crearBtn(){
+            if (req.readyState == 4) { // recibimos la respuesta 
+                // console.log("Petición recibida") ;
+                if (req.status == 200 ) { // respuesta correcta   
+                    if (document.querySelector("div#resul button") == null ){ // si no hay ningún botón
+                        // creo el botón 
+                        var btn = document.createElement("button") ;
+                            // ocultar el div al pulsar el botón
+                            btn.addEventListener("click",ocultar);
+                        // inserto texto en el botón
+                        btn.innerHTML = req.responseText ;
+                        // inserto el botón en el div#resul 
+                        document.querySelector("div.panel#resul").appendChild(btn) ;
+                    } else{ // si ya lo hay cambiarlo
+                        var btn = document.querySelector("div#resul button") ;
+                        btn.innerHTML = req.responseText ; 
+                    }
+                    // mostrar el panel resultado
+                    document.querySelector("div#resul").style.display = "block" ;
+                } else{
+                    console.log("Error: ", req.status, req.statusText, req.responseText) ;
+                }
+            }
+        }
+
+        // función que oculta el div resultado y además lo vacía
+        function ocultar(){
+            document.querySelector("div#resul").style.display = "none" ;
+            console.log("ocultar");
+        }
+
+        
+    </script>
+</head>
+<body>
+    <!--Ejercicio en el que le envío mi DNI al profesor y me devuelve el nombre asociado. 
+        Hay que crear un botón y ponerle el nombre que ha devuelto  -->
+
+        <div class="panel" id="datos" >
+            <label>DNI:</label> <input type="text" id="dni" > <button id="enviar" >Enviar petición</button>
+        </div>
+        
+        <div class="panel" id="resul"></div>
+
+
+
+</body>
+</html>

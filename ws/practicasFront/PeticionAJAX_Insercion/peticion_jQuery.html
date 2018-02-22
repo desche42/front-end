@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Petición</title>
+    <link rel="stylesheet" href="../estilos.css">
+    <script src="jquery.js"></script> <!-- no meter nada nunca aquí -->
+    <script>
+        // cuando la página se cargue, se realiza una petición al servidor
+        $(document).ready( inicializar() );
+        // mensaje de error para todas las peticiones ajax
+        $(document).ajaxError(  function(event,req,op,msgError){ console.log( req.status + ": " + msgError ); }  )
+
+    // ----------------------------------- FUNCION QUE INSERTA EN TABLA ------------------------------------------
+        
+        function insertarTabla(id,name){
+            // busco el tbody
+            var tbody = $("#tablaDatos tbody");
+                // genero un elemento tr y le meto dos td con sus datos
+                $("<tr id='" + id + "'></tr>")
+                .append( $("<td></td>").text(id) )
+                .append( $("<td></td>").text(name) )
+                .appendTo( tbody )
+        }
+
+    // --------------------------------------------- PETICIÓN GET -----------------------------------------------
+
+        // pide todos los ids hasta 19 incl. se ejecuta al cargarse la página
+        function inicializar (){
+            var url ;
+            // la función petición acepta un int que define el númnero de región, por lo que la meto dentro de un for
+            // y se genera la url en cada iteración. Busca desde el id 1 hasta el 21
+            for (let i = 1; i <= 21; i++) {
+                url = "http://192.168.2.70:8090/restfulljpa/region/" + i.toString();
+
+                // realizando petición
+                console.log("Realizando petición",i,"...");
+                $.getJSON(url,null,insertarDatos);
+            }
+        }
+        
+        // función de callback para la petición en caso exito. recibe como parámetro los datos recibidos de la petición
+        // y si hay datos, insertarlos en la tabla, si no mensaje de error
+        function insertarDatos(datos){
+            datos != undefined ? insertarTabla(datos.regionId , datos.regionName) : console.log("No hay datos") ;
+        } 
+
+
+    // ----------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+    // --------------------------------------------- PETICIÓN POST -----------------------------------------------
+
+
+        function postRegion() {
+            // leer los datos
+            var regionId = $("input#regId").val() ;
+            var regionName = $("input#regName").val();
+
+
+            // Objeto JSON que se manda al servidor pasado a string
+            var objeto = {
+                regionId: regionId,
+                regionName: regionName
+            }
+            var str_objeto = JSON.stringify(objeto) ;
+
+
+            // petición post mandando el objeto
+            var url = 'http://192.168.2.70:8090/restfulljpa/region';
+            $.ajax({
+                data: str_objeto,
+                url: url,
+                contentType: 'application/json',
+                type: 'POST',
+                success: () => console.log("post enviado...", "Actualizando tabla")
+            })
+            
+            // petición para actualizar la tabla, insertando el último
+            var url_get = url + "/" + objeto.regionId ;
+            $.getJSON(url_get,null,insertarDatos);
+        }
+
+
+    // ----------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+    // --------------------------------------------- PETICIÓN PUT -----------------------------------------------
+
+
+        // function putRegion() {
+        //     // configuro la petición
+        //     var settings = {
+        //         contentType: "application/json",
+        //         method: "PUT",
+        //     }
+
+        //     // hago la petición
+        //     $.ajax{settings}
+        // }
+
+        // function exitoPut(datos) {
+        //     console.log("put enviado...",datos)
+        // }
+
+
+        // ----------------------------------------------------------------------------------------------------------
+
+
+
+
+    </script>
+</head>
+<body>
+    <table id="tablaDatos" >
+        <thead>
+            <tr> <th colspan="2">Región </th></tr>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <div class="panel">
+        <label>Region ID</label> <input type="text" id="regId" > <br/>
+        <label>Region Name</label> <input type="text" id="regName">  <button onclick="postRegion();">Enviar región</button>
+    </div>
+
+
+   
+</body>
+</html>

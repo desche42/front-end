@@ -1,0 +1,21 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Navegador Local",
+            "type": "shell",
+            "command": "explorer.exe"
+            // "args":["C:\\WS\\WS_html_css\\A01_html_basico\\H07_listas.html"]
+            "args": [
+                "${file}"
+            ],
+            "problemMatcher" : [],
+            "group":{
+                "kind": "build",
+                "isDefault":true
+            }
+        }
+    ]
+}

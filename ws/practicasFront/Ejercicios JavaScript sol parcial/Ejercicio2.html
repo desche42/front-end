@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Juego memoria</title>
+    <style>
+        table{box-sizing:border-box;border-collapse:collapse;margin:100px auto}
+        table td{border:1px solid black;height:100px;width:200px;text-align:center}
+        img{height:100px;visibility: hidden}
+    </style>
+    <script>
+       
+        function mostrarImagen(tdtocado){
+            var imagen = tdtocado.firstChild;
+            //console.log (imagen.style.visibility);// = (visible ? 'visible' : 'hidden');
+            if (imagen.style.visibility != 'visible')
+            {
+                imagen.style.visibility = 'visible';     
+            } 
+            else {
+                imagen.style.visibility = 'hidden';
+            }
+        }
+       
+    </script>
+</head>
+<body>
+    <table>
+        <tbody>
+            <tr>
+                <td onclick="mostrarImagen(this)"><img src="img/gato.png"></td>
+                <td onclick="mostrarImagen(this)"><img src="img/perro.png"></td>
+            </tr>
+            <tr>
+                <td onclick="mostrarImagen(this)"><img src="img/gato.png"></td>
+                <td onclick="mostrarImagen(this)"><img src="img/perro.png"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>   

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+        window.onload = pin ;
+
+        var datos_post = {
+            user: "",
+            comentario: ""
+        }
+
+        // url de la petición
+        var url = "http://192.168.2.70:8090/minsaitjs/PublicarComentario";
+
+        function enviar(){
+            // petición
+            xmlHttp = new XMLHttpRequest(); 
+		    xmlHttp.onreadystatechange = function() {
+                // función de callback cuando cambie el estado 
+                if (xmlHttp.readyState == 4) {
+			        if ( xmlHttp.status == 200 || xmlHttp.status == 201 ) {
+                        console.log("Datos enviados",datos_post.comentario);
+                    }
+                }
+            }
+            xmlHttp.open('POST', url, true); 
+            // tipos de datos mime que enviamos
+            xmlHttp.setRequestHeader('Content-Type', 'application/json');
+		    xmlHttp.send( JSON.stringify(datos_post) );
+        }
+        
+
+            //------------------------ FIN DE LA PETICIÓN POST  --------//
+        
+
+        function pin(){
+            datos_post.comentario = "pin" ;
+            enviar();
+            setTimeout(pan,1000);
+        }
+
+        function pan(){
+            datos_post.comentario = "pan" ;
+            enviar();
+            setTimeout(tomalacasitos,1000);
+        }
+
+        function tomalacasitos(){
+            datos_post.comentario = "Toma Lacasitos" ;
+            enviar();
+            setTimeout(pin,3000);
+        }
+    
+            
+
+    
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

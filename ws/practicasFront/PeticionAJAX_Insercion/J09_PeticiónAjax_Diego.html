@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<link rel="stylesheet" href="../estilos.css">
+
+<style>
+</style>
+
+
+<title>Pedir datos JSON</title>
+
+
+<script>
+
+	var xmlHttp = null;
+
+	window.onload = function (){
+		document.getElementById("enviarPeticion").onclick = procesarRegion ;
+		document.getElementById("enviarRegion").onclick = procesarRegionPOST;
+	}
+
+
+	function procesarRegion(){
+		xmlHttp = new XMLHttpRequest(); 
+		xmlHttp.onreadystatechange = anadirRegion;
+
+		var valIntroducido = document.getElementById("region").value;
+		var url = 'http://192.168.2.70:8090/restfulljpa/region/' + valIntroducido
+
+		xmlHttp.open('GET', url); 
+		xmlHttp.send(null);
+	}
+
+	function anadirRegion(){
+		if (xmlHttp.readyState == 4) {
+			if ( xmlHttp.status == 200 || xmlHttp.status == 201 ) {
+				//Recibimos el objeto, y lo transformamos a un objeto Javascript
+				var objt = xmlHttp.responseText;
+				var obj = JSON.parse(objt);
+
+				//Sacamos el valor de cada 
+				var id = obj.regionId;
+				var region = obj.regionName.toString();
+
+				// Añadimos y generamos los elementos de la tabla
+				var tr = document.createElement("tr");
+				var td1 = document.createElement("td");
+				var td2 = document.createElement("td");
+				var tbody = document.getElementById("body");
+
+				// Añadimos los elementos al DOM
+				td1.innerHTML = id;
+				td2.innerHTML = region;
+				tr.appendChild(td1);
+				tr.appendChild(td2);	
+				tbody.appendChild(tr);
+			} else {
+				console.log("Ha ocurrido un error "+ xmlHttp.status +":"+ xmlHttp.statusText);
+			}
+		}
+	}
+
+	function procesarRegionPOST(){	
+		//Iniciar petición
+		xmlHttp = new XMLHttpRequest(); 
+		xmlHttp.onreadystatechange = anadirRegion;
+		
+		//Tomar los valores del DOM
+		var regionIntroducida = document.getElementById("regionPOST").value;
+		var idIntroducido= (document.getElementById("idPOST").value);
+		idIntroducido = parseInt(idIntroducido);
+		
+		//Dirección para introducir el nuevo objeto
+		var url = 'http://192.168.2.70:8090/restfulljpa/region'
+		
+		//Generación del objeto y pasado a string
+		var obj = {regionId:idIntroducido ,regionName:regionIntroducida};
+		var obj = JSON.stringify(obj) ;
+		
+		//Enviando datos al servidor
+		xmlHttp.open('POST', url);
+		xmlHttp.setRequestHeader('Content-Type','application/json; charset=UTF-8');
+		xmlHttp.send( obj );
+	}
+		
+</script>
+</head>
+
+<body>
+	<div class="panel">
+		<label for="región">ID</label> 
+		<input type="text" id="region">Introduzca un número del 1 en adelante
+		<button id="enviarPeticion">Enviar</button>
+	</div>
+
+	<table id="tablaDatos">
+		<thead>
+			<tr>
+				<th>Indice</th>
+				<th>Región</th>
+			</tr>
+		</thead>
+
+		<tbody id="body">
+
+		</tbody>
+	</table> 
+
+	<div class="panel">
+			<label for="id">ID</label> 
+			<input type="number" id="idPOST"> Introduzca un número a partir del 5 </br>
+			<label for="region">Región</label> 
+			<input type="text" id="regionPOST"> Introduzca un la región </br>
+			<button id="enviarRegion">Enviar</button>
+	</div>
+</body>
+</html>

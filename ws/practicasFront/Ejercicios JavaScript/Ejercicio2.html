@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Juego memoria</title>
+    <style>
+        table{
+            box-sizing:border-box;
+            border-collapse:collapse;
+            margin:10px auto;
+        }
+        table td{
+            border:2px solid goldenrod;
+            height: 175px;
+            width: 175px;
+            text-align: center;
+        }
+        img{
+            height:125px;
+            display:none;
+            margin: auto; 
+        }
+        h1{
+            font-size: 3em ;
+            color: lightgreen ;
+            font-weight: bold ;
+            text-align: center;
+            margin: 0;
+        }
+
+        /************************* ESTILO PARA LA TRANSICIÓN DE GANAR **************************/
+        /* #td img {
+            -webkit-transition: opacity 1s ease-in-out;
+            -moz-transition: opacity 1s ease-in-out;
+            -o-transition: opacity 1s ease-in-out;
+            transition: opacity 1s ease-in-out;
+        }
+
+        #td img.win {
+            opacity:0;
+        } */
+
+
+    </style>
+    <!-- JUEGO DE SELECCIONAR IMÁGENES, SI LAS DOS SON IGUALES SE MANTIENEN, SI NO, SE BORRAN -->
+    <script>         
+        window.onload=function(){
+            // ejecuta la función mostrarImagen cuando se hace click en un td
+            var td = document.querySelectorAll("table td") ;
+            td.forEach(function(elemento){
+                randomize(elemento);
+                elemento.addEventListener("click",mostrarImagen);
+            });
+        }
+
+        // variable que almacena el número de imágenes mostradas y cuales son
+        var numeroImagenes = 0 ;
+        var prevImg ;
+        var actImg ;
+        var parejasAcertadas = 0; // max 8
+
+        function mostrarImagen(event){
+
+                switch (numeroImagenes) {
+                    case 0:   // si no hay imagen mostrada, mostrar la que se le ha hecho click
+                        event.target.firstChild.style.display="inline-block";
+                        // almaceno un enlace a la primera imagen
+                        prevImg = event.target;
+                        // aumento el contador de img visibles
+                        numeroImagenes++ ;
+                        break;
+                    case 1:  // 1 imagen --> comprobar que no he pulsado la misma y mostrar la otra y comprobar
+                        actImg = event.target ;
+                        // pero el segundo click es encima de la propia img
+                        if ( prevImg.id == actImg.parentNode.id ){
+                            console.log("Has pulsado sobre la misma imagen");
+                        } else{
+                            actImg.firstChild.style.display="inline-block";
+                            numeroImagenes++;
+                            comprobar();
+                        }
+                        break;
+                    default:
+                        break;
+                }   
+            }
+        // función que comprueba si las dos imágenes mostradas son la misma. toma dos param, la imagen anterior y la actual
+        function comprobar() {            
+            if (prevImg.firstChild.src == actImg.firstChild.src) { // si las dos imagenes son las mismas, no se hace nada
+                console.log("Par correcto") ;
+                // resetear el contador y los enlaces
+                prevImg = "";
+                actImg = "";
+                numeroImagenes = 0 ;
+                parejasAcertadas++ ;
+                // si el juego se ha completado, redirigir
+                if (parejasAcertadas == 8) {setTimeout(hasGanado,1500) }
+            } else{   // si las dos imagenes son distintas, ocultar
+                console.log("Par incorrecto... llamando a ocultar");
+                setTimeout(ocultar,400) ;
+            }
+        }
+        
+        // función que oculta las imágenes mostradas por no ser iguales
+        function ocultar() {
+            prevImg.firstChild.style.display = "none";
+            actImg.firstChild.style.display = "none" ;
+            prevImg = "";
+            actImg = "";
+            numeroImagenes = 0 ;
+        }
+
+
+        // función para cuando has ganado
+        function hasGanado() {
+            console.log("Has ganado");
+
+            // cojo las imagenes y a cada una de ellas 
+            document.querySelectorAll("table tbody td").forEach( elemento => {
+                elemento.firstChild.src = "img/win.jpg" ;
+                // elemento.firstChild.display = "block" ;
+                // elemento.lastChild.className = "win" ;
+            })
+        }
+        
+
+    // ------------------------ FUNCIÓN RANDOM ASIGNA IMAGENES  ---------------------
+
+    
+    // para que asigne las imágenes aleatoriamente, esta función se ejecuta con window.onload para cada uno de los
+    // td de la tabla
+        
+        // matriz con las imagenes
+        const img = ["gato.png","perro.png","casa.gif","css3.png","html5.png",
+                        'cafeina.png', "adrenalina.png" , 'pepsina.png'    
+                    ] ;
+        var track = [0,0,0,0,0,0,0,0]
+        
+        // función que genera un número aleatorio de 1 a 16
+
+
+        // hay 16 celdas, 8 imágenes duplicadas; la función se ejecuta para cada td (window.onload) e ir insertando una 
+        // imagen aleatoria, sabiendo cuantas imágenes hay de cada una ya puestas a través de la varaible track
+        function randomize( elemento ){ 
+            while (elemento.firstChild == null) { // este bloque se ejecuta cuando no hay imagen dentro
+                // generar numero aleatorio de 0 a 7
+                var num = Math.floor( Math.random()*8 ) ;
+
+
+                // si la pareja no está puesta, meter imagen
+                if ( track[num] != 2 ){
+
+                    // creo elemento img que se va a mostrar
+                    var imagen = document.createElement("img");
+                    imagen.src = "img/" + img[num] ;
+                    imagen.alt = "busca la pareja" ;
+
+                    // lo meto dentro del td
+                    elemento.appendChild(imagen) ;
+
+
+                    // y registro su aparición
+                    track[num]++
+                    
+                    // debug
+                    // console.log("añadiendo imagen con src:", img[num], "hay", track[num], "imagenes de este tipo") ;
+                } else {
+                    // console.log("Esta pareja ya está puesta.. pasando a la siguiente iteración")
+                    continue;
+                }
+            }
+
+            // creo elemento img para cuando ganes
+            imagen = document.createElement("img");
+            imagen.src = "img/win.jpg" ;
+            // lo meto dentro del td
+            elemento.appendChild(imagen) ;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // ------------------------------------------------------------------------------
+    </script>
+</head>
+<body>
+    <h1>ENCUENTRA LAS PAREJAS</h1>
+    <table>
+        <tbody>
+            <tr>
+                <td id="00"></td>
+                <td id="01"></td>
+                <td id="02"></td>
+                <td id="03"></td>
+            </tr>
+            <tr>
+                <td id="10" ></td>
+                <td id="11" ></td>
+                <td id="12" ></td>
+                <td id="13" ></td>
+            </tr>
+            <tr>
+                <td id="20"></td>
+                <td id="21"></td>
+                <td id="22"></td>
+                <td id="23"></td>
+            </tr>
+            <tr>
+                <td id="30"></td>
+                <td id="31"></td>
+                <td id="32"></td>
+                <td id="33"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>   

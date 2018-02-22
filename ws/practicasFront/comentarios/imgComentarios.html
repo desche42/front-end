@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- <link rel="stylesheet" href="../estilos.css"> -->
+    <title>Comentarios</title>
+    <style>
+        *{box-sizing:border-box}
+
+        div.panel {
+            border: 1px solid black; 
+            padding: 20px;
+            margin: 10px auto; 
+            width:80%; 
+            background-color:beige;line-height:1.5em; 
+            text-align: center;
+        }
+        div.panel label{ display: inline-block; width:120px;background-color: indigo;
+            color:white; font-weight:bold; line-height:1.2em;text-align:center;
+            
+        }
+        div.panel img{ width:700px;}
+
+        div#pie{
+            text-align: left;
+            padding: 10px;
+        }
+        
+        p{
+            text-align: left;
+        }
+    </style>
+
+
+    <script>
+        // asigna función al botón
+        var muestralikes;
+        window.onload = function(){
+            document.querySelector("#btnLike").onclick = contadorLikes ;
+            muestraLikes = document.getElementById("spanLikes");
+        }
+
+        //---------------- contador de likes ------------
+        var likes = 0 ;
+
+        function contadorLikes(){
+            likes++ ; 
+            if (likes == 1) {
+                muestraLikes.innerText = "Un like!"
+            } else {
+                muestraLikes.innerText = likes + " likes!"
+            }
+        }
+    
+    //---------------------------------- validar comentario -------------
+
+
+    // función que retorna true o false
+
+    const EXPRESION_REGULAR_PWD = /^[a-zA-Z ,.?0-9]*$/; ;
+
+    function comentarioValido( comentario ){
+        // validación del comentario
+        var resul =  comentario.match(EXPRESION_REGULAR_PWD) ;
+        
+        // devuelve true si la validación no resulta null 
+        return resul != null ? true : false ; 
+    }
+
+
+
+
+    //---------------------------------- enviar comentario -------------
+    //  cambiar a petición POST en el que envío: "comentario" , "user" (mis iniciales) , 
+    var xmlHttp = null ;
+
+    function enviarComentario( ){
+        // coge el comentario del input 
+        var input = document.getElementById("nuevoComentario") ;
+        var comentario = input.value ;
+
+        if ( comentarioValido(comentario) ) { // añadir comentario
+            // creo un párrafo para meter el comentario
+            var p = document.createElement("p") ;
+            p.textContent = comentario ;
+            // lo meto en el div de los comentarios
+            var div = document.getElementById("comentariosViejos") ;
+            div.appendChild(p) ;
+
+        //------------------------ y además, lo mando por ajax post ----//
+            
+            // creo objeto javascript y lo paso a json
+            var datos_post = {
+                user: "ASP",
+                comentario: comentario
+            }
+
+            // url de la petición
+            var url = "http://192.168.2.70:8090/minsaitjs/PublicarComentario";
+            
+            // petición
+            xmlHttp = new XMLHttpRequest(); 
+		    xmlHttp.onreadystatechange = function() {
+                // función de callback cuando cambie el estado 
+                if (xmlHttp.readyState == 4) {
+			        if ( xmlHttp.status == 200 || xmlHttp.status == 201 ) {
+                        console.log("Datos enviados");
+                    }
+                }
+            }
+            
+            xmlHttp.open('POST', url, true); 
+
+            // tipos de datos mime que enviamos
+            xmlHttp.setRequestHeader('Content-Type', 'application/json');
+		    xmlHttp.send( JSON.stringify(datos_post) );
+
+            //------------------------ FIN DE LA PETICIÓN POST  --------//
+        } else {
+            // error
+            console.log("El comentario no es correcto. Borrando....") ;
+        }
+
+        // borro el campo de texto una vez enviado
+        input.value = "" ;
+    }
+
+    </script>
+</head>
+<body>
+    <!-- imágen y pie de imagen, con su pie que muestra los likes y el botón -->
+    <div class="panel" id="contenedor">
+        <img src="../imgComentario.jpg" alt="Imagen Tucker Gott" /> <br/>
+
+        <!-- botón y contador de likes -->
+        <div id="pie">
+            <button id="btnLike" >Me gusta!</button> <span id="spanLikes"></span>
+        </div>
+    </div>
+
+    <!-- caja de añadir comentario -->
+    <div class="panel" id="comentarios">
+        <!-- <input type="text" id="nuevoComentario">  -->
+        <textarea id="nuevoComentario" cols="100" rows="5"></textarea> <br/>
+
+        <button onclick="enviarComentario();">Enviar comentario</button>
+        <h4>Comentarios</h4>
+        <!-- cajas de comentarios -->
+        <div class="panel" id="comentariosViejos"></div>
+
+    </div>
+
+
+</body>
+</html>

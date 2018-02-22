@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trabajadores</title>
+    <script>
+    var xmlHttp = null;
+
+    function iniciaObjetoRequest () 
+    {
+        return new XMLHttpRequest();
+    }
+
+    function obtenerDepartamentos()
+    {
+        // inicia la petición a través de una función
+        xmlHttp = iniciaObjetoRequest();
+        xmlHttp.onreadystatechange = procesarDepartamentos;
+        // indicamos como vamos a enviar los datos, en este caso con el metodo GET, nos devuelve la lista de dptos
+        xmlHttp.open('GET', 'http://192.168.2.70:8090/minsaitjs/CargarDepartamentos', true); 
+        xmlHttp.send(null); 
+    }
+    function procesarDepartamentos()
+    {
+        //Obtenemos el control del TAG que contendrá la respuesta
+        if(xmlHttp.readyState==4) //ya hemos recibido respuesta del servidor
+        {
+            if(xmlHttp.status==200)// y el código de la cabecera http es bueno
+                {
+                    // alert("He recibido " + xmlHttp.responseText);
+                    //document.getElementById("cajatexto").value = xmlHttp.responseText;
+                    var lista_dptos = xmlHttp.responseXML.getElementsByTagName("departamento");
+                    var nelementos = lista_dptos.length;
+                    var opcion;
+                    var desplegable = document.getElementById("departamentos");
+                    
+                    var id = null;
+                    var nombre = null;
+            
+                    for (var i= 0; i < nelementos; i++) {
+                        /*var id = lista_dptos[i].children[0].textContent;
+                        var nombre = lista_dptos[i].children[1].textContent;*/ //FORMA MÁS ELEGANTE Y LÓGICA, PERO NO COMPATIBLE CON IE :S
+                        
+                        var elementoId = lista_dptos[i].getElementsByTagName("id")[0];
+                        var elementoNombre = lista_dptos[i].getElementsByTagName("nombre")[0];
+                        
+                        
+                        id = elementoId.childNodes[0].data; //también podría usar firstChild
+                        nombre = elementoNombre.childNodes[0].data;//en vez de childNodes[0]
+                        
+                        
+                        opcion = new Option(nombre, id);//Creo la opción
+                        desplegable.options[desplegable.options.length] = opcion;//la seteo. POdría haber usado como índice [i]
+
+
+                    }
+                }
+            else
+            {
+                alert("Ha ocurrido un error"+ xmlHttp.status +":"+ xmlHttp.statusText);
+            }
+        }
+    }
+
+
+
+
+
+    // ----------------------------------------- LISTAR TRABAJADORES ------------------------------------------------//
+
+
+
+
+    function listarTrabajadores()
+    {
+        var desplegable = document.getElementById("departamentos");
+        var dpto = desplegable[desplegable.selectedIndex];
+        
+        // alert ('Ha seleccionado el valor ' + dpto.value );
+        // alert ('Del departamento nombre ' + dpto.text);
+    
+        //TODO, GESTIONAR PETICION AJAX
+        //PARA OBTENER LOS TRABAJADORES DE ESE DEPARTAMENTO MEDIANTE LLAMADA
+        // http://192.168.2.70:8090/minsaitjs/CargarTrabajadores?dpto=30
+        
+        // inicia la petición a través de una función
+        xmlHttp = iniciaObjetoRequest();
+        xmlHttp.onreadystatechange = procesarEmpleados;
+        // indicamos como vamos a enviar los datos, en este caso con el metodo GET, nos devuelve la lista de dptos
+        var url = "http://192.168.2.70:8090/minsaitjs/CargarTrabajadores?dpto=" + dpto.value ;
+        xmlHttp.open('GET', url , true); 
+        xmlHttp.send(null); 
+    }
+
+    // La respuesta se procesa a través de esta función
+    function procesarEmpleados() {
+        if ( xmlHttp.readyState == 4 ) {
+            if (xmlHttp.status == 200) {
+                // variable donde se almacena la opción
+                var opcion ;
+                // obtengo la lista de los empleados
+                var lista_empleados = xmlHttp.responseXML.getElementsByTagName("empleado");
+                // obtengo el desplegable donde meter los empleados
+                var desplegable = document.getElementById("empleados") ;
+                // y lo borro
+                desplegable.innerHTML = "" ;
+                // recorro la lista de empleados
+                for (let i = 0; i < lista_empleados.length; i++) {
+                    // obtengo el nombre
+                    var nombre = lista_empleados[i].firstChild.data ;
+                    // creo la opción
+                    opcion = new Option(nombre,i) ;
+                    // la meto dentro del desplegable
+                    desplegable.options[desplegable.options.length] = opcion ;
+                }
+            }
+        }
+    }
+
+</script>
+</head>
+
+
+<body>
+
+    <table>
+        <tr>
+            <td>
+                <select id="departamentos" onchange="listarTrabajadores();"></select>
+            </td>
+            <td>
+                <select id="empleados" ></select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Buscar Departamentos" onclick="obtenerDepartamentos()">
+            </td>
+        </tr>
+    </table>
+    
+
+</body>
+</html>

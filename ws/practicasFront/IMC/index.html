@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>CALCULO DE IMC</title>
+        <style>
+            div#resultado{
+                display: none;
+            }
+            div#resultado img{
+                height: 500px;
+                margin: 10px auto;
+                display: block;
+            }
+        </style>
+        <link rel="stylesheet" href="../estilos.css">
+    <script>
+        window.onload = function(){
+            // añado la función calcular al botón
+            document.getElementById("btnIMC").addEventListener("click",calcularIMC);
+        }
+    
+
+        // función que calcula el imc
+        function calcularIMC(event){
+            // muesta el div resultado
+            document.querySelector("div#resultado").style.display = "block" ; 
+
+            // calcula el imc con un decimal   
+            var altura = document.getElementById("altura").value  ;
+            var peso = document.getElementById("peso").value ;
+            var imc = ( peso/Math.pow(altura,2) ).toFixed(1)  ;
+
+            mostrar(imc) ;
+        }
+
+
+        // función que muestra el resultado e imágen según tu IMC
+        function mostrar( imc ){
+            // estado de la persona
+            var estado ="" ;
+            if (imc < 16){
+                estado = "DESNUTRIDO" ;
+            } 
+            else if (imc  <18) { 
+                estado = "DELGADO" ;
+            } 
+            else if (imc < 25) {
+                estado = "NORMAL" ;
+            } 
+            else if (imc <31) { 
+                estado = "SOBREPESO" ;
+            } 
+            else if (imc >= 31) { 
+                estado = "OBESIDAD" ;
+            }
+
+            // con cosas básicas 
+            // document.querySelector("div#resultado p").innerHTML =
+            //        "Tu IMC es de " + imc + " kg/m<sup>2</sup>. <br/> Tu estado es: " + estado ;
+
+            // muestra la imgaen cambiando el src
+            // var src = document.querySelector("img").src = "img/" + estado.toLowerCase() + ".png" ;
+            // console.log(estado) ;
+
+
+            // ---------------- práctica nodos DOM ----------------------
+
+            // vacío el div resultado
+            var div = document.querySelector("div#resultado");
+            div.innerHTML = "" ;
+
+            // creo un elemento p y en su innerHTML le pongo el resultado
+            var parrafo = document.createElement("p") ;
+            parrafo.innerHTML =  "Tu IMC es de " + imc + " kg/m<sup>2</sup>. Tu estado es: " + estado ;
+
+            // creo el elemento imagen
+            var img = document.createElement("img") ;
+            img.src = "img/" + estado.toLowerCase() + ".png" ;
+
+            // lo inserto todo en el DIV 
+            div.appendChild(parrafo) ;
+            div.appendChild(img) ;
+        }
+
+    </script>
+
+</head>
+
+<body>
+ 
+    <!-- panel que pide al usuario la altura y el peso -->
+    <div class="panel">
+        Introduce tu peso: <input type="number" id="peso"  size="20" required> kg<br/>
+        Introduce tu altura: <input type="number"  size="20" required id="altura">  m          
+        <button id="btnIMC">Calcular IMC</button>
+    </div>
+
+    <!-- muestra los resultados -->
+    <div class="panel" id="resultado"></div>
+
+
+</body>
+</html>
