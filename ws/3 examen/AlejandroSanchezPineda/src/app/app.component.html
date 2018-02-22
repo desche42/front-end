@@ -1,0 +1,27 @@
+
+<table id="tablaDatos">
+  <thead>
+    <tr>
+        <th>Código</th> <th>Provincia</th>
+    </tr>
+  </thead>
+    <tbody>
+
+
+      <!-- se muestra en rojo si el codigoSeleccionado es igual al código de provincia -->
+      <tr *ngFor="let p of provincias" >
+        <td *ngIf="p.codigo == codigoSeleccionado" style="background-color:red" >{{p.codigo}}</td>
+        <td *ngIf="p.codigo == codigoSeleccionado" style="background-color:red">{{p.nombre}}</td>
+        <td *ngIf="p.codigo != codigoSeleccionado">{{p.codigo}}</td>
+        <td *ngIf="p.codigo != codigoSeleccionado">{{p.nombre}}</td>
+      </tr>
+
+
+
+
+    </tbody>
+</table>
+
+
+
+

@@ -1,0 +1,14 @@
+.cuadro{
+    border:1px solid black; padding:10px;
+}
+
+.cuadro_centrado{
+    @extend.cuadro;
+    margin:10px auto;
+}
+
+.cuadro_importante{
+    @extend.cuadro;
+    border:3px solid red;
+    background-color: pink;
+}

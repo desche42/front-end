@@ -1,0 +1,13 @@
+// este comentario no se cierra y no se transpila
+/* este comentario sí se transpila y aparece en el css*/
+
+$color-bloques:white;
+div#mensaje{
+    background-color: $color-bloques;
+}
+p{
+    background-color: $color-bloques;
+    &.otrocolor{
+        background-color: tomato;
+    }
+}

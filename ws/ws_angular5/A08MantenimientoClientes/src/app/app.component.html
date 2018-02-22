@@ -1,0 +1,31 @@
+<h1>Mantenimiento Clientes</h1>
+<div class="panel">
+    Dni <input type="number" [(ngModel)]="nuevo.dni" name="dni" /> <br/>
+    Nom <input type="text" [(ngModel)]="nuevo.nombre" name="nombre" /> <br/>
+    Ape <input type="text" [(ngModel)]="nuevo.apellidos" name="apellidos" /> <br/>
+    Sal <input type="number" [(ngModel)]="nuevo.saldo" name="saldo" /> <br/>
+    <button (click)="insertar($event)">Insertar</button>
+</div>
+<div class="panel">
+  Apellidos <input type="text" [(ngModel)]="apellidos"/>
+</div>
+<table id="tablaDatos">
+    <thead>
+        <tr>
+            <th>DNI</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Saldo</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of personas | filtrar: apellidos">
+            <td>{{p.dni}}</td>
+            <td>{{p.nombre | uppercase}}</td>
+            <td>{{p.apellidos}}</td>
+            <td>{{p.saldo | currency:'EUR':'symbol':'1.1-1'}}</td>
+            <td><button (click)="borrar()" >&times;</button></td>
+        </tr>
+    </tbody>
+</table>

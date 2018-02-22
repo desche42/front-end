@@ -1,0 +1,62 @@
+<h1>Mantenimiento Clientes</h1>
+<div class="panel">
+
+  <form novalidate="novalidate" #frm='ngForm' >
+    DNI <input #dni='ngModel' type="number" [(ngModel)]="nuevo.dni" required='required' name="dni"  />
+
+    <span *ngIf="dni.invalid && dni.dirty" >Error:
+      <span *ngIf="dni.errors.required">el DNI es obligatorio y debe ser un número</span>
+    </span>
+    <br/>
+
+    Nombre <input #nombre='ngModel' type="text" [(ngModel)]="nuevo.nombre" name="nombre" required='required' />
+    <span *ngIf="nombre.invalid && nombre.dirty" >Error:
+      <span *ngIf="nombre.errors.required">el nombre es obligatorio</span>
+      <span *ngIf="nombre.errors.pattern">Debe ser un número</span>
+    </span>
+    <br/>
+
+    Apellidos <input #ape='ngModel' type="text" [(ngModel)]="nuevo.apellidos" name="apellidos"
+                required='required' minlength="2" />
+    <span *ngIf="ape.invalid && ape.dirty" >Error:
+      <span *ngIf="ape.errors.required">los apellidos son obligatorios</span>
+      <span *ngIf="ape.errors.minlength" >mínimo dos caracteres</span>
+    </span>
+    <br/>
+
+    Saldo <input #saldo='ngModel' type="number" [(ngModel)]="nuevo.saldo" name="saldo" required='required' />
+    <span *ngIf="saldo.invalid && saldo.dirty" >Error:
+      <span *ngIf="saldo.errors.required">el saldo es obligatorio</span>
+    </span>
+    <br/>
+
+    <button (click)="insertar($event)" [disabled]="!frm.valid" >Insertar</button>
+  </form>
+</div>
+
+
+<div class="panel">
+  Apellidos <input type="text" [(ngModel)]="apellidos"/>
+</div>
+
+
+<table id="tablaDatos">
+    <thead>
+        <tr>
+            <th>DNI</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Saldo</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of personas | filtrar: apellidos let i = index">
+            <td>{{p.dni}}</td>
+            <td>{{p.nombre | uppercase}}</td>
+            <td>{{p.apellidos}}</td>
+            <td>{{p.saldo | currency:'EUR':'symbol':'1.1-1'}}</td>
+            <td><button (click)="borrar(i,p)" >&times;</button></td>
+        </tr>
+    </tbody>
+</table>

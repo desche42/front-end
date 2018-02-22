@@ -1,0 +1,11 @@
+// le podemos dar nombres a las varaibles
+$color-bloques:white;
+div#mensaje{
+    background-color: $color-bloques;
+}
+p{
+    background-color: $color-bloques;
+    &.otrocolor{
+        background-color: tomato;
+    }
+}

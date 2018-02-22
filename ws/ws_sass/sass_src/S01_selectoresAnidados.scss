@@ -1,0 +1,13 @@
+// SASS permite anidar estilos
+div#mensaje{
+    background-color: yellow ;
+    p{
+        &.contenido{
+            margin-left: 10px;
+        }
+        margin-left: 50px;
+        a{
+            color: tomato;
+        }
+    }
+}
