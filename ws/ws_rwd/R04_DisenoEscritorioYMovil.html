@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Diseño escritorio y movil</title>
     <style>
 
     /**********************  ESTILOS GENERALES     ***********************/
@@ -35,17 +36,19 @@
             float:left;
         }
 
-        /* cuando la pantalla sea pequeña , no poner el menu a la izquierda y que ocupe todo el ancho */
+        /*  cuando la pantalla sea pequeña , no poner el menu a la izquierda (se pondrá primero porque en el body está definido antes) 
+            y que ocupe todo el ancho */
         @media only screen and (max-width:600px){
             div.menu{
                 width:100vw ;
                 float: none ;
             }
         }
-    
 
         .menu ul{
-            list-style-type: none;margin:0; padding:0;
+            list-style-type: none;
+            margin:0;
+            padding:0;
         }
         .menu li{
             margin-bottom:0.2em;
@@ -53,9 +56,13 @@
             border:4px solid white;
         }
         .menu a {
-            display: block;padding: 1em;text-align:center;
-            text-decoration:none; color:white;
-            font-family: sans-serif; font-weight:bold;
+            display: block;
+            padding: 1em;
+            text-align:center;
+            text-decoration:none; 
+            color:white;
+            font-family: sans-serif; 
+            font-weight:bold;
         }
 
     /**********************   CONTENIDO   ***********************/
@@ -95,30 +102,46 @@
     </style>
 </head>
 <body>
-    <div class="cabecera">
-        <h1>SERIES</h1>
-    </div>
-    <div class="menu">
-        <nav>
+    <!-- ---------------------------- CABECERA DE LA PÁGINA --------------------- -->
+    <header>
+        <div class="cabecera">
+            <h1>SERIES</h1>
+        </div>
+    </header>
+
+
+    <nav>
+        <div class="menu">
             <ul>
                 <li><a href="">Favoritas</a></li>
                 <li><a href="">Buscar</a></li>
                 <li><a href="">Seguir viendo</a></li>
                 <li><a href="">Configuración</a></li>
             </ul>
-        </nav>
-    </div>
-    <div class="contenido">
-        <h2>Quijote</h2>
-            <p>
-                En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero adarga antigua, rocín flaco y galgo corredor. Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados, lantejas los viernes, algún palomino de añadidura los domingos, consumían las tres partes de su hacienda. El resto della concluían sayo de velarte, calzas de velludo para las fiestas, con sus pantuflos de lo mesmo, y los días de entresemana se honraba con su vellorí de lo más fino. Tenía en su casa una ama que pasaba de los cuarenta, y una sobrina que no llegaba a los veinte, y un mozo de campo y plaza, que así ensillaba el rocín como tomaba la podadera. Frisaba la edad de nuestro hidalgo con los cincuenta años; era de complexión recia, seco de carnes, enjuto de rostro, gran madrugador y amigo de la caza. Quieren decir que tenía el sobrenombre de Quijada, o Quesada, que en esto hay alguna diferencia en los autores que deste caso escriben; aunque, por conjeturas verosímiles, se deja entender que se llamaba Quejana. Pero esto importa poco a nuestro cuento; basta que en la narración dél no se salga un punto de la verdad.
-            </p>
-            <p>  
-                Es, pues, de saber que este sobredicho hidalgo, los ratos que estaba ocioso, que eran los más del año, se daba a leer libros de caballerías, con tanta afición y gusto, que olvidó casi de todo punto el ejercicio de la caza, y un la administración de su hacienda. Y llegó a tanto su curiosidad y desatino en esto, que vendió muchas hanegas de tierra de sembradura para comprar libros de caballerías en que leer, y así, llevó a su casa todos cuantos pudo haber dellos; y de todos, ningunos le parecían tan bien como los que compuso el famoso Feliciano de Silva, porque la claridad de su prosa y aquellas entricadas razones suyas le parecían de perlas, y más cuando llegaba a leer aquellos requiebros y cartas de desafíos,donde en muchas partes hallaba escrito: La razón de la sinrazón que a mi razón se hace, de tal manera mi razón enflaquece, que con razón me quejo de la vuestra fermosura. Y también cuando leía: [...] los altos cielos que de vuestra divinidad divinamente con las estrellas os fortifican, y os hacen merecedora del merecimiento que merece la vuestra grandeza.
-            </p>
-    </div>
-    <div class="pie">
-        <h3>&copy; Copy right SERIES</h3>
-    </div>
+        </div>
+    </nav>
+    <!-- ---------------------------- CONTENIDO DE LA PÁGINA --------------------- -->
+
+    <article>
+        <div class="contenido">
+            <h2>Quijote</h2>
+                <p>
+                    En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero adarga antigua, rocín flaco y galgo corredor. Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados, lantejas los viernes, algún palomino de añadidura los domingos, consumían las tres partes de su hacienda. El resto della concluían sayo de velarte, calzas de velludo para las fiestas, con sus pantuflos de lo mesmo, y los días de entresemana se honraba con su vellorí de lo más fino. Tenía en su casa una ama que pasaba de los cuarenta, y una sobrina que no llegaba a los veinte, y un mozo de campo y plaza, que así ensillaba el rocín como tomaba la podadera. Frisaba la edad de nuestro hidalgo con los cincuenta años; era de complexión recia, seco de carnes, enjuto de rostro, gran madrugador y amigo de la caza. Quieren decir que tenía el sobrenombre de Quijada, o Quesada, que en esto hay alguna diferencia en los autores que deste caso escriben; aunque, por conjeturas verosímiles, se deja entender que se llamaba Quejana. Pero esto importa poco a nuestro cuento; basta que en la narración dél no se salga un punto de la verdad.
+                </p>
+                <p>  
+                    Es, pues, de saber que este sobredicho hidalgo, los ratos que estaba ocioso, que eran los más del año, se daba a leer libros de caballerías, con tanta afición y gusto, que olvidó casi de todo punto el ejercicio de la caza, y un la administración de su hacienda. Y llegó a tanto su curiosidad y desatino en esto, que vendió muchas hanegas de tierra de sembradura para comprar libros de caballerías en que leer, y así, llevó a su casa todos cuantos pudo haber dellos; y de todos, ningunos le parecían tan bien como los que compuso el famoso Feliciano de Silva, porque la claridad de su prosa y aquellas entricadas razones suyas le parecían de perlas, y más cuando llegaba a leer aquellos requiebros y cartas de desafíos,donde en muchas partes hallaba escrito: La razón de la sinrazón que a mi razón se hace, de tal manera mi razón enflaquece, que con razón me quejo de la vuestra fermosura. Y también cuando leía: [...] los altos cielos que de vuestra divinidad divinamente con las estrellas os fortifican, y os hacen merecedora del merecimiento que merece la vuestra grandeza.
+                </p>
+        </div>
+    </article>
+
+    <!-- ---------------------------- FOOTER DE LA PÁGINA --------------------- -->
+
+    <footer>
+        <div class="pie">
+            <h3>&copy; Copy right SERIES</h3>
+        </div>
+    </footer>
+
+
 </body>
 </html>

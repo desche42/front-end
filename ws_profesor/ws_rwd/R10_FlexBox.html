@@ -15,14 +15,27 @@
             display: flex;
 
             /*----------- Dirección y sentido --------------*/
+
+            /* flex-direction: column; */
             /* flex-direction: column-reverse; */
+            flex-direction: row;              /* por defecto */
+            /* flex-direction: row-reverse; */
 
             /*----------- Reparto de espacios entre los elementos -------*/
             width: 900px;
-            justify-content: space-around;
+
+            justify-content: flex-start ;    /* por defecto  */
+            /* justify-content: flex-end; */
+            /* justify-content: center; */
+            /* justify-content: space-between; */
+            /* justify-content: space-around; */
 
             /*----------- Alineación vertical ---------------*/
             /* Con flex-end se podría hacer un gráfico de barras */
+            /* align-items: stretch; */
+            /* align-items: flex-end; */
+            /* align-items: flex-start; */
+            /* align-items: center; */
             align-items: baseline;
 
         }

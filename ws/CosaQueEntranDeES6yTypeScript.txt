@@ -1,5 +1,5 @@
------------ RESPONSIVE --------------
-
+﻿----------- RESPONSIVE --------------
+todo
 
 ------------- ES6 Y TS --------------
 Cosas que entran:
@@ -15,7 +15,7 @@ DIAPOSITIVAS:
 ------------- ANGULAR ----------------
 
 Cosas que entran:
-	- Filtros inclu�dos por defecto ( los personalizados no )
+	- Filtros incluídos por defecto ( los personalizados no )
 
 DIAPOSITIVAS: 
 	7 - 8

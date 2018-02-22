@@ -15,7 +15,7 @@
             ],
             "group": {
                 "kind": "build",
-                "isDefault": false,
+                "isDefault": true,
             },
             "presentation": {
                 "echo": false,
@@ -71,7 +71,7 @@
             "problemMatcher":"$tsc-watch",
             "group": {
                 "kind": "build",
-                "isDefault": true
+                "isDefault": false
             }
         },
     ],

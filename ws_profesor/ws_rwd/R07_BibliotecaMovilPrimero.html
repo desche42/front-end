@@ -15,7 +15,7 @@
         .fila::after{
             content:"";clear:both;display: block;
         }
-        [class*='col-']{ /*Movil primero:No hay columnas ancho 100% */
+        [class*='col-']{ /*Movil primero:No hay columnas: ancho 100% */
             width:100%;
             border: 1px solid black;
         }
@@ -40,6 +40,8 @@
             padding:1em;
             color:white;
             font-family: sans-serif; font-weight:bold;}
+
+        /* cuando el ancho del view port es mayor a 500 px se aplican estos estilos */
         @media only screen and (min-width:500px){
             [class*='col-']{
                 float: left;

@@ -12,7 +12,7 @@
      -->
     
     
-    <style>
+     <style>
     
     /**********************  ESTILOS GENERALES     ***********************/
 
@@ -25,7 +25,7 @@
         }
         /* estilo de todas las COLUMNAS */
         [class*='col-']{
-            float: left; ñ 
+            float: left; 
             border: 1px solid black ;
         }
 
@@ -43,10 +43,16 @@
         .col-11{    width: 91.66% ;}
         .col-12{    width: 100% ;}
 
+        /* las media queries tienen que ir después de haber definido las propiedades de los elementos a los que afectan */
+        @media only screen and (max-width:500px) and (orientation:portrait){
+            [class*='col-']{
+                width:100%;
+            }
+        }
         /* insertamos un elemento vació después de la clase fila ( contienen columnas) tiene que tener un clear:both para cancelar el float */
 
         .fila::after{
-            /* no quiero mostrar nada */
+            /* no quiero mostrar nada después de la fila */
             content: "" ;
             /* termino la flotación */
             clear: both ;
@@ -58,6 +64,11 @@
     
         div.cabecera{
             background-color:beige;
+            /* esto le da espacio y  */
+            padding: 1em;
+        }
+        .cabecera h1{
+            text-align: center ;
         }
 
 
@@ -66,12 +77,13 @@
     /**********************    MENU     ***********************/
         div.menu{
             background-color:lightblue;
-            border: 4px solid black;
-            width:25vw;
-            float:left;
+            /* border: 4px solid black; */
+            /* float:left; */
         }
         .menu ul{
-            list-style-type: none;margin:0; padding:0;
+            list-style-type: none;
+            margin:0; 
+            padding:0;
         }
         .menu li{
             margin-bottom:0.5em;
@@ -79,9 +91,13 @@
             border:4px solid white;
         }
         .menu a {
-            display: block;padding: 1em;text-align:center;
-            text-decoration:none; color:white;
-            font-family: sans-serif; font-weight:bold;
+            display: block;
+            padding: 1em;
+            text-align:center;
+            text-decoration:none; 
+            color:white;
+            font-family: sans-serif; 
+            font-weight:bold;
         }
 
 
@@ -90,9 +106,7 @@
 
         div.contenido{
             background-color:yellow;
-            border: 4px solid black;
-            padding:1em;margin-left:25vw;
-            width:75vw;
+            padding:1em;
         }
 
 
@@ -101,9 +115,9 @@
         div.pie{
             background-color:darkgreen;
             padding:1em;
-            width:100vw;
             color:white;
-            font-family: sans-serif; font-weight:bold;
+            font-family: sans-serif; 
+            font-weight:bold;
         }
 
     </style>
@@ -112,9 +126,9 @@
     <div class="cabecera fila">
         <h1>SERIES</h1>
     </div>
-
-
-
+    
+    
+    
     <div class="fila">
         <div class="menu col-3">
             <nav>
@@ -140,6 +154,10 @@
 
 
 
+    <div class="fila">
+            <div class="col-6">Anuncio A</div>
+            <div class="col-6">Anuncio B</div>
+    </div>
     <div class="pie fila">
         <h3>&copy; Copy right SERIES</h3>
     </div>
